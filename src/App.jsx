@@ -21,7 +21,7 @@ function App() {
   return (
     <Elements stripe={stripePromise}>
       <CartProvider>
-        <Router>
+        <Router basename="/d-pp">
           <div className="min-h-screen bg-white">
             <Navbar />
             <main>

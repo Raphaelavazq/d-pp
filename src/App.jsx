@@ -5,6 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
@@ -22,6 +23,7 @@ function App() {
     <Elements stripe={stripePromise}>
       <CartProvider>
         <Router basename="/d-pp">
+          <ScrollToTop />
           <div className="min-h-screen bg-white">
             <Navbar />
             <main>

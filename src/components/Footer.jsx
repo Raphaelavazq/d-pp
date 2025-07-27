@@ -1,233 +1,260 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Facebook, Mail, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-bluegray/90 backdrop-blur-md border-t border-white/10 text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="space-y-6">
-            <div
-              className="text-4xl font-extrabold text-cream"
-              style={{ fontFamily: "Chillax, sans-serif" }}
-            >
-              düpp
-            </div>
+    <footer
+      className="bg-bluegray text-white pt-16 pb-8"
+      style={{ backgroundColor: "#B0BBC1" }}
+    >
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
+            <Link to="/" className="inline-block mb-4">
+              <span
+                className="text-3xl font-bold bg-gradient-to-r from-cream to-white bg-clip-text text-transparent"
+                style={{ fontFamily: "Chillax, sans-serif" }}
+              >
+                düpp
+              </span>
+            </Link>
             <p
-              className="text-white text-lg leading-relaxed font-normal"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-light leading-relaxed mb-6 max-w-md"
+              style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
             >
-              Redefining luxury through accessibility. Designer-inspired pieces
-              that celebrate style without compromise.
+              Only quality düpp here. Premium skincare that's 100% vegan,
+              cruelty-free, and plants a tree with every purchase.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="p-3 bg-white/10 backdrop-blur-sm text-white hover:bg-cream hover:text-charcoal rounded-full transition-all duration-300 hover:scale-110"
+            <div className="flex items-center space-x-4">
+              <span
+                className="text-cream font-medium text-sm"
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
-                <Instagram size={20} />
-              </a>
-              <a
-                href="#"
-                className="p-3 bg-white/10 backdrop-blur-sm text-white hover:bg-cream hover:text-charcoal rounded-full transition-all duration-300 hover:scale-110"
-              >
-                <Twitter size={20} />
-              </a>
-              <a
-                href="#"
-                className="p-3 bg-white/10 backdrop-blur-sm text-white hover:bg-cream hover:text-charcoal rounded-full transition-all duration-300 hover:scale-110"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="p-3 bg-white/10 backdrop-blur-sm text-white hover:bg-cream hover:text-charcoal rounded-full transition-all duration-300 hover:scale-110"
-              >
-                <Mail size={20} />
-              </a>
+                Follow us:
+              </span>
+              <div className="flex space-x-3">
+                <a
+                  href="#"
+                  className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-cream hover:text-charcoal transition-colors"
+                >
+                  <span className="text-sm">𝕏</span>
+                </a>
+                <a
+                  href="#"
+                  className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-cream hover:text-charcoal transition-colors"
+                >
+                  <span className="text-sm">IG</span>
+                </a>
+                <a
+                  href="#"
+                  className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-cream hover:text-charcoal transition-colors"
+                >
+                  <span className="text-sm">TT</span>
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Shop */}
+          {/* Shop Links */}
           <div>
             <h3
-              className="text-xl font-bold mb-6 text-white"
+              className="text-cream font-semibold mb-4 text-sm uppercase tracking-wide"
               style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Shop
             </h3>
-            <ul className="space-y-3 text-base">
+            <ul className="space-y-3">
               <li>
                 <Link
-                  to="/shop/handbags"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  to="/shop"
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
                 >
-                  Handbags
+                  All Products
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop/shoes"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  to="/shop?category=serums"
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
                 >
-                  Shoes
+                  Serums
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop/accessories"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  to="/shop?category=moisturizers"
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
                 >
-                  Accessories
+                  Moisturizers
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop/watches"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  to="/shop?category=cleansers"
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
                 >
-                  Watches
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/shop/clothing"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
-                  Clothing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/shop/beauty"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
-                  Beauty
+                  Cleansers
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Customer Service */}
+          {/* Company Links */}
           <div>
             <h3
-              className="text-xl font-bold mb-6 text-white"
+              className="text-cream font-semibold mb-4 text-sm uppercase tracking-wide"
               style={{ fontFamily: "Chillax, sans-serif" }}
             >
-              Support
+              Company
             </h3>
-            <ul className="space-y-3 text-base">
+            <ul className="space-y-3">
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/impact"
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
+                >
+                  Our Impact
+                </Link>
+              </li>
               <li>
                 <Link
                   to="/contact"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
                 >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/shipping"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
-                  Shipping Info
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/returns"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
-                  Returns & Exchanges
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/size-guide"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
-                  Size Guide
+                  Contact
                 </Link>
               </li>
               <li>
                 <Link
                   to="/faq"
-                  className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="hover:text-cream transition-colors font-light"
+                  style={{
+                    fontFamily: "Chillax, sans-serif",
+                    color: "#ffffff",
+                  }}
                 >
                   FAQ
                 </Link>
               </li>
             </ul>
           </div>
+        </div>
 
-          {/* Newsletter */}
-          <div>
+        {/* Newsletter Signup */}
+        <div className="border-t border-white/10 pt-8 mb-8">
+          <div className="max-w-md mx-auto text-center">
             <h3
-              className="text-xl font-bold mb-6 text-white"
+              className="text-cream font-semibold mb-3"
               style={{ fontFamily: "Chillax, sans-serif" }}
             >
-              Stay in Touch
+              Join the düpp community
             </h3>
             <p
-              className="text-white text-base mb-6 leading-relaxed font-normal"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-light text-sm mb-4"
+              style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
             >
-              Be the first to discover new collections and exclusive offers.
+              Get early access to new products and sustainability updates.
             </p>
-            <div className="space-y-4">
+            <div className="flex max-w-sm mx-auto">
               <input
                 type="email"
-                placeholder="Enter your email"
-                className="w-full px-5 py-4 bg-white/10 backdrop-blur-sm text-white rounded-2xl border border-white/20 focus:border-white/40 focus:outline-none placeholder-white/50 transition-all duration-300"
+                placeholder="Your email"
+                className="flex-1 px-4 py-2 bg-white/10 border border-white/20 rounded-l-full text-white placeholder-white/50 focus:outline-none focus:border-cream"
                 style={{ fontFamily: "Chillax, sans-serif" }}
               />
               <button
-                className="w-full bg-cream text-charcoal py-4 rounded-2xl hover:bg-cream/90 transition-all duration-300 font-semibold transform hover:scale-105"
+                className="px-6 py-2 bg-cream text-charcoal font-medium rounded-r-full hover:bg-white transition-colors"
                 style={{ fontFamily: "Chillax, sans-serif" }}
               >
-                Subscribe
+                Join
               </button>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <div
-            className="text-base text-white font-normal flex items-center space-x-2"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
-            <span>© 2024 düpp. Made with</span>
-            <Heart size={16} className="text-white" fill="currentColor" />
-            <span>for style lovers.</span>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
+            <p
+              className="text-sm font-light"
+              style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
+            >
+              © 2025 düpp. All rights reserved.
+            </p>
+            <div className="flex space-x-4">
+              <Link
+                to="/privacy"
+                className="hover:text-cream text-sm font-light transition-colors"
+                style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                to="/terms"
+                className="hover:text-cream text-sm font-light transition-colors"
+                style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
+              >
+                Terms of Service
+              </Link>
+            </div>
           </div>
-          <div className="flex space-x-8 mt-6 md:mt-0 text-base">
-            <Link
-              to="/privacy"
-              className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-              style={{ fontFamily: "Chillax, sans-serif" }}
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              to="/terms"
-              className="text-white hover:text-cream transition-all duration-300 hover:tracking-wide font-normal"
-              style={{ fontFamily: "Chillax, sans-serif" }}
-            >
-              Terms of Service
-            </Link>
+
+          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2">
+              <span className="text-cream text-lg">🌱</span>
+              <span
+                className="text-sm font-light"
+                style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
+              >
+                Carbon neutral shipping
+              </span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-cream text-lg">🐰</span>
+              <span
+                className="text-sm font-light"
+                style={{ fontFamily: "Chillax, sans-serif", color: "#ffffff" }}
+              >
+                Cruelty-free certified
+              </span>
+            </div>
           </div>
         </div>
       </div>

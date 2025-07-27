@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { products, categories } from "../data/products";
+import { useParams, useNavigate } from "react-router-dom";
+import { products, categories } from "../data/productData";
 import ProductCard from "../components/ProductCard";
+import shopBanner from "../assets/shop_banner.mp4";
 
 const Shop = () => {
   const { category } = useParams();
+  const navigate = useNavigate();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortBy, setSortBy] = useState("featured");
 
   useEffect(() => {
     let filtered = [...products];
 
-    // Filter by category
     if (category) {
       filtered = filtered.filter((product) => product.category === category);
     }
 
-    // Sort products
     switch (sortBy) {
       case "price-low":
         filtered.sort((a, b) => a.price - b.price);
@@ -31,7 +31,6 @@ const Shop = () => {
         filtered.sort((a, b) => b.id - a.id);
         break;
       default:
-        // Featured first
         filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
     }
 
@@ -40,23 +39,45 @@ const Shop = () => {
 
   return (
     <div className="pt-20 min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-16 text-center">
-          <h1
-            className="text-5xl md:text-7xl font-bold text-charcoal mb-6 tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
-            Shop
-          </h1>
-          <p
-            className="text-xl text-charcoal/70 max-w-3xl mx-auto leading-relaxed"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
-            One of EVERYTHING really GOOD.
-          </p>
+      {/* Video Banner with Overlaid Text */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+        <div className="relative w-full" style={{ aspectRatio: "16/6" }}>
+          <video
+            src={shopBanner}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover rounded-3xl shadow-lg"
+            style={{ aspectRatio: "16/6" }}
+          />
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+            <h1
+              className="text-5xl md:text-7xl font-bold mb-4 tracking-tight drop-shadow-lg uppercase"
+              style={{
+                fontFamily: "Aglonema, serif",
+                color: "white",
+                textShadow: "0 2px 16px rgba(0,0,0,0.28)",
+              }}
+            >
+              SHOP
+            </h1>
+            <p
+              className="text-xl md:text-2xl font-bold max-w-3xl mx-auto leading-relaxed drop-shadow-lg"
+              style={{
+                fontFamily: "Aglonema, serif",
+                color: "white",
+                textShadow: "0 2px 16px rgba(0,0,0,0.28)",
+              }}
+            >
+              One of EVERYTHING really GOOD.
+            </p>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/30 to-transparent pointer-events-none" />
         </div>
+      </div>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Navigation */}
         <div className="mb-12 flex flex-wrap items-center justify-center gap-6 border-b border-taupe/20 pb-6">
           <button
@@ -66,7 +87,7 @@ const Shop = () => {
                 : "text-charcoal/60 hover:text-charcoal border-transparent hover:border-charcoal/30"
             }`}
             style={{ fontFamily: "Chillax, sans-serif" }}
-            onClick={() => (window.location.href = "/shop")}
+            onClick={() => navigate("/shop")}
           >
             FEATURED
           </button>
@@ -79,7 +100,7 @@ const Shop = () => {
                   : "text-charcoal/60 hover:text-charcoal border-transparent hover:border-charcoal/30"
               }`}
               style={{ fontFamily: "Chillax, sans-serif" }}
-              onClick={() => (window.location.href = `/shop/${cat.id}`)}
+              onClick={() => navigate(`/shop/${cat.id}`)}
             >
               {cat.name}
             </button>

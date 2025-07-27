@@ -163,7 +163,7 @@ const CartDrawer = () => {
                         className="text-sm font-bold text-charcoal"
                         style={{ fontFamily: "Chillax, sans-serif" }}
                       >
-                        ${item.price.toFixed(2)}
+                        €{item.price.toFixed(2)}
                       </p>
                     </div>
                     <div className="flex items-center space-x-3">
@@ -212,7 +212,7 @@ const CartDrawer = () => {
                 style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 <span>Total</span>
-                <span>${getTotalPrice().toFixed(2)}</span>
+                <span>€{getTotalPrice().toFixed(2)}</span>
               </div>
               <div className="space-y-4">
                 <Link

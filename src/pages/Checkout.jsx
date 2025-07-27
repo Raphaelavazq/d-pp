@@ -182,7 +182,7 @@ const Checkout = () => {
               >
                 {isProcessing
                   ? "Processing..."
-                  : `Complete Order - $${total.toFixed(2)}`}
+                  : `Complete Order - €${total.toFixed(2)}`}
               </button>
             </form>
           </div>
@@ -211,7 +211,7 @@ const Checkout = () => {
                     </p>
                   </div>
                   <span className="text-sm font-medium">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    €{(item.price * item.quantity).toFixed(2)}
                   </span>
                 </div>
               ))}
@@ -220,23 +220,23 @@ const Checkout = () => {
             <div className="border-t pt-6 space-y-3">
               <div className="flex justify-between">
                 <span className="text-gray-600">Subtotal</span>
-                <span className="font-medium">${subtotal.toFixed(2)}</span>
+                <span className="font-medium">€{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Shipping</span>
                 <span className="font-medium">
-                  {shipping === 0 ? "Free" : `$${shipping.toFixed(2)}`}
+                  {shipping === 0 ? "Free" : `€${shipping.toFixed(2)}`}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Tax</span>
-                <span className="font-medium">${tax.toFixed(2)}</span>
+                <span className="font-medium">€{tax.toFixed(2)}</span>
               </div>
               <div className="border-t pt-3">
                 <div className="flex justify-between">
                   <span className="text-lg font-semibold">Total</span>
                   <span className="text-lg font-semibold">
-                    ${total.toFixed(2)}
+                    €{total.toFixed(2)}
                   </span>
                 </div>
               </div>

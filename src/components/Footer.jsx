@@ -1,52 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logoFooter from "../assets/logofooter.png";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-white text-rhode-text text-sm">
-      {/* Footer Content with white background */}
+    <footer className="mt-16">
+      {/* Footer Content with grey background and constrained width */}
       <div className="w-full flex justify-center">
-        <div className="max-w-6xl w-full px-6 lg:px-8 pt-12 pb-20">
-          {/* Newsletter Signup with Logo on the left, in grey box */}
-          <div className="mb-16 bg-[#f5f5f0] rounded-xl">
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 px-6 py-8">
-              <div className="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto mb-4 md:mb-0">
-                <img
-                  src={logoFooter}
-                  alt="düpp footer logo"
-                  className="w-[120px] md:w-[160px] lg:w-[200px] h-auto mx-auto md:mx-0"
+        <div className="max-w-6xl w-full px-6 lg:px-8 pt-12 pb-20 bg-[#f5f5f0] rounded-t-2xl">
+          {/* Newsletter Signup - centered, no logo */}
+          <div className="mb-16 text-center">
+            <div className="max-w-md mx-auto">
+              <p className="mb-2 text-base font-medium">
+                Join us on the düpp journey.
+              </p>
+              <p className="mb-4 text-gray-600">
+                Get skincare tips, exclusive offers & behind-the-scenes
+                updates.
+              </p>
+              <form className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:items-center">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="px-4 py-2 border border-gray-400 text-sm w-full sm:max-w-xs focus:outline-none"
                 />
-              </div>
-              <div className="flex-1 w-full">
-                <p className="mb-2 text-base font-medium">
-                  Join us on the düpp journey.
-                </p>
-                <p className="mb-4 text-gray-600">
-                  Get skincare tips, exclusive offers & behind-the-scenes
-                  updates.
-                </p>
-                <form className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:items-center">
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="px-4 py-2 border border-gray-400 text-sm w-full sm:max-w-xs focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="bg-black text-white px-6 py-2 text-sm font-semibold"
-                  >
-                    SUBSCRIBE
-                  </button>
-                </form>
-                <p className="mt-2 text-xs text-gray-500">
-                  By signing up, you agree to our{" "}
-                  <Link to="/privacy" className="underline">
-                    Privacy Policy
-                  </Link>
-                  .
-                </p>
-              </div>
+                <button
+                  type="submit"
+                  className="bg-black text-white px-6 py-2 text-sm font-semibold"
+                >
+                  SUBSCRIBE
+                </button>
+              </form>
+              <p className="mt-2 text-xs text-gray-500">
+                By signing up, you agree to our{" "}
+                <Link to="/privacy" className="underline">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
             </div>
           </div>
 

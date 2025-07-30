@@ -5,10 +5,13 @@ import { loadStripe } from "@stripe/stripe-js";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { FirestoreProvider } from "./contexts/FirestoreContext";
+import { usePasswordProtection } from "./hooks/usePasswordProtection";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminAccess from "./components/AdminAccess";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ComingSoon from "./pages/ComingSoon";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
@@ -32,6 +35,26 @@ import "./index.css";
 const stripePromise = loadStripe("pk_test_demo_key");
 
 function App() {
+  const { hasAccess, isLoading, grantAccess } = usePasswordProtection();
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p style={{ fontFamily: 'Chillax, sans-serif' }}>Loading düpp...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show Coming Soon page if no access
+  if (!hasAccess) {
+    return <ComingSoon onPasswordSubmit={grantAccess} />;
+  }
+
+  // Show main app if access granted
   return (
     <AuthProvider>
       <FirestoreProvider>
@@ -82,6 +105,7 @@ function App() {
                   </Routes>
                 </main>
                 <Footer />
+                <AdminAccess />
               </div>
             </Router>
           </CartProvider>

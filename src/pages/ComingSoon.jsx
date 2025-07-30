@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
-import { usePasswordProtection } from '../hooks/usePasswordProtection';
-import logoSvg from '../assets/logo.svg';
-import heroVideo from '../assets/heroVideo.mp4';
+import React, { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
+import logoSvg from "../assets/logo.svg";
+import heroVideo from "../assets/heroVideo.mp4";
 
 const ComingSoon = ({ onPasswordSubmit }) => {
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { validatePassword } = usePasswordProtection();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setError('');
+    setError("");
 
     // Simulate password check
     setTimeout(() => {
       if (validatePassword(password)) {
         onPasswordSubmit(true);
       } else {
-        setError('Invalid password. Please try again.');
+        setError("Invalid password. Please try again.");
       }
       setIsLoading(false);
     }, 1000);
@@ -54,19 +54,19 @@ const ComingSoon = ({ onPasswordSubmit }) => {
             />
             <h1
               className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight"
-              style={{ fontFamily: 'Aglonema, serif' }}
+              style={{ fontFamily: "Aglonema, serif" }}
             >
               düpp
             </h1>
             <p
               className="text-xl text-white/80 mb-2"
-              style={{ fontFamily: 'Aglonema, serif' }}
+              style={{ fontFamily: "Aglonema, serif" }}
             >
               Something Beautiful is Coming
             </p>
             <p
               className="text-sm text-white/60"
-              style={{ fontFamily: 'Chillax, sans-serif' }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Premium skincare for the modern world
             </p>
@@ -76,23 +76,23 @@ const ComingSoon = ({ onPasswordSubmit }) => {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
             <h2
               className="text-2xl font-medium text-white mb-6 text-center"
-              style={{ fontFamily: 'Aglonema, serif' }}
+              style={{ fontFamily: "Aglonema, serif" }}
             >
               Early Access
             </h2>
-            
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="relative">
                 <input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
-                    setError('');
+                    setError("");
                   }}
                   placeholder="Enter access password"
                   className="w-full px-4 py-4 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent pr-12"
-                  style={{ fontFamily: 'Chillax, sans-serif' }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 />
                 <button
                   type="button"
@@ -113,16 +113,16 @@ const ComingSoon = ({ onPasswordSubmit }) => {
                 type="submit"
                 disabled={isLoading || !password.trim()}
                 className="w-full py-4 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105"
-                style={{ fontFamily: 'Chillax, sans-serif' }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
-                {isLoading ? 'Verifying...' : 'Enter düpp'}
+                {isLoading ? "Verifying..." : "Enter düpp"}
               </button>
             </form>
 
             <div className="mt-8 pt-6 border-t border-white/20">
               <p
                 className="text-white/60 text-sm text-center"
-                style={{ fontFamily: 'Chillax, sans-serif' }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Don't have access? Contact us for early preview.
               </p>
@@ -133,7 +133,7 @@ const ComingSoon = ({ onPasswordSubmit }) => {
           <div className="text-center mt-12">
             <p
               className="text-white/40 text-xs"
-              style={{ fontFamily: 'Chillax, sans-serif' }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               © 2025 düpp. All rights reserved.
             </p>

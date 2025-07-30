@@ -1,12 +1,12 @@
-import React from 'react';
-import { LogOut } from 'lucide-react';
-import { usePasswordProtection } from '../hooks/usePasswordProtection';
+import React from "react";
+import { LogOut } from "lucide-react";
+import { usePasswordProtection } from "../hooks/usePasswordProtection";
 
 const AdminAccess = () => {
   const { revokeAccess } = usePasswordProtection();
 
   const handleLogout = () => {
-    if (window.confirm('Are you sure you want to exit preview mode?')) {
+    if (window.confirm("Are you sure you want to exit preview mode?")) {
       revokeAccess();
       window.location.reload();
     }

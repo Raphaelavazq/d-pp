@@ -150,7 +150,7 @@ const Navbar = () => {
 
               {/* Right Actions - Desktop */}
               <div className="hidden md:flex items-center space-x-4 justify-end">
-                <button className="p-3 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110">
+                <button className="p-3 bg-white/80 backdrop-blur-sm border border-rhode-text/20 text-rhode-text hover:bg-rhode-text hover:text-white rounded-xl transition-all duration-300 hover:scale-110 shadow-sm">
                   <Search size={20} />
                 </button>
 
@@ -159,65 +159,132 @@ const Navbar = () => {
                   <div className="relative" ref={userMenuRef}>
                     <button
                       onClick={() => setShowUserMenu(!showUserMenu)}
-                      className="p-3 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110 flex items-center space-x-2"
+                      className="flex items-center space-x-3 p-3 bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white rounded-xl transition-all duration-300 hover:scale-105 shadow-lg backdrop-blur-sm"
                       title={currentUser.displayName || currentUser.email}
                     >
-                      <User size={20} />
-                      <span className="hidden lg:block text-sm font-medium max-w-20 truncate">
-                        {currentUser.displayName ||
+                      {currentUser.photoURL ? (
+                        <img
+                          src={currentUser.photoURL}
+                          alt="Profile"
+                          className="w-6 h-6 rounded-full object-cover border-2 border-white/30"
+                        />
+                      ) : (
+                        <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center">
+                          <User size={16} />
+                        </div>
+                      )}
+                      <span className="hidden lg:block text-sm font-[Chillax] font-medium max-w-20 truncate">
+                        {currentUser.displayName?.split(' ')[0] ||
                           currentUser.email?.split("@")[0]}
                       </span>
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
                     </button>
 
                     {showUserMenu && (
-                      <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-100">
-                        <div className="px-4 py-2 border-b border-gray-100">
-                          <p className="text-sm font-medium text-gray-900 truncate">
-                            {currentUser.displayName || "User"}
-                          </p>
-                          <p className="text-xs text-gray-500 truncate">
-                            {currentUser.email}
-                          </p>
+                      <div className="absolute right-0 mt-3 w-72 bg-white/95 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl py-2 z-50 overflow-hidden">
+                        {/* User Info Header */}
+                        <div className="px-6 py-4 bg-gradient-to-r from-rhode-text/5 to-rhode-cream/10 border-b border-rhode-text/10">
+                          <div className="flex items-center space-x-3">
+                            {currentUser.photoURL ? (
+                              <img
+                                src={currentUser.photoURL}
+                                alt="Profile"
+                                className="w-12 h-12 rounded-full object-cover border-2 border-rhode-text/20"
+                              />
+                            ) : (
+                              <div className="w-12 h-12 bg-gradient-to-br from-rhode-cream to-rhode-text/20 rounded-full flex items-center justify-center">
+                                <User size={20} className="text-rhode-text" />
+                              </div>
+                            )}
+                            <div>
+                              <p className="text-sm font-[Chillax] font-semibold text-rhode-text truncate">
+                                {currentUser.displayName || "User"}
+                              </p>
+                              <p className="text-xs text-rhode-text/60 truncate font-[Chillax]">
+                                {currentUser.email}
+                              </p>
+                            </div>
+                          </div>
                         </div>
-                        <Link
-                          to="/profile"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                          onClick={() => setShowUserMenu(false)}
-                        >
-                          <User size={16} className="inline mr-2" />
-                          Profile Settings
-                        </Link>
-                        <Link
-                          to="/orders"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                          onClick={() => setShowUserMenu(false)}
-                        >
-                          <ShoppingBag size={16} className="inline mr-2" />
-                          My Orders
-                        </Link>
-                        <div className="border-t border-gray-100 mt-1 pt-1">
+
+                        {/* Menu Items */}
+                        <div className="py-2">
+                          <Link
+                            to="/profile"
+                            className="flex items-center space-x-3 px-6 py-3 text-sm text-rhode-text hover:bg-rhode-text/5 transition-all duration-200 font-[Chillax]"
+                            onClick={() => setShowUserMenu(false)}
+                          >
+                            <div className="w-8 h-8 bg-rhode-text/10 rounded-lg flex items-center justify-center">
+                              <User size={16} />
+                            </div>
+                            <div>
+                              <div className="font-medium">Profile Settings</div>
+                              <div className="text-xs text-rhode-text/60">Manage your account</div>
+                            </div>
+                          </Link>
+                          
+                          <Link
+                            to="/orders"
+                            className="flex items-center space-x-3 px-6 py-3 text-sm text-rhode-text hover:bg-rhode-text/5 transition-all duration-200 font-[Chillax]"
+                            onClick={() => setShowUserMenu(false)}
+                          >
+                            <div className="w-8 h-8 bg-rhode-text/10 rounded-lg flex items-center justify-center">
+                              <ShoppingBag size={16} />
+                            </div>
+                            <div>
+                              <div className="font-medium">My Orders</div>
+                              <div className="text-xs text-rhode-text/60">Track your purchases</div>
+                            </div>
+                          </Link>
+
+                          <Link
+                            to="/wishlist"
+                            className="flex items-center space-x-3 px-6 py-3 text-sm text-rhode-text hover:bg-rhode-text/5 transition-all duration-200 font-[Chillax]"
+                            onClick={() => setShowUserMenu(false)}
+                          >
+                            <div className="w-8 h-8 bg-rhode-text/10 rounded-lg flex items-center justify-center">
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                              </svg>
+                            </div>
+                            <div>
+                              <div className="font-medium">Wishlist</div>
+                              <div className="text-xs text-rhode-text/60">Saved items</div>
+                            </div>
+                          </Link>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="border-t border-rhode-text/10 mt-2 pt-2">
                           <button
                             onClick={handleLogout}
-                            className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                            className="flex items-center space-x-3 px-6 py-3 text-sm text-red-600 hover:bg-red-50 transition-all duration-200 w-full font-[Chillax]"
                           >
-                            <LogOut size={16} className="inline mr-2" />
-                            Sign Out
+                            <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                              <LogOut size={16} />
+                            </div>
+                            <div>
+                              <div className="font-medium">Sign Out</div>
+                              <div className="text-xs text-red-500">End your session</div>
+                            </div>
                           </button>
                         </div>
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-3">
                     <Link
                       to="/login"
-                      className="px-4 py-2 text-sm text-rhode-text hover:text-rhode-text/80 transition-colors font-medium"
+                      className="px-4 py-2 text-sm text-rhode-text hover:text-rhode-text/80 transition-colors font-[Chillax] font-medium"
                     >
                       Sign In
                     </Link>
                     <Link
                       to="/signup"
-                      className="px-6 py-2 text-sm bg-rhode-text text-rhode-light rounded-full hover:bg-rhode-text/90 transition-all duration-300 hover:scale-105 font-medium"
+                      className="px-6 py-3 text-sm bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105 font-[Chillax] font-medium backdrop-blur-sm"
                     >
                       Sign Up
                     </Link>
@@ -226,11 +293,11 @@ const Navbar = () => {
 
                 <button
                   onClick={toggleCart}
-                  className="relative p-3 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110"
+                  className="relative p-3 bg-white/80 backdrop-blur-sm border border-rhode-text/20 text-rhode-text hover:bg-rhode-text hover:text-white rounded-xl transition-all duration-300 hover:scale-110 shadow-sm"
                 >
                   <ShoppingBag size={20} />
                   {getTotalItems() > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-rhode-text text-rhode-light text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
+                    <span className="absolute -top-1 -right-1 bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-[Chillax] font-bold shadow-lg">
                       {getTotalItems()}
                     </span>
                   )}
@@ -238,15 +305,33 @@ const Navbar = () => {
               </div>
 
               {/* Mobile Menu Button - Mobile Only */}
-              <div className="md:hidden flex items-center justify-end space-x-2">
+              <div className="md:hidden flex items-center justify-end space-x-3">
+                {/* Mobile User Profile */}
+                {currentUser && (
+                  <Link
+                    to="/profile"
+                    className="relative p-2 bg-white/80 backdrop-blur-sm border border-rhode-text/20 text-rhode-text hover:bg-rhode-text hover:text-white rounded-xl transition-all duration-300"
+                  >
+                    {currentUser.photoURL ? (
+                      <img
+                        src={currentUser.photoURL}
+                        alt="Profile"
+                        className="w-5 h-5 rounded-full object-cover"
+                      />
+                    ) : (
+                      <User size={20} />
+                    )}
+                  </Link>
+                )}
+
                 {/* Mobile Cart */}
                 <button
                   onClick={toggleCart}
-                  className="relative p-2 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300"
+                  className="relative p-2 bg-white/80 backdrop-blur-sm border border-rhode-text/20 text-rhode-text hover:bg-rhode-text hover:text-white rounded-xl transition-all duration-300"
                 >
                   <ShoppingBag size={20} />
                   {getTotalItems() > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-rhode-text text-rhode-light text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium text-[10px]">
+                    <span className="absolute -top-1 -right-1 bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white text-xs rounded-full h-4 w-4 flex items-center justify-center font-[Chillax] font-bold text-[10px] shadow-lg">
                       {getTotalItems()}
                     </span>
                   )}
@@ -255,7 +340,7 @@ const Navbar = () => {
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="p-2 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300"
+                  className="p-2 bg-white/80 backdrop-blur-sm border border-rhode-text/20 text-rhode-text hover:bg-rhode-text hover:text-white rounded-xl transition-all duration-300"
                 >
                   <Menu size={20} />
                 </button>

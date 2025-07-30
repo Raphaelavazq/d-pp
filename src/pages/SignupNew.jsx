@@ -122,9 +122,8 @@ const Signup = () => {
         formData.lastName
       );
       navigate("/");
-    } catch (err) {
+    } catch (error) {
       setError("Failed to create an account");
-      console.error(err);
     }
 
     setLoading(false);
@@ -134,9 +133,8 @@ const Signup = () => {
     try {
       await signInWithGoogle();
       navigate("/");
-    } catch (err) {
+    } catch (error) {
       setError("Failed to sign in with Google");
-      console.error(err);
     }
   };
 

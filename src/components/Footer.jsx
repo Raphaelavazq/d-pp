@@ -1,7 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Instagram, Twitter, Facebook, Mail, Phone, MapPin, User, ShoppingBag, LogIn } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Footer = () => {
+  const { currentUser } = useAuth();
+
   return (
     <footer className="mt-16">
       {/* Footer Content with grey background and constrained width */}
@@ -179,47 +183,86 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* SUPPORT */}
+            {/* ACCOUNT */}
             <div>
               <h4
                 className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                 style={{ fontFamily: "Aglonema, serif" }}
               >
-                Support
+                Account
               </h4>
               <ul className="space-y-2">
-                <li>
-                  <Link
-                    to="/contact"
-                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
-                  >
-                    We're here M–F 9am – 5pm CET
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/contact"
-                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
-                  >
-                    Drop us a note anytime
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/privacy"
-                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
-                  >
-                    Do Not Sell / Share
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/cookie"
-                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
-                  >
-                    Cookie Preferences
-                  </Link>
-                </li>
+                {currentUser ? (
+                  <>
+                    <li>
+                      <Link
+                        to="/profile"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1 flex items-center gap-2"
+                      >
+                        <User size={14} />
+                        Profile Settings
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/orders"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1 flex items-center gap-2"
+                      >
+                        <ShoppingBag size={14} />
+                        My Orders
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/wishlist"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                      >
+                        Wishlist
+                      </Link>
+                    </li>
+                    <li>
+                      <span className="text-sm text-gray-600">
+                        Welcome back, {currentUser.displayName || 'User'}
+                      </span>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link
+                        to="/login"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1 flex items-center gap-2"
+                      >
+                        <LogIn size={14} />
+                        Sign In
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/signup"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                      >
+                        Create Account
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/contact"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                      >
+                        We're here M–F 9am – 5pm CET
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="/contact"
+                        className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                      >
+                        Drop us a note anytime
+                      </Link>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>

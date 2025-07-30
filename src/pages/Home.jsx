@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ProductCarousel from "../components/ProductCarousel";
+import Carousel from "../components/carousel";
 import ImpactButton from "../components/ImpactButton";
 import StayInTouch from "../components/StayInTouch";
+
 import heroVideo from "../assets/heroVideo.mp4";
+import sectionvid1 from "../assets/sectionvid1.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -120,95 +122,97 @@ export default function Home() {
       </section>
 
       {/* Featured Products Section */}
-      <ProductCarousel />
+      <Carousel />
 
       {/* Stay In Touch Section */}
       <StayInTouch />
 
       {/* Brand Story Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white leading-relaxed">
         <div className="max-w-6xl mx-auto px-8">
           <div className="bg-rhode-cream rounded-3xl p-12 lg:p-16 shadow-sm">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2
-                  className="text-4xl md:text-5xl font-semibold mb-8 tracking-tight text-rhode-dark"
+                  className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                   style={{ fontFamily: "Aglonema, serif" }}
                 >
-                  Quality. Conscious. Confident.
+                  Confident and Effortlessly Cool
                 </h2>
                 <p
-                  className="text-xl text-rhode-text mb-8 leading-relaxed"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="text-3xl text-rhode-text font-semibold bold mb-8 tracking-tight"
+                  style={{ fontFamily: "chillax, sans-serif" }}
                 >
-                  We don't compromise. Every formula is 100% vegan,
-                  cruelty-free, and crafted with integrity. No marketing fluff —
-                  just products that work.
+                  Welcome to düppS
                 </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 ">
                   <div>
                     <h3
-                      className="text-xl font-semibold mb-3 text-[#f6febb]"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      100% Vegan
+                      Honest Intentions{" "}
                     </h3>
                     <p
-                      className="text-rhode-text"
+                      className="text-rhode-text font-semibold leading-relaxed"
                       style={{ fontFamily: "Chillax, sans-serif" }}
                     >
-                      Plant-based formulas that deliver results
+                      We care and take responsibility.
                     </p>
                   </div>
                   <div>
                     <h3
-                      className="text-xl font-semibold mb-3 text-[#f6febb]"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Zero Waste Goal
+                      Simplicity is strength
                     </h3>
                     <p
-                      className="text-rhode-text"
+                      className="text-rhode-text font-semibold leading-relaxed"
                       style={{ fontFamily: "Chillax, sans-serif" }}
                     >
-                      Refillable packaging and carbon-neutral shipping
+                      Design for comfort and confidence.
                     </p>
                   </div>
                   <div>
                     <h3
-                      className="text-xl font-semibold mb-3 text-[#f6febb]"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Cruelty-Free Always
+                      Care as culture
                     </h3>
                     <p
-                      className="text-rhode-text"
+                      className="text-rhode-text font-semibold"
                       style={{ fontFamily: "Chillax, sans-serif" }}
                     >
-                      Never tested on animals. Period.
+                      For your mind, body and wallet
                     </p>
                   </div>
                   <div>
                     <h3
-                      className="text-xl font-semibold mb-3 text-[#f6febb]"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Tree Planting
+                      Better , not perfect
                     </h3>
                     <p
-                      className="text-rhode-text"
+                      className="text-rhode-text font-semibold"
                       style={{ fontFamily: "Chillax, sans-serif" }}
                     >
-                      One tree planted with every purchase
+                      We’re transparent, intentional, and evolving.
                     </p>
                   </div>
                 </div>
               </div>
               <div>
-                <img
-                  src="https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?w=600&h=600&fit=crop&crop=center"
-                  alt="düpp sustainable beauty"
+                <video
+                  src={sectionvid1}
                   className="w-full h-auto rounded-3xl shadow-2xl"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  aria-label="düpp sustainable beauty video"
                 />
               </div>
             </div>

@@ -9,12 +9,23 @@ const Shop = () => {
   const navigate = useNavigate();
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [sortBy, setSortBy] = useState("featured");
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
   useEffect(() => {
     let filtered = [...products];
 
     if (category) {
-      filtered = filtered.filter((product) => product.category === category);
+      const catObj = categories.find((cat) => cat.id === category);
+      if (catObj) {
+        filtered = filtered.filter(
+          (product) => product.category === catObj.name
+        );
+        if (selectedSubcategory) {
+          filtered = filtered.filter(
+            (product) => product.subcategory === selectedSubcategory
+          );
+        }
+      }
     }
 
     switch (sortBy) {
@@ -25,7 +36,7 @@ const Shop = () => {
         filtered.sort((a, b) => b.price - a.price);
         break;
       case "rating":
-        filtered.sort((a, b) => b.rating - a.rating);
+        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
         break;
       case "newest":
         filtered.sort((a, b) => b.id - a.id);
@@ -35,7 +46,7 @@ const Shop = () => {
     }
 
     setFilteredProducts(filtered);
-  }, [category, sortBy]);
+  }, [category, sortBy, selectedSubcategory]);
 
   return (
     <div className="pt-20 min-h-screen bg-white">
@@ -79,7 +90,7 @@ const Shop = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Navigation */}
-        <div className="mb-12 flex flex-wrap items-center justify-center gap-6 border-b border-taupe/20 pb-6">
+        <div className="mb-6 flex flex-wrap items-center justify-center gap-6 border-b border-taupe/20 pb-6">
           <button
             className={`text-sm font-medium tracking-wide uppercase transition-all duration-300 pb-2 border-b-2 ${
               !category
@@ -87,7 +98,10 @@ const Shop = () => {
                 : "text-charcoal/60 hover:text-charcoal border-transparent hover:border-charcoal/30"
             }`}
             style={{ fontFamily: "Chillax, sans-serif" }}
-            onClick={() => navigate("/shop")}
+            onClick={() => {
+              setSelectedSubcategory("");
+              navigate("/shop");
+            }}
           >
             FEATURED
           </button>
@@ -100,12 +114,41 @@ const Shop = () => {
                   : "text-charcoal/60 hover:text-charcoal border-transparent hover:border-charcoal/30"
               }`}
               style={{ fontFamily: "Chillax, sans-serif" }}
-              onClick={() => navigate(`/shop/${cat.id}`)}
+              onClick={() => {
+                setSelectedSubcategory("");
+                navigate(`/shop/${cat.id}`);
+              }}
             >
               {cat.name}
             </button>
           ))}
         </div>
+
+        {/* Subcategory Navigation */}
+        {category && (
+          <div className="mb-12 flex flex-wrap items-center justify-center gap-4">
+            {categories
+              .find((cat) => cat.id === category)
+              ?.subcategories.map((sub) => (
+                <button
+                  key={sub}
+                  className={`text-xs font-medium tracking-wide uppercase transition-all duration-200 px-3 py-1 rounded-full ${
+                    selectedSubcategory === sub
+                      ? "bg-charcoal text-white"
+                      : "bg-gray-100 text-charcoal hover:bg-charcoal/10"
+                  }`}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  onClick={() =>
+                    setSelectedSubcategory(
+                      selectedSubcategory === sub ? "" : sub
+                    )
+                  }
+                >
+                  {sub}
+                </button>
+              ))}
+          </div>
+        )}
 
         {/* Sort */}
         <div className="mb-12 flex justify-end">

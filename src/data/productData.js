@@ -11,8 +11,8 @@ export const products = [
       "https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
     ],
-    category: "Serums",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Tops & Blouses",
     badge: "Best Seller",
     tagline: "The ultimate glow",
     description:
@@ -36,8 +36,8 @@ export const products = [
       "https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
       "https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
     ],
-    category: "Moisturizers",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Knitwear & Sweaters",
     badge: "Vegan",
     tagline: "All-day hydration",
     description:
@@ -57,8 +57,8 @@ export const products = [
     originalPrice: 52.0,
     image:
       "https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Cleansers",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Dresses",
     tagline: "Deep clean daily",
     description:
       "A gentle yet effective cleanser that removes impurities while maintaining your skin's natural moisture barrier.",
@@ -75,8 +75,8 @@ export const products = [
     originalPrice: 95.0,
     image:
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Treatments",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Outerwear & Jackets",
     badge: "Professional",
     tagline: "Overnight renewal",
     description:
@@ -95,8 +95,8 @@ export const products = [
     originalPrice: 68.0,
     image:
       "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Eye Care",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Pants & Trousers",
     tagline: "Brighter eyes daily",
     description:
       "Brightening eye cream that targets dark circles and fine lines around the delicate eye area.",
@@ -113,8 +113,8 @@ export const products = [
     originalPrice: 58.0,
     image:
       "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Body Care",
-    subcategory: "Body",
+    category: "Women",
+    subcategory: "Jeans & Denim",
     description:
       "Rich, nourishing body lotion that deeply moisturizes and leaves skin silky smooth.",
     sizes: ["200ml", "400ml"],
@@ -130,8 +130,8 @@ export const products = [
     originalPrice: 45.0,
     image:
       "https://images.unsplash.com/photo-1571875257727-256c39da42af?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Exfoliants",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Skirts",
     description:
       "Gentle exfoliating scrub that removes dead skin cells and reveals brighter, smoother skin.",
     sizes: ["100ml"],
@@ -147,8 +147,8 @@ export const products = [
     originalPrice: 35.0,
     image:
       "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Masks",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Shorts",
     description:
       "Soothing clay mask that calms irritated skin and minimizes the appearance of pores.",
     sizes: ["75ml"],
@@ -164,8 +164,8 @@ export const products = [
     originalPrice: 89.0,
     image:
       "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Moisturizers",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Activewear",
     badge: "Best Seller",
     description:
       "Advanced peptide complex that helps restore skin elasticity and reduces visible signs of aging.",
@@ -183,8 +183,8 @@ export const products = [
     originalPrice: 78.0,
     image:
       "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Serums",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Accessories",
     badge: "New",
     description:
       "Strengthening serum with ceramides and niacinamide to restore compromised skin barrier.",
@@ -202,8 +202,8 @@ export const products = [
     originalPrice: 44.0,
     image:
       "https://images.unsplash.com/photo-1556228578-dd6a4b8d6c8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Cleansers",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Dresses",
     description:
       "pH-balanced cleanser that gently removes makeup and impurities without stripping skin.",
     sizes: ["120ml", "200ml"],
@@ -220,8 +220,8 @@ export const products = [
     originalPrice: 65.0,
     image:
       "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Eye Care",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Tops & Blouses",
     badge: "Limited Edition",
     description:
       "Hydrogel patches infused with vitamin C and caffeine to brighten and depuff under-eyes.",
@@ -239,8 +239,8 @@ export const products = [
     originalPrice: 98.0,
     image:
       "https://images.unsplash.com/photo-1570194115570-0b5b06d95d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Treatments",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Outerwear & Jackets",
     badge: "Pro",
     description:
       "Luxurious face oil with botanical extracts for deep overnight skin regeneration.",
@@ -258,8 +258,8 @@ export const products = [
     originalPrice: 52.0,
     image:
       "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-    category: "Treatments",
-    subcategory: "Face",
+    category: "Women",
+    subcategory: "Knitwear & Sweaters",
     description:
       "Refreshing toner mist with hyaluronic acid that instantly hydrates and preps skin.",
     sizes: ["100ml", "150ml"],
@@ -269,66 +269,109 @@ export const products = [
     vegan: true,
     crueltyFree: true,
   },
+  {
+    id: 1001,
+    name: "SHEIN ICON Einfarbiges Cami Kleid mit Schlitz",
+    price: 19.99,
+    originalPrice: 29.99,
+    image: "/assets/shein-cami-1.jpg",
+    images: [
+      "/assets/shein-cami-1.jpg",
+      "/assets/shein-cami-2.jpg",
+      "/assets/shein-cami-3.jpg",
+      "/assets/shein-cami-4.jpg",
+    ],
+    category: "Women",
+    subcategory: "Dresses",
+    badge: "New Arrival",
+    tagline: "Elegant Cami Dress with Side Slit",
+    description:
+      "SHEIN ICON Einfarbiges Cami Kleid mit Schlitz. Elegantes, figurbetontes Kleid mit Spaghettiträgern und seitlichem Schlitz. Perfekt für besondere Anlässe oder den Alltag.",
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: ["Black", "Red", "Green"],
+    inStock: true,
+    featured: false,
+    sustainable: false,
+    vegan: false,
+    crueltyFree: false,
+  },
 ];
 
 export const categories = [
   {
-    id: "all",
-    name: "All Products",
-    slug: "all",
-    count: products.length,
+    id: "women",
+    name: "Women",
+    subcategories: [
+      "Dresses",
+      "Tops & Blouses",
+      "T-Shirts",
+      "Shirts",
+      "Knitwear & Sweaters",
+      "Outerwear & Jackets",
+      "Pants & Trousers",
+      "Jeans & Denim",
+      "Skirts",
+      "Shorts",
+      "Jumpsuits & Rompers",
+      "Activewear",
+      "Loungewear",
+      "Swimwear",
+      "Underwear & Lingerie",
+      "Shoes",
+      "Accessories",
+    ],
   },
   {
-    id: "serums",
-    name: "Serums",
-    slug: "serums",
-    count: products.filter((p) => p.category === "Serums").length,
+    id: "men",
+    name: "Men",
+    subcategories: [
+      "T-Shirts",
+      "Shirts",
+      "Knitwear & Sweaters",
+      "Outerwear & Jackets",
+      "Pants & Trousers",
+      "Jeans & Denim",
+      "Shorts",
+      "Activewear",
+      "Loungewear",
+      "Swimwear",
+      "Underwear",
+      "Shoes",
+      "Accessories",
+    ],
   },
   {
-    id: "moisturizers",
-    name: "Moisturizers",
-    slug: "moisturizers",
-    count: products.filter((p) => p.category === "Moisturizers").length,
+    id: "children",
+    name: "Children",
+    subcategories: [
+      "Tops",
+      "Shirts",
+      "Sweaters",
+      "Jackets",
+      "Pants",
+      "Jeans",
+      "Shorts",
+      "Dresses",
+      "Skirts",
+      "Activewear",
+      "Swimwear",
+      "Shoes",
+      "Accessories",
+    ],
   },
   {
-    id: "cleansers",
-    name: "Cleansers",
-    slug: "cleansers",
-    count: products.filter((p) => p.category === "Cleansers").length,
-  },
-  {
-    id: "treatments",
-    name: "Treatments",
-    slug: "treatments",
-    count: products.filter((p) => p.category === "Treatments").length,
-  },
-  {
-    id: "eye-care",
-    name: "Eye Care",
-    slug: "eye-care",
-    count: products.filter((p) => p.category === "Eye Care").length,
-  },
-  {
-    id: "body-care",
-    name: "Body Care",
-    slug: "body-care",
-    count: products.filter((p) => p.category === "Body Care").length,
-  },
-  {
-    id: "exfoliants",
-    name: "Exfoliants",
-    slug: "exfoliants",
-    count: products.filter((p) => p.category === "Exfoliants").length,
-  },
-  {
-    id: "masks",
-    name: "Masks",
-    slug: "masks",
-    count: products.filter((p) => p.category === "Masks").length,
+    id: "collections",
+    name: "Collections",
+    subcategories: [
+      "New Arrivals",
+      "Best Sellers",
+      "Sustainable",
+      "Essentials",
+      "Occasionwear",
+      "Co-ords & Sets",
+    ],
   },
 ];
 
 // Carousel products for homepage
 export const carouselProducts = products.filter((product) => product.featured);
-
-export default { products, categories, carouselProducts };

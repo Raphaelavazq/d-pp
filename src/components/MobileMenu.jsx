@@ -1,106 +1,169 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingBag, User, Search, X } from "lucide-react";
-import { useCart } from "../hooks/useCart";
+import { X, User, LogOut, ShoppingBag } from "lucide-react";
+import { gsap } from "gsap";
 
-const MobileMenu = ({ isOpen, onClose, navItems, location }) => {
-  const { getTotalItems, toggleCart } = useCart();
+const MobileMenu = ({ isOpen, onClose, navItems, location, currentUser, logout }) => {
+  const menuRef = useRef(null);
+  const overlayRef = useRef(null);
+  const contentRef = useRef(null);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      // Show menu animation
+      gsap.set(menuRef.current, { display: "block" });
+      gsap.fromTo(
+        overlayRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.out" }
+      );
+      gsap.fromTo(
+        contentRef.current,
+        { x: "100%" },
+        { x: "0%", duration: 0.4, ease: "power2.out" }
+      );
+    } else {
+      // Hide menu animation
+      gsap.to(overlayRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+      gsap.to(contentRef.current, {
+        x: "100%",
+        duration: 0.4,
+        ease: "power2.in",
+        onComplete: () => {
+          gsap.set(menuRef.current, { display: "none" });
+        },
+      });
+    }
+  }, [isOpen]);
+
+  const handleLinkClick = () => {
+    onClose();
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      onClose();
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden">
-      {/* Backdrop */}
+    <div
+      ref={menuRef}
+      className="fixed inset-0 z-50 lg:hidden"
+      style={{ display: "none" }}
+    >
+      {/* Overlay */}
       <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+        ref={overlayRef}
+        className="absolute inset-0 bg-black/50"
         onClick={onClose}
       />
 
-      {/* Menu Panel */}
-      <div className="fixed top-0 right-0 h-full w-80 bg-rhode-cream shadow-2xl">
-        <div className="flex flex-col h-full">
+      {/* Menu Content */}
+      <div
+        ref={contentRef}
+        className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl"
+      >
+        <div className="p-6">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-rhode-text/10">
-            <h2
-              className="text-xl font-normal text-rhode-text uppercase tracking-wide"
-              style={{ fontFamily: "Aglonema, serif" }}
-            >
-              Menu
-            </h2>
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-xl font-semibold text-gray-900">Menu</h2>
             <button
               onClick={onClose}
-              className="p-2 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300"
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
-              <X size={20} />
+              <X size={24} />
             </button>
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex-1 px-6 py-8">
-            <nav className="space-y-6">
-              {navItems.map((item) => (
+          {/* User Section */}
+          {currentUser ? (
+            <div className="border-b border-gray-200 pb-6 mb-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-12 h-12 bg-rhode-light rounded-full flex items-center justify-center">
+                  <User size={24} className="text-rhode-text" />
+                </div>
+                <div>
+                  <p className="font-medium text-gray-900">
+                    {currentUser.displayName || 'User'}
+                  </p>
+                  <p className="text-sm text-gray-500 truncate">
+                    {currentUser.email}
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-2">
                 <Link
-                  key={item.to}
-                  to={item.to}
-                  className={`block text-2xl font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase tracking-wide ${
-                    location.pathname === item.to ? "text-rhode-dark" : ""
-                  }`}
-                  style={{ fontFamily: "Aglonema, serif" }}
-                  onClick={onClose}
+                  to="/profile"
+                  onClick={handleLinkClick}
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Additional Links */}
-            <div className="mt-12 pt-8 border-t border-rhode-text/10">
-              <div className="space-y-4">
-                <Link
-                  to="/contact"
-                  className="block text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                  onClick={onClose}
-                >
-                  Contact Us
+                  <User size={18} />
+                  <span>Profile Settings</span>
                 </Link>
                 <Link
-                  to="/faq"
-                  className="block text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                  onClick={onClose}
+                  to="/orders"
+                  onClick={handleLinkClick}
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  FAQ
+                  <ShoppingBag size={18} />
+                  <span>My Orders</span>
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-red-50 text-red-600 transition-colors w-full text-left"
+                >
+                  <LogOut size={18} />
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="border-b border-gray-200 pb-6 mb-6">
+              <div className="space-y-3">
+                <Link
+                  to="/login"
+                  onClick={handleLinkClick}
+                  className="block w-full px-4 py-3 text-center border border-rhode-text text-rhode-text rounded-lg hover:bg-rhode-text hover:text-white transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/signup"
+                  onClick={handleLinkClick}
+                  className="block w-full px-4 py-3 text-center bg-rhode-text text-white rounded-lg hover:bg-rhode-text/90 transition-colors"
+                >
+                  Sign Up
                 </Link>
               </div>
             </div>
-          </div>
+          )}
 
-          {/* Bottom Actions */}
-          <div className="p-6 border-t border-rhode-text/10">
-            <div className="flex items-center justify-center space-x-4">
-              <button className="p-4 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110">
-                <Search size={24} />
-              </button>
-              <button className="p-4 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110">
-                <User size={24} />
-              </button>
-              <button
-                onClick={() => {
-                  toggleCart();
-                  onClose();
-                }}
-                className="relative p-4 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110"
+          {/* Navigation Links */}
+          <nav className="space-y-4">
+            {navItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={handleLinkClick}
+                className={`block text-lg font-medium transition-colors ${
+                  location.pathname === item.to
+                    ? "text-rhode-dark"
+                    : "text-gray-700 hover:text-rhode-dark"
+                }`}
+                style={{ fontFamily: "Aglonema, serif" }}
               >
-                <ShoppingBag size={24} />
-                {getTotalItems() > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-rhode-text text-rhode-light text-xs rounded-full h-6 w-6 flex items-center justify-center font-medium">
-                    {getTotalItems()}
-                  </span>
-                )}
-              </button>
-            </div>
-          </div>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
     </div>

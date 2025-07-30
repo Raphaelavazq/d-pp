@@ -51,14 +51,14 @@ const StayInTouch = ({ className = "" }) => {
       <div className="max-w-6xl mx-auto px-8">
         <div className="bg-rhode-cream rounded-3xl p-12 lg:p-16 shadow-sm text-center">
           <h2
-            className="text-4xl md:text-5xl font-light mb-4 tracking-tight text-rhode-dark leading-tight"
+            className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
             style={{ fontFamily: "Aglonema, serif" }}
           >
             Stay In Touch
           </h2>
 
           <p
-            className="text-lg md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto text-rhode-text font-light"
+            className="text-lg  md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto text-rhode-text font-medium"
             style={{ fontFamily: "Chillax, sans-serif" }}
           >
             Be the first to know about new launches, exclusive offers, and
@@ -81,7 +81,7 @@ const StayInTouch = ({ className = "" }) => {
               />
               <button
                 type="submit"
-                className="bg-rhode-dark text-rhode-light font-medium py-4 px-8 rounded-none uppercase tracking-wider text-sm hover:opacity-80 transition-all duration-300 whitespace-nowrap"
+                className="bg-charcoal text-white text-chillax-bold font-medium py-4 px-8 rounded-none uppercase tracking-wider text-sm hover:opacity-80 transition-all duration-300 whitespace-nowrap"
                 style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Subscribe

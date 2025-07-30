@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { products } from "../data/productData";
 import { useCart } from "../hooks/useCart";
-import ProductCarousel from "../components/ProductCarousel";
+import Carousel from "../components/carousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -298,7 +298,7 @@ const ProductDetail = () => {
           <h2 className="text-3xl font-light text-gray-900 mb-12 text-center">
             You may also like
           </h2>
-          <ProductCarousel />
+          <Carousel />
         </div>
       </div>
     </div>

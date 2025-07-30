@@ -14,8 +14,7 @@ const Footer = () => {
                 Join us on the düpp journey.
               </p>
               <p className="mb-4 text-gray-600">
-                Get skincare tips, exclusive offers & behind-the-scenes
-                updates.
+                Get skincare tips, exclusive offers & behind-the-scenes updates.
               </p>
               <form className="flex flex-col sm:flex-row gap-2 sm:gap-0 sm:items-center">
                 <input
@@ -32,7 +31,10 @@ const Footer = () => {
               </form>
               <p className="mt-2 text-xs text-gray-500">
                 By signing up, you agree to our{" "}
-                <Link to="/privacy" className="underline">
+                <Link
+                  to="/privacy"
+                  className="underline transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                >
                   Privacy Policy
                 </Link>
                 .
@@ -44,39 +46,81 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 border-t border-gray-300 pt-12 pb-12">
             {/* NAVIGATE */}
             <div>
-              <h4 className="font-semibold mb-4 uppercase text-xs">Navigate</h4>
+              <h4
+                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                style={{ fontFamily: "Aglonema, serif" }}
+              >
+                Navigate
+              </h4>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/shop">Shop</Link>
+                  <Link
+                    to="/shop"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Shop
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/about">Our Story</Link>
+                  <Link
+                    to="/about"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Our Story
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/impact">Impact</Link>
+                  <Link
+                    to="/impact"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Impact
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/vlog">VLOG</Link>
+                  <Link
+                    to="/vlog"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    VLOG
+                  </Link>
                 </li>
               </ul>
             </div>
 
             {/* SOCIAL */}
             <div>
-              <h4 className="font-semibold mb-4 uppercase text-xs">Social</h4>
+              <h4
+                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                style={{ fontFamily: "Aglonema, serif" }}
+              >
+                Social
+              </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="https://instagram.com" target="_blank">
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
                     Instagram
                   </a>
                 </li>
                 <li>
-                  <a href="https://youtube.com" target="_blank">
+                  <a
+                    href="https://youtube.com"
+                    target="_blank"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
                     YouTube
                   </a>
                 </li>
                 <li>
-                  <a href="https://tiktok.com" target="_blank">
+                  <a
+                    href="https://tiktok.com"
+                    target="_blank"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
                     TikTok
                   </a>
                 </li>
@@ -85,37 +129,96 @@ const Footer = () => {
 
             {/* OFFICIAL */}
             <div>
-              <h4 className="font-semibold mb-4 uppercase text-xs">Official</h4>
+              <h4
+                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                style={{ fontFamily: "Aglonema, serif" }}
+              >
+                Official
+              </h4>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/privacy">Privacy</Link>
+                  <Link
+                    to="/privacy"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Privacy
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/terms">Terms</Link>
+                  <Link
+                    to="/terms"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Terms
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/accessibility">Accessibility</Link>
+                  <Link
+                    to="/accessibility"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Accessibility
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/faq">FAQ</Link>
+                  <Link
+                    to="/faq"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    FAQ
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/contact">Contact</Link>
+                  <Link
+                    to="/contact"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Contact
+                  </Link>
                 </li>
               </ul>
             </div>
 
             {/* SUPPORT */}
             <div>
-              <h4 className="font-semibold mb-4 uppercase text-xs">Support</h4>
+              <h4
+                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                style={{ fontFamily: "Aglonema, serif" }}
+              >
+                Support
+              </h4>
               <ul className="space-y-2">
-                <li>We're here M–F 9am – 5pm CET</li>
-                <li>Drop us a note anytime</li>
                 <li>
-                  <Link to="/privacy">Do Not Sell / Share</Link>
+                  <Link
+                    to="/contact"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    We're here M–F 9am – 5pm CET
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/cookie">Cookie Preferences</Link>
+                  <Link
+                    to="/contact"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Drop us a note anytime
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/privacy"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Do Not Sell / Share
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/cookie"
+                    className="transition-all duration-200 hover:text-white hover:bg-[#23231f] hover:rounded-md hover:px-2 hover:py-1"
+                  >
+                    Cookie Preferences
+                  </Link>
                 </li>
               </ul>
             </div>

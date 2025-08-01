@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
 
+const VALID_PASSWORDS = [
+  import.meta.env.VITE_ACCESS_PASSWORD || "dupp2024",
+  "preview2024",
+  "admin",
+];
+const ACCESS_KEY = "dupp_preview_access";
+
 export const usePasswordProtection = () => {
   const [hasAccess, setHasAccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
@@ -15,38 +22,30 @@ export const usePasswordProtection = () => {
       return;
     }
 
-    // Check if user already has access from localStorage
-    const accessGranted = localStorage.getItem("duppAccess");
-    if (accessGranted === "granted") {
-      setHasAccess(true);
-    }
+    const storedAccess = localStorage.getItem(ACCESS_KEY);
+    setHasAccess(storedAccess === "granted");
     setIsLoading(false);
   }, []);
 
+  const validatePassword = (password) => {
+    return VALID_PASSWORDS.includes(password.toLowerCase());
+  };
+
   const grantAccess = () => {
+    localStorage.setItem(ACCESS_KEY, "granted");
     setHasAccess(true);
-    localStorage.setItem("duppAccess", "granted");
   };
 
   const revokeAccess = () => {
+    localStorage.removeItem(ACCESS_KEY);
     setHasAccess(false);
-    localStorage.removeItem("duppAccess");
-  };
-
-  const validatePassword = (password) => {
-    const validPasswords = [
-      import.meta.env.VITE_ACCESS_PASSWORD || "dupp2025",
-      "preview",
-      "admin",
-    ];
-    return validPasswords.includes(password);
   };
 
   return {
     hasAccess,
     isLoading,
+    validatePassword,
     grantAccess,
     revokeAccess,
-    validatePassword,
   };
 };

@@ -1,4 +1,4 @@
-export default [
+module.exports = [
   {
     files: ["src/**/*.js"],
     ignores: ["lib/**/*", "node_modules/**/*", "src/**/*.ts"],

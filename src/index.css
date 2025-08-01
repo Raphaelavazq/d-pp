@@ -25,6 +25,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Aglonema";
+  src: url("https://www.rhodeskin.com/cdn/shop/t/1030/assets/AglonemaCompact.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
 @layer base {
   html,
   body {

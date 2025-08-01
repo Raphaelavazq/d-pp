@@ -5,6 +5,7 @@ import { TextPlugin } from "gsap/TextPlugin";
 import Carousel from "../components/Carousel";
 import ImpactButton from "../components/ImpactButton";
 import StayInTouch from "../components/StayInTouch";
+import Values from "../components/Values";
 import { designSystem } from "../utils/designSystem";
 
 import heroVideo from "../assets/heroVideo.mp4";
@@ -169,6 +170,7 @@ export default function Home() {
       <section
         ref={heroRef}
         className="relative min-h-[80vh] flex items-center justify-center bg-white"
+        style={{ paddingTop: "5rem" }}
       >
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -268,117 +270,51 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="bg-white rounded-3xl p-12 lg:p-20 shadow-xl">
-            <div
-              ref={brandStoryRef}
-              className="grid lg:grid-cols-2 gap-16 items-center"
-            >
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <h2
-                    className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                    style={{ fontFamily: "Aglonema, serif" }}
-                  >
-                    Confident and Effortlessly Cool
-                  </h2>
-                  <p
-                    className="text-xl md:text-2xl text-rhode-text font-normal leading-relaxed"
-                    style={{
-                      fontFamily: designSystem.typography.fonts.secondary,
-                    }}
-                  >
-                    Welcome to düpp - where premium skincare meets modern luxury
-                  </p>
-                </div>
-
-                <div
-                  ref={valuesRef}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                >
-                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
-                    <h3
-                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+            <div ref={brandStoryRef} className="space-y-16">
+              {/* Hero-style layout with text and video side by side */}
+              <div className="grid lg:grid-cols-2 gap-16 items-center">
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <h2
+                      className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                       style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Honest Intentions
-                    </h3>
+                      Confident and Effortlessly Cool
+                    </h2>
                     <p
-                      className="text-rhode-text leading-relaxed font-normal"
+                      className="text-xl md:text-2xl text-rhode-text font-normal leading-relaxed"
                       style={{
                         fontFamily: designSystem.typography.fonts.secondary,
                       }}
                     >
-                      We care and take responsibility for your skin and our
-                      planet.
-                    </p>
-                  </div>
-
-                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
-                    <h3
-                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                      style={{ fontFamily: "Aglonema, serif" }}
-                    >
-                      Simplicity is Strength
-                    </h3>
-                    <p
-                      className="text-rhode-text leading-relaxed font-normal"
-                      style={{
-                        fontFamily: designSystem.typography.fonts.secondary,
-                      }}
-                    >
-                      Design for comfort and confidence in every application.
-                    </p>
-                  </div>
-
-                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
-                    <h3
-                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                      style={{ fontFamily: "Aglonema, serif" }}
-                    >
-                      Care as Culture
-                    </h3>
-                    <p
-                      className="text-rhode-text leading-relaxed font-normal"
-                      style={{
-                        fontFamily: designSystem.typography.fonts.secondary,
-                      }}
-                    >
-                      For your mind, body and wallet - sustainable luxury for
-                      all.
-                    </p>
-                  </div>
-
-                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
-                    <h3
-                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                      style={{ fontFamily: "Aglonema, serif" }}
-                    >
-                      Better, Not Perfect
-                    </h3>
-                    <p
-                      className="text-rhode-text leading-relaxed font-normal"
-                      style={{
-                        fontFamily: designSystem.typography.fonts.secondary,
-                      }}
-                    >
-                      We're transparent, intentional, and always evolving.
+                      Welcome to düpp
                     </p>
                   </div>
                 </div>
-              </div>
 
-              <div className="relative group">
-                <div className="absolute -inset-4 bg-gradient-to-r from-rhode-text/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <video
-                  src={sectionvid1}
-                  className="relative w-full h-auto rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  aria-label="düpp sustainable beauty video"
-                />
+                <div className="relative group">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-rhode-text/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <video
+                    src={sectionvid1}
+                    className="relative w-full h-auto rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    aria-label="düpp sustainable beauty video"
+                  />
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-gradient-to-br from-white to-rhode-light/30">
+        <div className="max-w-6xl mx-auto px-8">
+          <div ref={valuesRef}>
+            <Values cardStyle="home" />
           </div>
         </div>
       </section>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StayInTouch from "../components/StayInTouch";
+import Values from "../components/Values";
 import aboutBanner from "../assets/about.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +14,92 @@ const About = () => {
   const valuesRef = useRef(null);
   const missionRef = useRef(null);
   const statsRef = useRef(null);
+
+  // Custom values for About page
+  const aboutValues = [
+    {
+      id: "honest-care",
+      title: "Honest Care",
+      description:
+        "We care about your skin and the planet, making choices that benefit both",
+      icon: (
+        <svg
+          className="w-8 h-8 text-rhode-text"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      id: "simple-power",
+      title: "Simple Power",
+      description: "Powerful results through simple, effective formulations",
+      icon: (
+        <svg
+          className="w-8 h-8 text-rhode-text"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13 10V3L4 14h7v7l9-11h-7z"
+          />
+        </svg>
+      ),
+    },
+    {
+      id: "proven-quality",
+      title: "Proven Quality",
+      description:
+        "Every product is rigorously tested for safety and effectiveness",
+      icon: (
+        <svg
+          className="w-8 h-8 text-rhode-text"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+      ),
+    },
+    {
+      id: "sustainable-future",
+      title: "Sustainable Future",
+      description: "Building a better tomorrow through responsible practices",
+      icon: (
+        <svg
+          className="w-8 h-8 text-rhode-text"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+          />
+        </svg>
+      ),
+    },
+  ];
 
   useEffect(() => {
     // Hero animation with enhanced entrance
@@ -300,143 +387,12 @@ const About = () => {
         className="py-20 bg-gradient-to-br from-white to-rhode-light/30"
       >
         <div className="max-w-6xl mx-auto px-8">
-          <div className="text-center mb-16">
-            <h2
-              className="text-4xl md:text-5xl font-medium mb-6 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
-            >
-              Our Values
-            </h2>
-            <p
-              className="text-xl text-rhode-text max-w-2xl mx-auto leading-relaxed"
-              style={{ fontFamily: "Chillax, sans-serif" }}
-            >
-              The principles that guide everything we do
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="value-card bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20 text-center">
-              <div className="w-16 h-16 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-rhode-text"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  />
-                </svg>
-              </div>
-              <h3
-                className="text-xl font-medium mb-3 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
-                Honest Care
-              </h3>
-              <p
-                className="text-rhode-text text-sm leading-relaxed"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
-                We care about your skin and the planet, making choices that
-                benefit both
-              </p>
-            </div>
-
-            <div className="value-card bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20 text-center">
-              <div className="w-16 h-16 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-rhode-text"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3
-                className="text-xl font-medium mb-3 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
-                Simple Power
-              </h3>
-              <p
-                className="text-rhode-text text-sm leading-relaxed"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
-                Powerful results through simple, effective formulations
-              </p>
-            </div>
-
-            <div className="value-card bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20 text-center">
-              <div className="w-16 h-16 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-rhode-text"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              </div>
-              <h3
-                className="text-xl font-medium mb-3 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
-                Proven Quality
-              </h3>
-              <p
-                className="text-rhode-text text-sm leading-relaxed"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
-                Every product is rigorously tested for safety and effectiveness
-              </p>
-            </div>
-
-            <div className="value-card bg-white/60 backdrop-blur-sm p-8 rounded-2xl shadow-lg border border-white/20 text-center">
-              <div className="w-16 h-16 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-rhode-text"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                  />
-                </svg>
-              </div>
-              <h3
-                className="text-xl font-medium mb-3 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
-                Sustainable Future
-              </h3>
-              <p
-                className="text-rhode-text text-sm leading-relaxed"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
-                Building a better tomorrow through responsible practices
-              </p>
-            </div>
-          </div>
+          <Values
+            title="Our Values"
+            subtitle="The principles that guide everything we do"
+            values={aboutValues}
+            cardStyle="default"
+          />
         </div>
       </section>
 

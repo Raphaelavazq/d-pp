@@ -3,7 +3,7 @@ import * as admin from "firebase-admin";
 import Stripe from "stripe";
 
 const db = admin.firestore();
-const stripe = new Stripe(functions.config().stripe.secret_key, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2023-10-16",
 });
 
@@ -46,21 +46,78 @@ export interface Address {
   phone?: string;
 }
 
-// Create order
-export const createOrder = functions.https.onCall(
+// Create payment intent (Step 1 of checkout)
+export const createPaymentIntent = functions.https.onCall(
   async (data: any, context: any) => {
-    if (!context.auth) {
-      throw new functions.https.HttpsError(
-        "unauthenticated",
-        "Authentication required"
-      );
-    }
-
     try {
-      const { items, shippingAddress, billingAddress, paymentMethodId } = data;
-      const userId = context.auth.uid;
+      const { items, userId } = data;
 
       // Calculate totals
+      let subtotal = 0;
+      for (const item of items) {
+        const productDoc = await db
+          .collection("products")
+          .doc(item.productId)
+          .get();
+        if (!productDoc.exists) {
+          throw new functions.https.HttpsError(
+            "not-found",
+            `Product ${item.productId} not found`
+          );
+        }
+        const product = productDoc.data()!;
+        subtotal += product.price * item.quantity;
+      }
+
+      const tax = subtotal * 0.08; // 8% tax
+      const shipping = subtotal > 50 ? 0 : 9.99; // Free shipping over $50
+      const total = subtotal + tax + shipping;
+
+      // Create Stripe payment intent
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: Math.round(total * 100), // Convert to cents
+        currency: "usd",
+        automatic_payment_methods: {
+          enabled: true,
+        },
+        metadata: {
+          userId: userId || "guest",
+          orderType: "ecommerce",
+        },
+      });
+
+      return {
+        clientSecret: paymentIntent.client_secret,
+        amount: total,
+      };
+    } catch (error) {
+      console.error("Payment intent creation error:", error);
+      throw new functions.https.HttpsError(
+        "internal",
+        "Payment intent creation failed"
+      );
+    }
+  }
+);
+
+// Create order (Step 2 - after successful payment)
+export const createOrder = functions.https.onCall(
+  async (data: any, context: any) => {
+    try {
+      const { items, paymentIntentId, userId } = data;
+
+      // Verify payment intent
+      const paymentIntent =
+        await stripe.paymentIntents.retrieve(paymentIntentId);
+
+      if (paymentIntent.status !== "succeeded") {
+        throw new functions.https.HttpsError(
+          "failed-precondition",
+          "Payment not completed"
+        );
+      }
+
+      // Calculate totals and prepare order items
       let subtotal = 0;
       const orderItems: OrderItem[] = [];
 
@@ -86,40 +143,40 @@ export const createOrder = functions.https.onCall(
           quantity: item.quantity,
           price: product.price,
           title: product.title,
-          image: product.images[0],
-          supplierId: product.supplierId,
+          image: product.images?.[0] || "",
+          supplierId: product.supplierId || "default",
         });
       }
 
-      const tax = subtotal * 0.08; // 8% tax
-      const shipping = subtotal > 50 ? 0 : 9.99; // Free shipping over $50
-      const total = subtotal + tax + shipping;
-
-      // Create Stripe payment intent
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount: Math.round(total * 100), // Convert to cents
-        currency: "usd",
-        payment_method: paymentMethodId,
-        confirm: true,
-        metadata: {
-          userId,
-          orderType: "ecommerce",
-        },
-      });
+      const tax = subtotal * 0.08;
+      const shipping = subtotal > 50 ? 0 : 9.99;
+      const calculatedTotal = subtotal + tax + shipping;
 
       // Create order in Firestore
       const orderData: Partial<Order> = {
-        userId,
+        userId: userId || context.auth?.uid || "guest",
         items: orderItems,
         subtotal,
         tax,
         shipping,
-        total,
+        total: calculatedTotal,
         status: "pending",
-        paymentStatus:
-          paymentIntent.status === "succeeded" ? "paid" : "pending",
-        shippingAddress,
-        billingAddress,
+        paymentStatus: "paid",
+        shippingAddress: paymentIntent.shipping?.address
+          ? {
+              firstName: paymentIntent.shipping.name?.split(" ")[0] || "",
+              lastName:
+                paymentIntent.shipping.name?.split(" ").slice(1).join(" ") ||
+                "",
+              address1: paymentIntent.shipping.address.line1 || "",
+              address2: paymentIntent.shipping.address.line2 || "",
+              city: paymentIntent.shipping.address.city || "",
+              state: paymentIntent.shipping.address.state || "",
+              zipCode: paymentIntent.shipping.address.postal_code || "",
+              country: paymentIntent.shipping.address.country || "",
+            }
+          : ({} as Address),
+        billingAddress: {} as Address, // Will be populated if different from shipping
         createdAt: admin.firestore.FieldValue.serverTimestamp() as any,
         updatedAt: admin.firestore.FieldValue.serverTimestamp() as any,
       };
@@ -130,17 +187,33 @@ export const createOrder = functions.https.onCall(
       const batch = db.batch();
       for (const item of orderItems) {
         const inventoryRef = db.collection("inventory").doc(item.productId);
-        batch.update(inventoryRef, {
-          quantity: admin.firestore.FieldValue.increment(-item.quantity),
-          lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
-        });
+        const inventoryDoc = await inventoryRef.get();
+
+        if (inventoryDoc.exists) {
+          batch.update(inventoryRef, {
+            quantity: admin.firestore.FieldValue.increment(-item.quantity),
+            lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
+          });
+        } else {
+          // Create inventory record if it doesn't exist
+          batch.set(inventoryRef, {
+            productId: item.productId,
+            quantity: Math.max(0, 100 - item.quantity), // Assume initial stock of 100
+            lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
+          });
+        }
       }
       await batch.commit();
 
+      // Send order confirmation email (we'll implement this later)
+      console.log(
+        `Order ${orderRef.id} created successfully for user ${userId}`
+      );
+
       return {
         orderId: orderRef.id,
-        paymentIntent: paymentIntent.id,
         status: "success",
+        message: "Order created successfully",
       };
     } catch (error) {
       console.error("Order creation error:", error);

@@ -18,10 +18,23 @@ dist-ssr
 .env.development.local
 .env.test.local
 .env.production.local
+.env.staging
+.env.production
+.env.*
+!.env.example
 
 # Firebase
 .firebase
 .firebaserc
+firebase-debug.log
+**/firebase-debug.log
+
+# API Keys and Secrets
+**/secrets/
+**/*.key
+**/*.pem
+config/secrets.js
+config/keys.js
 
 # Editor directories and files
 .vscode/*

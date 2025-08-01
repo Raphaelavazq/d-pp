@@ -1,5 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { CartProvider } from "./context/CartContext";
@@ -26,13 +31,28 @@ import Cookie from "./pages/Cookie";
 import CookiePreferences from "./pages/CookiePreferences";
 import Terms from "./pages/Terms";
 import Accessibility from "./pages/Accessibility";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import AuthenticationPage from "./pages/AuthenticationPage";
 import Profile from "./pages/Profile";
+import OrderConfirmation from "./pages/OrderConfirmation";
 import "./index.css";
 
 // Initialize Stripe (use test key for demo)
 const stripePromise = loadStripe("pk_test_demo_key");
+
+// Layout component to conditionally show/hide navbar and footer
+function Layout({ children }) {
+  const location = useLocation();
+  const isAuthPage = ["/auth", "/login", "/signup"].includes(location.pathname);
+
+  return (
+    <div className="min-h-screen bg-white">
+      {!isAuthPage && <Navbar />}
+      <main>{children}</main>
+      {!isAuthPage && <Footer />}
+      <AdminAccess />
+    </div>
+  );
+}
 
 function App() {
   const { hasAccess, isLoading, grantAccess } = usePasswordProtection();
@@ -62,51 +82,55 @@ function App() {
           <CartProvider>
             <Router>
               <ScrollToTop />
-              <div className="min-h-screen bg-white">
-                <Navbar />
-                <main>
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/shop" element={<Shop />} />
-                    <Route path="/shop/:category" element={<Shop />} />
-                    <Route path="/product/:id" element={<ProductDetail />} />
-                    <Route path="/cart" element={<Cart />} />
-                    <Route
-                      path="/checkout"
-                      element={
-                        <ProtectedRoute>
-                          <Checkout />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route path="/about" element={<About />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/impact" element={<Impact />} />
-                    <Route path="/our-values" element={<Impact />} />
-                    <Route path="/faq" element={<FAQ />} />
-                    <Route path="/privacy" element={<PrivacyPolicy />} />
-                    <Route path="/cookie" element={<Cookie />} />
-                    <Route
-                      path="/cookie-preferences"
-                      element={<CookiePreferences />}
-                    />
-                    <Route path="/terms" element={<Terms />} />
-                    <Route path="/accessibility" element={<Accessibility />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route
-                      path="/profile"
-                      element={
-                        <ProtectedRoute>
-                          <Profile />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </Routes>
-                </main>
-                <Footer />
-                <AdminAccess />
-              </div>
+              <Layout>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/shop" element={<Shop />} />
+                  <Route path="/shop/:category" element={<Shop />} />
+                  <Route path="/product/:id" element={<ProductDetail />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route
+                    path="/checkout"
+                    element={
+                      <ProtectedRoute>
+                        <Checkout />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/order-confirmation"
+                    element={
+                      <ProtectedRoute>
+                        <OrderConfirmation />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/impact" element={<Impact />} />
+                  <Route path="/our-values" element={<Impact />} />
+                  <Route path="/faq" element={<FAQ />} />
+                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/cookie" element={<Cookie />} />
+                  <Route
+                    path="/cookie-preferences"
+                    element={<CookiePreferences />}
+                  />
+                  <Route path="/terms" element={<Terms />} />
+                  <Route path="/accessibility" element={<Accessibility />} />
+                  <Route path="/auth" element={<AuthenticationPage />} />
+                  <Route path="/login" element={<AuthenticationPage />} />
+                  <Route path="/signup" element={<AuthenticationPage />} />
+                  <Route
+                    path="/profile"
+                    element={
+                      <ProtectedRoute>
+                        <Profile />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Routes>
+              </Layout>
             </Router>
           </CartProvider>
         </Elements>

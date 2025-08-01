@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import { X, User, LogOut, ShoppingBag } from "lucide-react";
 import { gsap } from "gsap";
 
-const MobileMenu = ({ isOpen, onClose, navItems, location, currentUser, logout }) => {
+const MobileMenu = ({
+  isOpen,
+  onClose,
+  navItems,
+  location,
+  currentUser,
+  logout,
+}) => {
   const menuRef = useRef(null);
   const overlayRef = useRef(null);
   const contentRef = useRef(null);
@@ -87,12 +94,20 @@ const MobileMenu = ({ isOpen, onClose, navItems, location, currentUser, logout }
           {currentUser ? (
             <div className="border-b border-gray-200 pb-6 mb-6">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-12 h-12 bg-rhode-light rounded-full flex items-center justify-center">
-                  <User size={24} className="text-rhode-text" />
-                </div>
+                {currentUser.photoURL ? (
+                  <img
+                    src={currentUser.photoURL}
+                    alt="Profile"
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="w-12 h-12 bg-rhode-light rounded-full flex items-center justify-center">
+                    <User size={24} className="text-rhode-text" />
+                  </div>
+                )}
                 <div>
                   <p className="font-medium text-gray-900">
-                    {currentUser.displayName || 'User'}
+                    {currentUser.displayName || "User"}
                   </p>
                   <p className="text-sm text-gray-500 truncate">
                     {currentUser.email}
@@ -118,7 +133,7 @@ const MobileMenu = ({ isOpen, onClose, navItems, location, currentUser, logout }
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-red-50 text-red-600 transition-colors w-full text-left"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-100 text-gray-700 transition-colors w-full text-left"
                 >
                   <LogOut size={18} />
                   <span>Sign Out</span>

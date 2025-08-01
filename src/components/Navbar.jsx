@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, ShoppingBag, User, Search, LogOut } from "lucide-react";
 import { useCart } from "../hooks/useCart";
@@ -6,7 +6,6 @@ import { useAuth } from "../hooks/useAuth";
 import { useClickOutside } from "../hooks/useClickOutside";
 import CartDrawer from "./CartDrawer";
 import MobileMenu from "./MobileMenu";
-import { gsap } from "gsap";
 import logoSvg from "../assets/logo.svg";
 
 const navItems = [
@@ -25,42 +24,48 @@ const Navbar = () => {
   const location = useLocation();
   const logoRef = useRef(null);
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   // Close user menu when clicking outside
   const userMenuRef = useClickOutside(() => setShowUserMenu(false));
 
-  useEffect(() => {
-    // Initial navbar animation
-    const tl = gsap.timeline();
-    tl.fromTo(
-      navRef.current,
-      { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
-    );
+  const handleScroll = useCallback(() => {
+    const currentScrollY = window.scrollY;
 
-    let lastScrollY = window.scrollY;
+    // Prevent negative scrollY values
+    if (currentScrollY < 0) return;
 
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Only hide if scrolling down past 100px
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      }
-      // Show if scrolling up or at the top
-      else if (currentScrollY < lastScrollY || currentScrollY <= 100) {
+    // Always show navbar when at top (within 100px)
+    if (currentScrollY <= 100) {
+      if (!isVisible) {
         setIsVisible(true);
       }
+    }
+    // Handle scroll direction when past 100px
+    else {
+      const scrollingDown = currentScrollY > lastScrollY.current;
+      const scrollingUp = currentScrollY < lastScrollY.current;
 
-      lastScrollY = currentScrollY;
-    };
+      if (scrollingDown && isVisible) {
+        setIsVisible(false);
+      } else if (scrollingUp && !isVisible) {
+        setIsVisible(true);
+      }
+    }
+
+    lastScrollY.current = currentScrollY;
+  }, [isVisible]);
+
+  useEffect(() => {
+    // Initialize lastScrollY
+    lastScrollY.current = window.scrollY;
 
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [handleScroll]);
 
   const handleLogout = async () => {
     try {
@@ -96,7 +101,7 @@ const Navbar = () => {
     <>
       <nav
         ref={navRef}
-        className={`fixed top-0 w-full z-50 transition-transform duration-300 ${
+        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ease-in-out transform ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
         onMouseEnter={() => setIsVisible(true)}
@@ -162,7 +167,15 @@ const Navbar = () => {
                       className="p-3 bg-rhode-light text-rhode-text hover:bg-rhode-text hover:text-rhode-light rounded-full transition-all duration-300 hover:scale-110 flex items-center space-x-2"
                       title={currentUser.displayName || currentUser.email}
                     >
-                      <User size={20} />
+                      {currentUser.photoURL ? (
+                        <img
+                          src={currentUser.photoURL}
+                          alt="Profile"
+                          className="w-5 h-5 rounded-full object-cover"
+                        />
+                      ) : (
+                        <User size={20} />
+                      )}
                       <span className="hidden lg:block text-sm font-medium max-w-20 truncate">
                         {currentUser.displayName ||
                           currentUser.email?.split("@")[0]}
@@ -171,13 +184,26 @@ const Navbar = () => {
 
                     {showUserMenu && (
                       <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-100">
-                        <div className="px-4 py-2 border-b border-gray-100">
-                          <p className="text-sm font-medium text-gray-900 truncate">
-                            {currentUser.displayName || "User"}
-                          </p>
-                          <p className="text-xs text-gray-500 truncate">
-                            {currentUser.email}
-                          </p>
+                        <div className="px-4 py-3 border-b border-gray-100 flex items-center space-x-3">
+                          {currentUser.photoURL ? (
+                            <img
+                              src={currentUser.photoURL}
+                              alt="Profile"
+                              className="w-10 h-10 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-10 h-10 bg-rhode-light rounded-full flex items-center justify-center">
+                              <User size={20} className="text-rhode-text" />
+                            </div>
+                          )}
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-gray-900 truncate">
+                              {currentUser.displayName || "User"}
+                            </p>
+                            <p className="text-xs text-gray-500 truncate">
+                              {currentUser.email}
+                            </p>
+                          </div>
                         </div>
                         <Link
                           to="/profile"

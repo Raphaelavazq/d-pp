@@ -3,7 +3,7 @@ import { LogOut } from "lucide-react";
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 
 const AdminAccess = () => {
-  const { revokeAccess } = usePasswordProtection();
+  const { revokeAccess, hasAccess } = usePasswordProtection();
 
   const handleLogout = () => {
     if (window.confirm("Are you sure you want to exit preview mode?")) {
@@ -12,11 +12,19 @@ const AdminAccess = () => {
     }
   };
 
+  // Only show the button if user has preview access and coming soon mode is enabled
+  const comingSoonMode = import.meta.env.VITE_COMING_SOON_MODE === "true";
+  const showExitButton = hasAccess && comingSoonMode;
+
+  if (!showExitButton) {
+    return null;
+  }
+
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <button
         onClick={handleLogout}
-        className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg shadow-lg transition-all duration-300 flex items-center space-x-2 text-sm"
+        className="bg-rhode-text hover:bg-rhode-text/90 text-rhode-light px-4 py-2 rounded-lg shadow-lg transition-all duration-300 flex items-center space-x-2 text-sm hover:scale-105"
         title="Exit Preview Mode"
       >
         <LogOut size={16} />

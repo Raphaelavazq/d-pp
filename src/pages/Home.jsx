@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import Carousel from "../components/carousel";
+import Carousel from "../components/Carousel";
 import ImpactButton from "../components/ImpactButton";
 import StayInTouch from "../components/StayInTouch";
+import { designSystem } from "../utils/designSystem";
 
 import heroVideo from "../assets/heroVideo.mp4";
 import sectionvid1 from "../assets/sectionvid1.mp4";
@@ -167,8 +168,7 @@ export default function Home() {
       {/* Enhanced Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-rhode-light via-white to-rhode-cream"
-        style={{ paddingTop: "5rem" }}
+        className="relative min-h-[80vh] flex items-center justify-center bg-white"
       >
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -176,104 +176,70 @@ export default function Home() {
           <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-charcoal/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-8 lg:p-16 shadow-2xl border border-white/20">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
+          <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-6 lg:p-12 shadow-2xl border border-white/20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Enhanced Text Content */}
-              <div className="text-center lg:text-left space-y-8">
-                <div ref={heroTextRef} className="space-y-6">
+              <div className="text-center lg:text-left space-y-6">
+                <div ref={heroTextRef} className="space-y-4">
                   <h1
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-rhode-dark leading-tight tracking-tight"
+                    className="text-4xl md:text-5xl lg:text-6xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                     style={{ fontFamily: "Aglonema, serif" }}
                   >
                     soft, simple
-                    <span className="block text-transparent bg-gradient-to-r from-rhode-text to-charcoal bg-clip-text">
+                    <span
+                      className="block text-4xl md:text-5xl lg:text-6xl font-medium text-rhode-text leading-tight"
+                      style={{
+                        fontFamily: "Aglonema, serif",
+                      }}
+                    >
                       and sensibly priced
                     </span>
                   </h1>
                 </div>
 
-                <div ref={heroSubtitleRef}>
+                <div ref={heroSubtitleRef} className="space-y-3">
                   <p
-                    className="text-xl md:text-2xl text-rhode-text leading-relaxed max-w-2xl font-normal"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    className="text-lg md:text-xl text-rhode-text leading-relaxed max-w-2xl font-normal"
+                    style={{
+                      fontFamily: designSystem.typography.fonts.secondary,
+                    }}
                   >
-                    Inspired by icons. Designed for now.
-                    <span className="block mt-2 text-lg opacity-80">
-                      Premium skincare that elevates your daily ritual
-                    </span>
+                    Discover our curated collection of skincare essentials that
+                    blend luxury with everyday simplicity.
                   </p>
                 </div>
 
                 <div
                   ref={heroButtonsRef}
-                  className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start"
+                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
                 >
                   <ImpactButton
                     variant="filled"
-                    className="px-8 py-4 text-sm font-medium tracking-wide transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    className="px-6 py-3 text-sm font-medium tracking-wide transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                   >
                     Discover Collection
                   </ImpactButton>
                   <ImpactButton
                     variant="outline"
-                    className="px-8 py-4 text-sm font-medium tracking-wide transform hover:scale-105 transition-all duration-300"
+                    className="px-6 py-3 text-sm font-medium tracking-wide transform hover:scale-105 transition-all duration-300"
                   >
                     Our Impact
                   </ImpactButton>
                 </div>
-
-                {/* Trust indicators */}
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-8 pt-8 opacity-70">
-                  <div className="text-center">
-                    <div
-                      className="text-2xl font-bold text-rhode-dark"
-                      data-count="50000"
-                      ref={statsRef}
-                    >
-                      0
-                    </div>
-                    <div className="text-sm text-rhode-text">
-                      Happy Customers
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div
-                      className="text-2xl font-bold text-rhode-dark"
-                      data-count="98"
-                    >
-                      0
-                    </div>
-                    <div className="text-sm text-rhode-text">
-                      % Natural Ingredients
-                    </div>
-                  </div>
-                  <div className="text-center">
-                    <div
-                      className="text-2xl font-bold text-rhode-dark"
-                      data-count="24"
-                    >
-                      0
-                    </div>
-                    <div className="text-sm text-rhode-text">
-                      Hour Hydration
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Enhanced Video */}
-              <div ref={heroImageRef} className="relative group">
-                <div className="relative z-10 transform transition-transform duration-500 group-hover:scale-105">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-rhode-text/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div ref={heroImageRef} className="relative">
+                <div className="relative z-10">
                   <video
                     src={heroVideo}
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="relative w-full h-auto rounded-3xl shadow-2xl object-cover border-4 border-white/50"
-                    style={{ aspectRatio: "3/4" }}
+                    className="relative w-full h-auto rounded-2xl shadow-xl object-cover"
+                    style={{ aspectRatio: "3/4", maxHeight: "500px" }}
                   >
                     <source src={heroVideo} type="video/mp4" />
                     Your browser does not support the video tag.
@@ -298,90 +264,113 @@ export default function Home() {
       {/* Stay In Touch */}
       <StayInTouch />
 
-      {/* Brand Story Section */}
-      <section ref={brandStoryRef} className="py-20 bg-white leading-relaxed">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="bg-rhode-cream rounded-3xl p-12 lg:p-16 shadow-sm">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2
-                  className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                  style={{ fontFamily: "Aglonema, serif" }}
-                >
-                  Confident and Effortlessly Cool
-                </h2>
-                <p
-                  className="text-3xl text-rhode-text font-semibold bold mb-8 tracking-tight"
-                  style={{ fontFamily: "chillax, sans-serif" }}
-                >
-                  Welcome to düppS
-                </p>
+      {/* Enhanced Brand Story Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-white rounded-3xl p-12 lg:p-20 shadow-xl">
+            <div
+              ref={brandStoryRef}
+              className="grid lg:grid-cols-2 gap-16 items-center"
+            >
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h2
+                    className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                    style={{ fontFamily: "Aglonema, serif" }}
+                  >
+                    Confident and Effortlessly Cool
+                  </h2>
+                  <p
+                    className="text-xl md:text-2xl text-rhode-text font-normal leading-relaxed"
+                    style={{
+                      fontFamily: designSystem.typography.fonts.secondary,
+                    }}
+                  >
+                    Welcome to düpp - where premium skincare meets modern luxury
+                  </p>
+                </div>
+
                 <div
                   ref={valuesRef}
-                  className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-6"
                 >
-                  <div className="value-card">
+                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
                     <h3
-                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                       style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Honest Intentions{" "}
+                      Honest Intentions
                     </h3>
                     <p
-                      className="text-rhode-text font-semibold leading-relaxed"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-rhode-text leading-relaxed font-normal"
+                      style={{
+                        fontFamily: designSystem.typography.fonts.secondary,
+                      }}
                     >
-                      We care and take responsibility.
+                      We care and take responsibility for your skin and our
+                      planet.
                     </p>
                   </div>
-                  <div className="value-card">
+
+                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
                     <h3
-                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                       style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Simplicity is strength
+                      Simplicity is Strength
                     </h3>
                     <p
-                      className="text-rhode-text font-semibold leading-relaxed"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-rhode-text leading-relaxed font-normal"
+                      style={{
+                        fontFamily: designSystem.typography.fonts.secondary,
+                      }}
                     >
-                      Design for comfort and confidence.
+                      Design for comfort and confidence in every application.
                     </p>
                   </div>
-                  <div className="value-card">
+
+                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
                     <h3
-                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                       style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Care as culture
+                      Care as Culture
                     </h3>
                     <p
-                      className="text-rhode-text font-semibold"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-rhode-text leading-relaxed font-normal"
+                      style={{
+                        fontFamily: designSystem.typography.fonts.secondary,
+                      }}
                     >
-                      For your mind, body and wallet
+                      For your mind, body and wallet - sustainable luxury for
+                      all.
                     </p>
                   </div>
-                  <div className="value-card">
+
+                  <div className="value-card bg-rhode-light p-6 rounded-2xl border border-rhode-text/10 hover:shadow-lg transition-all duration-300">
                     <h3
-                      className="md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
+                      className="text-xl md:text-2xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
                       style={{ fontFamily: "Aglonema, serif" }}
                     >
-                      Better , not perfect
+                      Better, Not Perfect
                     </h3>
                     <p
-                      className="text-rhode-text font-semibold"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-rhode-text leading-relaxed font-normal"
+                      style={{
+                        fontFamily: designSystem.typography.fonts.secondary,
+                      }}
                     >
-                      We're transparent, intentional, and evolving.
+                      We're transparent, intentional, and always evolving.
                     </p>
                   </div>
                 </div>
               </div>
-              <div>
+
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-rhode-text/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <video
                   src={sectionvid1}
-                  className="w-full h-auto rounded-3xl shadow-2xl"
+                  className="relative w-full h-auto rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
                   autoPlay
                   loop
                   muted

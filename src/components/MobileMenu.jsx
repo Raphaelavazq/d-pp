@@ -69,118 +69,76 @@ const MobileMenu = ({ isOpen, onClose, navItems, location, currentUser, logout }
       {/* Menu Content */}
       <div
         ref={contentRef}
-        className="absolute right-0 top-0 h-full w-80 bg-gradient-to-br from-white to-rhode-cream/20 backdrop-blur-lg shadow-2xl border-l border-white/20"
+        className="absolute right-0 top-0 h-full w-80 bg-white shadow-xl"
       >
-        <div className="p-6 h-full overflow-y-auto">
+        <div className="p-6">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-[Aglonema] text-rhode-text">Menu</h2>
+            <h2 className="text-xl font-semibold text-gray-900">Menu</h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-rhode-text/10 rounded-xl transition-colors"
+              className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
-              <X size={24} className="text-rhode-text" />
+              <X size={24} />
             </button>
           </div>
 
           {/* User Section */}
           {currentUser ? (
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-white/30 shadow-lg">
-              <div className="flex items-center space-x-4 mb-6">
-                {currentUser.photoURL ? (
-                  <img
-                    src={currentUser.photoURL}
-                    alt="Profile"
-                    className="w-16 h-16 rounded-full object-cover border-4 border-white/50"
-                  />
-                ) : (
-                  <div className="w-16 h-16 bg-gradient-to-br from-rhode-cream to-rhode-text/20 rounded-full flex items-center justify-center border-4 border-white/50">
-                    <User size={28} className="text-rhode-text" />
-                  </div>
-                )}
+            <div className="border-b border-gray-200 pb-6 mb-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="w-12 h-12 bg-rhode-light rounded-full flex items-center justify-center">
+                  <User size={24} className="text-rhode-text" />
+                </div>
                 <div>
-                  <p className="font-[Chillax] font-semibold text-rhode-text text-lg">
+                  <p className="font-medium text-gray-900">
                     {currentUser.displayName || 'User'}
                   </p>
-                  <p className="text-sm text-rhode-text/60 truncate font-[Chillax]">
+                  <p className="text-sm text-gray-500 truncate">
                     {currentUser.email}
                   </p>
                 </div>
               </div>
-              
-              <div className="space-y-3">
+              <div className="space-y-2">
                 <Link
                   to="/profile"
                   onClick={handleLinkClick}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/50 transition-all duration-200 border border-rhode-text/10"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  <div className="w-10 h-10 bg-rhode-text/10 rounded-lg flex items-center justify-center">
-                    <User size={20} className="text-rhode-text" />
-                  </div>
-                  <div>
-                    <span className="font-[Chillax] font-medium text-rhode-text">Profile Settings</span>
-                    <p className="text-xs text-rhode-text/60 font-[Chillax]">Manage account</p>
-                  </div>
+                  <User size={18} />
+                  <span>Profile Settings</span>
                 </Link>
-                
                 <Link
                   to="/orders"
                   onClick={handleLinkClick}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/50 transition-all duration-200 border border-rhode-text/10"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-50 transition-colors"
                 >
-                  <div className="w-10 h-10 bg-rhode-text/10 rounded-lg flex items-center justify-center">
-                    <ShoppingBag size={20} className="text-rhode-text" />
-                  </div>
-                  <div>
-                    <span className="font-[Chillax] font-medium text-rhode-text">My Orders</span>
-                    <p className="text-xs text-rhode-text/60 font-[Chillax]">Track purchases</p>
-                  </div>
+                  <ShoppingBag size={18} />
+                  <span>My Orders</span>
                 </Link>
-
-                <Link
-                  to="/wishlist"
-                  onClick={handleLinkClick}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-white/50 transition-all duration-200 border border-rhode-text/10"
-                >
-                  <div className="w-10 h-10 bg-rhode-text/10 rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-rhode-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <span className="font-[Chillax] font-medium text-rhode-text">Wishlist</span>
-                    <p className="text-xs text-rhode-text/60 font-[Chillax]">Saved items</p>
-                  </div>
-                </Link>
-                
                 <button
                   onClick={handleLogout}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-red-50 text-red-600 transition-all duration-200 w-full text-left border border-red-200"
+                  className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-red-50 text-red-600 transition-colors w-full text-left"
                 >
-                  <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                    <LogOut size={20} />
-                  </div>
-                  <div>
-                    <span className="font-[Chillax] font-medium">Sign Out</span>
-                    <p className="text-xs text-red-500 font-[Chillax]">End session</p>
-                  </div>
+                  <LogOut size={18} />
+                  <span>Sign Out</span>
                 </button>
               </div>
             </div>
           ) : (
-            <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-6 mb-6 border border-white/30 shadow-lg">
+            <div className="border-b border-gray-200 pb-6 mb-6">
               <div className="space-y-3">
                 <Link
                   to="/login"
                   onClick={handleLinkClick}
-                  className="block w-full px-6 py-3 text-center border-2 border-rhode-text text-rhode-text rounded-xl hover:bg-rhode-text hover:text-white transition-all duration-300 font-[Chillax] font-medium"
+                  className="block w-full px-4 py-3 text-center border border-rhode-text text-rhode-text rounded-lg hover:bg-rhode-text hover:text-white transition-colors"
                 >
                   Sign In
                 </Link>
                 <Link
                   to="/signup"
                   onClick={handleLinkClick}
-                  className="block w-full px-6 py-3 text-center bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-[Chillax] font-medium"
+                  className="block w-full px-4 py-3 text-center bg-rhode-text text-white rounded-lg hover:bg-rhode-text/90 transition-colors"
                 >
                   Sign Up
                 </Link>

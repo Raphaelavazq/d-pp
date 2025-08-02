@@ -156,7 +156,7 @@ const AuthenticationPage = () => {
       {/* Back Button - Fixed Position */}
       <Link
         to="/"
-        className="fixed top-4 left-4 md:top-6 md:left-6 z-50 bg-rhode-text text-white px-3 py-2 md:px-4 md:py-2 rounded-lg font-bold text-xs md:text-sm hover:bg-rhode-text/90 transition-colors"
+        className="fixed top-4 left-4 md:top-6 md:left-6 z-50 bg-stone text-white px-3 py-2 md:px-4 md:py-2 rounded-lg font-bold text-xs md:text-sm hover:bg-stone/90 transition-colors"
       >
         ← Back
       </Link>
@@ -166,12 +166,12 @@ const AuthenticationPage = () => {
         {/* Desktop Layout - Sliding Overlay Panel */}
         <div
           ref={panelRef}
-          className="hidden lg:block absolute top-0 left-0 w-1/2 h-full bg-rhode-text z-10 flex-col justify-center items-center p-12 text-white text-center"
+          className="hidden lg:block absolute top-0 left-0 w-1/2 h-full bg-stone z-10 flex-col justify-center items-center p-12 text-white text-center"
         >
           <div className="flex flex-col justify-center items-center h-full">
             <h2
               className="text-4xl font-bold mb-6"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-chillax"
             >
               {!isSignUp ? "New Here?" : "Already Have Account?"}
             </h2>
@@ -182,7 +182,7 @@ const AuthenticationPage = () => {
             </p>
             <button
               onClick={toggleMode}
-              className="px-8 py-3 border-2 border-white text-white rounded-full hover:bg-white hover:text-rhode-text transition-all duration-300 font-bold uppercase tracking-wide"
+              className="px-8 py-3 border-2 border-white text-white rounded-full hover:bg-white hover:text-stone transition-all duration-300 font-bold uppercase tracking-wide"
             >
               {!isSignUp ? "Sign Up" : "Sign In"}
             </button>
@@ -196,8 +196,8 @@ const AuthenticationPage = () => {
         >
           <div className="flex flex-col justify-center items-center h-full">
             <h2
-              className="text-2xl xl:text-3xl text-rhode-text leading-relaxed max-w-2xl font-normal mb-8 text-center"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="text-2xl xl:text-3xl text-stone leading-relaxed max-w-2xl font-normal mb-8 text-center"
+              className="font-chillax"
             >
               Sign In
             </h2>
@@ -233,7 +233,7 @@ const AuthenticationPage = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-rhode-text hover:text-rhode-text/70 transition-colors"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-stone hover:text-stone/70 transition-colors"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -243,7 +243,7 @@ const AuthenticationPage = () => {
               <button
                 type="submit"
                 disabled={loading || isSignUp}
-                className="w-full bg-rhode-text text-white py-3 rounded-lg hover:bg-rhode-text/90 transition-colors font-bold disabled:opacity-50"
+                className="w-full bg-stone text-white py-3 rounded-lg hover:bg-stone/90 transition-colors font-bold disabled:opacity-50"
               >
                 {loading && !isSignUp ? "Signing In..." : "Sign In"}
               </button>
@@ -256,7 +256,7 @@ const AuthenticationPage = () => {
                 type="button"
                 onClick={handleGoogleAuth}
                 disabled={loading || isSignUp}
-                className="w-full bg-white border border-rhode-text/30 text-rhode-text py-3 rounded-lg hover:bg-rhode-light transition-colors font-bold flex items-center justify-center space-x-2 disabled:opacity-50"
+                className="w-full bg-white border border-stone/30 text-stone py-3 rounded-lg hover:bg-sand transition-colors font-bold flex items-center justify-center space-x-2 disabled:opacity-50"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
@@ -289,8 +289,8 @@ const AuthenticationPage = () => {
         >
           <div className="flex flex-col justify-center items-center h-full">
             <h2
-              className="text-2xl xl:text-3xl text-rhode-text leading-relaxed max-w-2xl font-normal mb-8 text-center"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="text-2xl xl:text-3xl text-stone leading-relaxed max-w-2xl font-normal mb-8 text-center"
+              className="font-chillax"
             >
               Create Account
             </h2>
@@ -346,7 +346,7 @@ const AuthenticationPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-rhode-text hover:text-rhode-text/70 transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-stone hover:text-stone/70 transition-colors"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -390,7 +390,7 @@ const AuthenticationPage = () => {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-rhode-text hover:text-rhode-text/70 transition-colors"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-stone hover:text-stone/70 transition-colors"
                 >
                   {showConfirmPassword ? (
                     <EyeOff size={18} />
@@ -403,7 +403,7 @@ const AuthenticationPage = () => {
               <button
                 type="submit"
                 disabled={loading || !isSignUp}
-                className="w-full bg-rhode-text text-white py-3 rounded-lg hover:bg-rhode-text/90 transition-colors font-bold disabled:opacity-50"
+                className="w-full bg-stone text-white py-3 rounded-lg hover:bg-stone/90 transition-colors font-bold disabled:opacity-50"
               >
                 {loading && isSignUp ? "Creating Account..." : "Sign Up"}
               </button>
@@ -416,7 +416,7 @@ const AuthenticationPage = () => {
                 type="button"
                 onClick={handleGoogleAuth}
                 disabled={loading || !isSignUp}
-                className="w-full bg-white border border-rhode-text/30 text-rhode-text py-3 rounded-lg hover:bg-rhode-light transition-colors font-bold flex items-center justify-center space-x-2 disabled:opacity-50"
+                className="w-full bg-white border border-stone/30 text-stone py-3 rounded-lg hover:bg-sand transition-colors font-bold flex items-center justify-center space-x-2 disabled:opacity-50"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">
                   <path
@@ -445,11 +445,11 @@ const AuthenticationPage = () => {
         {/* Mobile Layout - Single Column */}
         <div className="lg:hidden min-h-screen flex flex-col">
           {/* Mobile Header with Toggle */}
-          <div className="bg-rhode-text text-white p-6 pt-16">
+          <div className="bg-stone text-white p-6 pt-16">
             <div className="max-w-sm mx-auto text-center">
               <h1
                 className="text-2xl sm:text-3xl font-bold mb-4"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="font-chillax"
               >
                 {isSignUp ? "Create Account" : "Welcome Back"}
               </h1>
@@ -460,7 +460,7 @@ const AuthenticationPage = () => {
               </p>
               <button
                 onClick={toggleMode}
-                className="px-6 py-2 border-2 border-white text-white rounded-full hover:bg-white hover:text-rhode-text transition-all duration-300 font-bold text-sm uppercase tracking-wide"
+                className="px-6 py-2 border-2 border-white text-white rounded-full hover:bg-white hover:text-stone transition-all duration-300 font-bold text-sm uppercase tracking-wide"
               >
                 {isSignUp ? "Already have an account?" : "Need an account?"}
               </button>
@@ -471,8 +471,8 @@ const AuthenticationPage = () => {
           <div className="flex-1 bg-white p-6">
             <div className="max-w-sm mx-auto">
               <h2
-                className="text-xl sm:text-2xl text-rhode-text font-normal mb-6 text-center"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-xl sm:text-2xl text-stone font-normal mb-6 text-center"
+                className="font-chillax"
               >
                 {isSignUp ? "Sign Up" : "Sign In"}
               </h2>
@@ -530,7 +530,7 @@ const AuthenticationPage = () => {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-rhode-text hover:text-rhode-text/70 transition-colors"
+                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-stone hover:text-stone/70 transition-colors"
                   >
                     {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                   </button>
@@ -577,7 +577,7 @@ const AuthenticationPage = () => {
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-rhode-text hover:text-rhode-text/70 transition-colors"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 text-stone hover:text-stone/70 transition-colors"
                     >
                       {showConfirmPassword ? (
                         <EyeOff size={18} />
@@ -591,7 +591,7 @@ const AuthenticationPage = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-rhode-text text-white py-3 rounded-lg hover:bg-rhode-text/90 transition-colors font-bold disabled:opacity-50"
+                  className="w-full bg-stone text-white py-3 rounded-lg hover:bg-stone/90 transition-colors font-bold disabled:opacity-50"
                 >
                   {loading
                     ? isSignUp
@@ -610,7 +610,7 @@ const AuthenticationPage = () => {
                   type="button"
                   onClick={handleGoogleAuth}
                   disabled={loading}
-                  className="w-full bg-white border border-rhode-text/30 text-rhode-text py-3 rounded-lg hover:bg-rhode-light transition-colors font-bold flex items-center justify-center space-x-2 disabled:opacity-50"
+                  className="w-full bg-white border border-stone/30 text-stone py-3 rounded-lg hover:bg-sand transition-colors font-bold flex items-center justify-center space-x-2 disabled:opacity-50"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
                     <path

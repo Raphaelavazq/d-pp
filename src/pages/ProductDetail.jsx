@@ -158,10 +158,10 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <div className="w-16 h-16 border-4 border-rhode-text border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <div className="w-16 h-16 border-4 border-stone border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p
-            className="text-rhode-text"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="text-stone"
+            className="font-chillax"
           >
             Loading product...
           </p>
@@ -179,11 +179,11 @@ const ProductDetail = () => {
       {/* Enhanced Hero Section */}
       <section
         ref={heroRef}
-        className="relative pt-24 pb-12 bg-gradient-to-br from-rhode-light via-white to-rhode-cream"
+        className="relative pt-24 pb-12 bg-gradient-to-br from-sand via-white to-sand"
       >
         {/* Floating background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-rhode-text/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-stone/5 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-charcoal/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
         </div>
 
@@ -193,23 +193,23 @@ const ProductDetail = () => {
             <div className="flex items-center space-x-2 text-sm">
               <Link
                 to="/"
-                className="text-rhode-text hover:text-rhode-dark transition-colors"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-stone hover:text-coal transition-colors"
+                className="font-chillax"
               >
                 Home
               </Link>
-              <span className="text-rhode-text/50">/</span>
+              <span className="text-stone/50">/</span>
               <Link
                 to="/shop"
-                className="text-rhode-text hover:text-rhode-dark transition-colors"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-stone hover:text-coal transition-colors"
+                className="font-chillax"
               >
                 Shop
               </Link>
-              <span className="text-rhode-text/50">/</span>
+              <span className="text-stone/50">/</span>
               <span
-                className="text-rhode-dark font-medium"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-coal font-medium"
+                className="font-chillax"
               >
                 {product.name}
               </span>
@@ -222,7 +222,7 @@ const ProductDetail = () => {
               <div className="space-y-6">
                 <div ref={imageRef} className="relative group">
                   <div className="relative z-10 transform transition-transform duration-500 group-hover:scale-105">
-                    <div className="absolute -inset-4 bg-gradient-to-r from-rhode-text/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute -inset-4 bg-gradient-to-r from-stone/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     <img
                       src={product.images?.[selectedImage] || product.image}
                       alt={product.name}
@@ -241,8 +241,8 @@ const ProductDetail = () => {
                         onClick={() => setSelectedImage(index)}
                         className={`w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                           selectedImage === index
-                            ? "border-rhode-text shadow-lg scale-110"
-                            : "border-white/50 hover:border-rhode-text/50"
+                            ? "border-stone shadow-lg scale-110"
+                            : "border-white/50 hover:border-stone/50"
                         }`}
                       >
                         <img
@@ -260,23 +260,23 @@ const ProductDetail = () => {
               <div ref={detailsRef} className="space-y-8">
                 <div>
                   <h1
-                    className="text-3xl md:text-4xl font-bold text-rhode-dark leading-tight tracking-tight mb-4"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-3xl md:text-4xl font-bold text-coal leading-tight tracking-tight mb-4"
+                    className="font-chillax"
                   >
                     {product.name}
                   </h1>
 
                   <div className="flex items-center space-x-4 mb-6">
                     <span
-                      className="text-2xl font-bold text-rhode-text"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-2xl font-bold text-stone"
+                      className="font-chillax"
                     >
                       ${product.price}
                     </span>
                     {product.originalPrice && (
                       <span
-                        className="text-lg text-rhode-text/60 line-through"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="text-lg text-stone/60 line-through"
+                        className="font-chillax"
                       >
                         ${product.originalPrice}
                       </span>
@@ -308,8 +308,8 @@ const ProductDetail = () => {
                         ))}
                       </div>
                       <span
-                        className="text-sm text-rhode-text"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="text-sm text-stone"
+                        className="font-chillax"
                       >
                         ({product.rating}) • {product.reviews || 0} reviews
                       </span>
@@ -317,8 +317,8 @@ const ProductDetail = () => {
                   )}
 
                   <p
-                    className="text-rhode-text leading-relaxed mb-8"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-stone leading-relaxed mb-8"
+                    className="font-chillax"
                   >
                     {product.description}
                   </p>
@@ -330,8 +330,8 @@ const ProductDetail = () => {
                   {product.sizes && product.sizes.length > 0 && (
                     <div>
                       <label
-                        className="block text-sm font-medium text-rhode-dark mb-3"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="block text-sm font-medium text-coal mb-3"
+                        className="font-chillax"
                       >
                         Size
                       </label>
@@ -342,10 +342,10 @@ const ProductDetail = () => {
                             onClick={() => setSelectedSize(size)}
                             className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-all duration-300 ${
                               selectedSize === size
-                                ? "border-rhode-text bg-rhode-text text-white"
-                                : "border-rhode-text/20 text-rhode-text hover:border-rhode-text"
+                                ? "border-stone bg-stone text-white"
+                                : "border-stone/20 text-stone hover:border-stone"
                             }`}
-                            style={{ fontFamily: "Chillax, sans-serif" }}
+                            className="font-chillax"
                           >
                             {size}
                           </button>
@@ -358,8 +358,8 @@ const ProductDetail = () => {
                   {product.colors && product.colors.length > 0 && (
                     <div>
                       <label
-                        className="block text-sm font-medium text-rhode-dark mb-3"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="block text-sm font-medium text-coal mb-3"
+                        className="font-chillax"
                       >
                         Color
                       </label>
@@ -370,10 +370,10 @@ const ProductDetail = () => {
                             onClick={() => setSelectedColor(color)}
                             className={`px-4 py-2 rounded-lg border-2 text-sm font-medium transition-all duration-300 capitalize ${
                               selectedColor === color
-                                ? "border-rhode-text bg-rhode-text text-white"
-                                : "border-rhode-text/20 text-rhode-text hover:border-rhode-text"
+                                ? "border-stone bg-stone text-white"
+                                : "border-stone/20 text-stone hover:border-stone"
                             }`}
-                            style={{ fontFamily: "Chillax, sans-serif" }}
+                            className="font-chillax"
                           >
                             {color}
                           </button>
@@ -385,28 +385,28 @@ const ProductDetail = () => {
                   {/* Quantity */}
                   <div>
                     <label
-                      className="block text-sm font-medium text-rhode-dark mb-3"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="block text-sm font-medium text-coal mb-3"
+                      className="font-chillax"
                     >
                       Quantity
                     </label>
                     <div className="flex items-center space-x-4">
-                      <div className="flex items-center border-2 border-rhode-text/20 rounded-lg">
+                      <div className="flex items-center border-2 border-stone/20 rounded-lg">
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="px-4 py-2 text-rhode-text hover:bg-rhode-text/10 transition-colors rounded-l-lg"
+                          className="px-4 py-2 text-stone hover:bg-stone/10 transition-colors rounded-l-lg"
                         >
                           -
                         </button>
                         <span
-                          className="px-4 py-2 border-x-2 border-rhode-text/20 min-w-[60px] text-center"
-                          style={{ fontFamily: "Chillax, sans-serif" }}
+                          className="px-4 py-2 border-x-2 border-stone/20 min-w-[60px] text-center"
+                          className="font-chillax"
                         >
                           {quantity}
                         </span>
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="px-4 py-2 text-rhode-text hover:bg-rhode-text/10 transition-colors rounded-r-lg"
+                          className="px-4 py-2 text-stone hover:bg-stone/10 transition-colors rounded-r-lg"
                         >
                           +
                         </button>
@@ -418,18 +418,18 @@ const ProductDetail = () => {
                 {/* Add to Cart Button */}
                 <button
                   onClick={handleAddToCart}
-                  className="w-full bg-rhode-text text-white py-4 rounded-full font-medium hover:bg-rhode-dark transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="w-full bg-stone text-white py-4 rounded-full font-medium hover:bg-coal transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="font-chillax"
                 >
                   Add to Cart - ${(product.price * quantity).toFixed(2)}
                 </button>
 
                 {/* Product Features */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-rhode-text/20">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-8 border-t border-stone/20">
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <div className="w-12 h-12 bg-stone/10 rounded-full flex items-center justify-center mx-auto mb-2">
                       <svg
-                        className="w-6 h-6 text-rhode-text"
+                        className="w-6 h-6 text-stone"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -443,16 +443,16 @@ const ProductDetail = () => {
                       </svg>
                     </div>
                     <div
-                      className="text-sm font-medium text-rhode-dark"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-sm font-medium text-coal"
+                      className="font-chillax"
                     >
                       Free Shipping
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <div className="w-12 h-12 bg-stone/10 rounded-full flex items-center justify-center mx-auto mb-2">
                       <svg
-                        className="w-6 h-6 text-rhode-text"
+                        className="w-6 h-6 text-stone"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -466,16 +466,16 @@ const ProductDetail = () => {
                       </svg>
                     </div>
                     <div
-                      className="text-sm font-medium text-rhode-dark"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-sm font-medium text-coal"
+                      className="font-chillax"
                     >
                       Cruelty Free
                     </div>
                   </div>
                   <div className="text-center">
-                    <div className="w-12 h-12 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                    <div className="w-12 h-12 bg-stone/10 rounded-full flex items-center justify-center mx-auto mb-2">
                       <svg
-                        className="w-6 h-6 text-rhode-text"
+                        className="w-6 h-6 text-stone"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -489,8 +489,8 @@ const ProductDetail = () => {
                       </svg>
                     </div>
                     <div
-                      className="text-sm font-medium text-rhode-dark"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-sm font-medium text-coal"
+                      className="font-chillax"
                     >
                       30-Day Return
                     </div>
@@ -505,7 +505,7 @@ const ProductDetail = () => {
       {/* Product Information Tabs */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="bg-rhode-cream/30 rounded-3xl p-8 lg:p-12">
+          <div className="bg-sand/30 rounded-3xl p-8 lg:p-12">
             {/* Tab Navigation */}
             <div className="flex flex-wrap justify-center gap-4 mb-8">
               {["description", "ingredients", "usage"].map((tab) => (
@@ -514,10 +514,10 @@ const ProductDetail = () => {
                   onClick={() => setActiveTab(tab)}
                   className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 capitalize ${
                     activeTab === tab
-                      ? "bg-rhode-text text-white shadow-lg"
-                      : "bg-white/80 text-rhode-text hover:bg-white"
+                      ? "bg-stone text-white shadow-lg"
+                      : "bg-white/80 text-stone hover:bg-white"
                   }`}
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="font-chillax"
                 >
                   {tab}
                 </button>
@@ -529,14 +529,14 @@ const ProductDetail = () => {
               {activeTab === "description" && (
                 <div>
                   <h3
-                    className="text-xl font-medium mb-4 text-rhode-dark"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-xl font-medium mb-4 text-coal"
+                    className="font-chillax"
                   >
                     Product Description
                   </h3>
                   <p
-                    className="text-rhode-text leading-relaxed"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-stone leading-relaxed"
+                    className="font-chillax"
                   >
                     {product.description ||
                       "This premium skincare product is carefully formulated with the finest ingredients to deliver exceptional results. Experience the düpp difference with our commitment to quality and sustainability."}
@@ -546,14 +546,14 @@ const ProductDetail = () => {
               {activeTab === "ingredients" && (
                 <div>
                   <h3
-                    className="text-xl font-medium mb-4 text-rhode-dark"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-xl font-medium mb-4 text-coal"
+                    className="font-chillax"
                   >
                     Key Ingredients
                   </h3>
                   <p
-                    className="text-rhode-text leading-relaxed"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-stone leading-relaxed"
+                    className="font-chillax"
                   >
                     {product.ingredients ||
                       "Aqua, Glycerin, Hyaluronic Acid, Vitamin E, Natural Botanical Extracts. All ingredients are sustainably sourced and cruelty-free."}
@@ -563,14 +563,14 @@ const ProductDetail = () => {
               {activeTab === "usage" && (
                 <div>
                   <h3
-                    className="text-xl font-medium mb-4 text-rhode-dark"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-xl font-medium mb-4 text-coal"
+                    className="font-chillax"
                   >
                     How to Use
                   </h3>
                   <p
-                    className="text-rhode-text leading-relaxed"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-stone leading-relaxed"
+                    className="font-chillax"
                   >
                     {product.usage ||
                       "Apply to clean skin morning and evening. Gently massage until fully absorbed. For best results, use consistently as part of your daily skincare routine."}
@@ -586,19 +586,19 @@ const ProductDetail = () => {
       {relatedProducts.length > 0 && (
         <section
           ref={relatedRef}
-          className="py-20 bg-gradient-to-br from-white to-rhode-light/30"
+          className="py-20 bg-gradient-to-br from-white to-sand/30"
         >
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-16">
               <h2
-                className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-stone leading-tight"
+                className="font-chillax"
               >
                 You Might Also Like
               </h2>
               <p
-                className="text-rhode-text leading-relaxed"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-stone leading-relaxed"
+                className="font-chillax"
               >
                 Discover more from the {product.category} collection
               </p>
@@ -617,14 +617,14 @@ const ProductDetail = () => {
                       className="w-full h-48 object-cover rounded-lg mb-4"
                     />
                     <h3
-                      className="font-medium text-rhode-dark mb-2"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="font-medium text-coal mb-2"
+                      className="font-chillax"
                     >
                       {relatedProduct.name}
                     </h3>
                     <p
-                      className="text-rhode-text font-medium"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="text-stone font-medium"
+                      className="font-chillax"
                     >
                       ${relatedProduct.price}
                     </p>

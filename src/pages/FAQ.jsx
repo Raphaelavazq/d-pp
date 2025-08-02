@@ -174,14 +174,11 @@ const FAQ = () => {
         className="h-screen w-full overflow-hidden bg-white shadow-xl flex items-center justify-center relative"
       >
         <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-rhode-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-stone mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight font-chillax">
             Questions?
-            <span className="block text-rhode-text">We've Got Answers</span>
+            <span className="block text-stone">We've Got Answers</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-rhode-text/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-stone/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed font-light">
             Simple, honest answers to help you feel confident about düpp
           </p>
         </div>
@@ -198,13 +195,10 @@ const FAQ = () => {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               {/* Category Title */}
               <div className="space-y-6 sm:space-y-8">
-                <h2
-                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-rhode-text leading-[1.1]"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-stone leading-[1.1] font-chillax">
                   {category.category}
                 </h2>
-                <p className="text-lg sm:text-xl text-rhode-text/70 max-w-lg font-light leading-relaxed">
+                <p className="text-lg sm:text-xl text-stone/70 max-w-lg font-light leading-relaxed">
                   {categoryIndex === 0 &&
                     "Everything you need to know about our products and formulations"}
                   {categoryIndex === 1 &&
@@ -225,17 +219,17 @@ const FAQ = () => {
                   return (
                     <div
                       key={itemIndex}
-                      className="border border-rhode-text/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-rhode-text/30"
+                      className="border border-stone/20 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-stone/30"
                     >
                       <button
                         className="w-full px-6 sm:px-8 py-4 sm:py-6 text-left flex items-center justify-between bg-white hover:bg-gray-50/50 transition-colors duration-200"
                         onClick={() => toggleItem(globalIndex)}
                       >
-                        <h3 className="font-medium text-base sm:text-lg text-rhode-text pr-4 leading-tight">
+                        <h3 className="font-medium text-base sm:text-lg text-stone pr-4 leading-tight">
                           {item.question}
                         </h3>
                         <ChevronDown
-                          className={`w-5 h-5 sm:w-6 sm:h-6 text-rhode-text transition-transform duration-300 flex-shrink-0 ${
+                          className={`w-5 h-5 sm:w-6 sm:h-6 text-stone transition-transform duration-300 flex-shrink-0 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                         />
@@ -245,7 +239,7 @@ const FAQ = () => {
                           isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
                         }`}
                       >
-                        <div className="px-6 sm:px-8 pb-4 sm:pb-6 text-sm sm:text-base text-rhode-text/70 leading-relaxed font-light">
+                        <div className="px-6 sm:px-8 pb-4 sm:pb-6 text-sm sm:text-base text-stone/70 leading-relaxed font-light">
                           {item.answer}
                         </div>
                       </div>
@@ -261,19 +255,16 @@ const FAQ = () => {
       {/* Contact CTA Section */}
       <section
         data-section="contact"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center"
       >
         <div className="w-full max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 text-center">
           <div className="space-y-8 sm:space-y-12 lg:space-y-16">
             <div className="space-y-6 sm:space-y-8">
-              <h2
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight text-rhode-text leading-[0.9]"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium tracking-tight text-stone leading-[0.9] font-chillax">
                 Still Have
                 <span className="block">Questions?</span>
               </h2>
-              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-rhode-text/70 max-w-4xl mx-auto leading-relaxed font-light">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-stone/70 max-w-4xl mx-auto leading-relaxed font-light">
                 Our team is here to help. Reach out and we'll get back to you
                 within 24 hours
               </p>
@@ -295,7 +286,7 @@ const FAQ = () => {
             </div>
 
             <div className="pt-8 sm:pt-12">
-              <p className="text-sm sm:text-base text-rhode-text/60 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-stone/60 max-w-2xl mx-auto leading-relaxed">
                 Email us at hello@dupp.com or use our contact form. We're
                 committed to providing exceptional support for every düpp
                 customer.

@@ -181,6 +181,31 @@
     display: inline-block;
     transform-origin: center;
   }
+
+  /* Typography utilities for the 6 editorial styles */
+  .text-caption {
+    @apply text-caption font-light tracking-wide;
+  }
+
+  .text-body {
+    @apply text-body font-normal;
+  }
+
+  .text-content {
+    @apply text-text font-normal leading-relaxed;
+  }
+
+  .text-lead {
+    @apply text-lead font-medium;
+  }
+
+  .text-heading {
+    @apply text-heading font-medium tracking-tight;
+  }
+
+  .text-title {
+    @apply text-title font-semibold tracking-tight;
+  }
 }
 
 /* Animation keyframes for enhanced effects */

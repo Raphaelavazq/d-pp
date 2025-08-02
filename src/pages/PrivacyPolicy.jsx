@@ -56,12 +56,12 @@ const PrivacyPolicy = () => {
       subtitle: "Transparency in everything we do",
       content: (
         <div className="space-y-6">
-          <p className="text-base sm:text-lg md:text-xl text-rhode-text/70 leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl text-stone/70 leading-relaxed font-light">
             At düpp, we believe in transparency. This privacy policy explains
             how we collect, use, and protect your information when you visit our
             website or purchase our products.
           </p>
-          <p className="text-sm sm:text-base md:text-lg text-rhode-text/60 leading-relaxed font-light">
+          <p className="text-sm sm:text-base md:text-lg text-stone/60 leading-relaxed font-light">
             We're committed to keeping your data safe and giving you complete
             control over your privacy. No hidden practices, no confusing
             language — just honest, straightforward information.
@@ -75,45 +75,45 @@ const PrivacyPolicy = () => {
       content: (
         <div className="space-y-8">
           <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-medium text-rhode-text">
+            <h3 className="text-xl sm:text-2xl font-medium text-stone">
               Information You Provide
             </h3>
-            <ul className="space-y-3 text-sm sm:text-base text-rhode-text/70 font-light">
+            <ul className="space-y-3 text-sm sm:text-base text-stone/70 font-light">
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>
                   Name and contact information when you create an account
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>Billing and shipping addresses for orders</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>Payment information (processed securely by Stripe)</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>Communications you send us</span>
               </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-xl sm:text-2xl font-medium text-rhode-text">
+            <h3 className="text-xl sm:text-2xl font-medium text-stone">
               Information We Automatically Collect
             </h3>
-            <ul className="space-y-3 text-sm sm:text-base text-rhode-text/70 font-light">
+            <ul className="space-y-3 text-sm sm:text-base text-stone/70 font-light">
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>Device information and browser type</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>Website usage and interaction data</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+                <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
                 <span>Cookies and similar tracking technologies</span>
               </li>
             </ul>
@@ -126,29 +126,29 @@ const PrivacyPolicy = () => {
       subtitle: "Your data works for you",
       content: (
         <div className="space-y-6">
-          <p className="text-base sm:text-lg md:text-xl text-rhode-text/70 leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl text-stone/70 leading-relaxed font-light">
             We use your information to create the best possible experience for
             you.
           </p>
-          <ul className="space-y-3 text-sm sm:text-base text-rhode-text/70 font-light">
+          <ul className="space-y-3 text-sm sm:text-base text-stone/70 font-light">
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Process and fulfill your orders</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Provide customer support and respond to inquiries</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Send order confirmations and shipping updates</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Improve our website and products</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Send marketing communications (with your consent)</span>
             </li>
           </ul>
@@ -160,52 +160,46 @@ const PrivacyPolicy = () => {
       subtitle: "You're in control",
       content: (
         <div className="space-y-6">
-          <p className="text-base sm:text-lg md:text-xl text-rhode-text/70 leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl text-stone/70 leading-relaxed font-light">
             You have complete control over your personal information.
           </p>
           <div className="grid sm:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="space-y-2">
-                <h4 className="text-lg font-medium text-rhode-text">Access</h4>
-                <p className="text-sm text-rhode-text/60 font-light">
+                <h4 className="text-lg font-medium text-stone">Access</h4>
+                <p className="text-sm text-stone/60 font-light">
                   Request a copy of your personal data
                 </p>
               </div>
               <div className="space-y-2">
-                <h4 className="text-lg font-medium text-rhode-text">
-                  Correction
-                </h4>
-                <p className="text-sm text-rhode-text/60 font-light">
+                <h4 className="text-lg font-medium text-stone">Correction</h4>
+                <p className="text-sm text-stone/60 font-light">
                   Update or correct your information
                 </p>
               </div>
               <div className="space-y-2">
-                <h4 className="text-lg font-medium text-rhode-text">
-                  Deletion
-                </h4>
-                <p className="text-sm text-rhode-text/60 font-light">
+                <h4 className="text-lg font-medium text-stone">Deletion</h4>
+                <p className="text-sm text-stone/60 font-light">
                   Request deletion of your account and data
                 </p>
               </div>
             </div>
             <div className="space-y-4">
               <div className="space-y-2">
-                <h4 className="text-lg font-medium text-rhode-text">
-                  Portability
-                </h4>
-                <p className="text-sm text-rhode-text/60 font-light">
+                <h4 className="text-lg font-medium text-stone">Portability</h4>
+                <p className="text-sm text-stone/60 font-light">
                   Receive your data in a portable format
                 </p>
               </div>
               <div className="space-y-2">
-                <h4 className="text-lg font-medium text-rhode-text">Opt-out</h4>
-                <p className="text-sm text-rhode-text/60 font-light">
+                <h4 className="text-lg font-medium text-stone">Opt-out</h4>
+                <p className="text-sm text-stone/60 font-light">
                   Unsubscribe from marketing communications
                 </p>
               </div>
               <div className="space-y-2">
-                <h4 className="text-lg font-medium text-rhode-text">Cookies</h4>
-                <p className="text-sm text-rhode-text/60 font-light">
+                <h4 className="text-lg font-medium text-stone">Cookies</h4>
+                <p className="text-sm text-stone/60 font-light">
                   Manage cookie preferences in your browser
                 </p>
               </div>
@@ -219,25 +213,25 @@ const PrivacyPolicy = () => {
       subtitle: "Protected every step of the way",
       content: (
         <div className="space-y-6">
-          <p className="text-base sm:text-lg md:text-xl text-rhode-text/70 leading-relaxed font-light">
+          <p className="text-base sm:text-lg md:text-xl text-stone/70 leading-relaxed font-light">
             We implement industry-standard security measures to protect your
             information.
           </p>
-          <ul className="space-y-3 text-sm sm:text-base text-rhode-text/70 font-light">
+          <ul className="space-y-3 text-sm sm:text-base text-stone/70 font-light">
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>SSL encryption for all data transmission</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Secure payment processing through Stripe</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>Regular security audits and updates</span>
             </li>
             <li className="flex items-start gap-3">
-              <span className="w-2 h-2 bg-rhode-text rounded-full mt-2 flex-shrink-0"></span>
+              <span className="w-2 h-2 bg-stone rounded-full mt-2 flex-shrink-0"></span>
               <span>
                 Limited access to personal data on a need-to-know basis
               </span>
@@ -256,17 +250,14 @@ const PrivacyPolicy = () => {
         className="h-screen w-full overflow-hidden bg-white flex items-center justify-center relative"
       >
         <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-rhode-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-stone mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight font-chillax">
             Privacy
-            <span className="block text-rhode-text">Policy</span>
+            <span className="block text-stone">Policy</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-rhode-text/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed font-light">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-stone/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-4xl mx-auto leading-relaxed font-light">
             Transparent. Honest. Your data, your choice.
           </p>
-          <p className="text-sm sm:text-base text-rhode-text/60 font-light">
+          <p className="text-sm sm:text-base text-stone/60 font-light">
             Last updated: January 2024
           </p>
         </div>
@@ -283,13 +274,10 @@ const PrivacyPolicy = () => {
           } flex items-center justify-center relative`}
         >
           <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-rhode-text mb-4 sm:mb-6 md:mb-8 leading-[0.95] tracking-tight"
-              style={{ fontFamily: "Chillax, sans-serif" }}
-            >
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-stone mb-4 sm:mb-6 md:mb-8 leading-[0.95] tracking-tight font-chillax">
               {section.title}
             </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-rhode-text/70 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-lg sm:text-xl md:text-2xl text-stone/70 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
               {section.subtitle}
             </p>
             <div className="text-left max-w-4xl mx-auto">{section.content}</div>
@@ -300,13 +288,10 @@ const PrivacyPolicy = () => {
       {/* Contact CTA Section */}
       <section
         data-section="cta"
-        className="h-screen w-full rounded-t-[3rem] overflow-hidden bg-rhode-text flex items-center justify-center relative"
+        className="h-screen w-full rounded-t-[3rem] overflow-hidden bg-stone flex items-center justify-center relative"
       >
         <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 sm:mb-8 md:mb-10 leading-[0.95] tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 sm:mb-8 md:mb-10 leading-[0.95] tracking-tight font-chillax">
             Questions?
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
@@ -316,7 +301,7 @@ const PrivacyPolicy = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
             <ImpactButton
               href="mailto:privacy@dupp.com"
-              className="bg-white text-rhode-text hover:bg-white/90 transition-colors duration-300"
+              className="bg-white text-stone hover:bg-white/90 transition-colors duration-300"
             >
               Contact Privacy Team
             </ImpactButton>

@@ -93,13 +93,13 @@ const Contact = () => {
       >
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
           <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-rhode-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-stone mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
+            class="font-chillax"
           >
             Get in
-            <span className="block text-rhode-text">Touch</span>
+            <span className="block text-stone">Touch</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-rhode-text/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-stone/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
             We'd love to hear from you. Send us a message and we'll respond as
             soon as possible.
           </p>
@@ -109,7 +109,7 @@ const Contact = () => {
       {/* Contact Info Section */}
       <section
         data-section="contact-info"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center"
       >
         <div className="w-full h-full flex items-center">
           <div className="grid lg:grid-cols-2 w-full h-full items-center min-h-0">
@@ -117,14 +117,14 @@ const Contact = () => {
             <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex flex-col justify-center h-full py-8 sm:py-12 md:py-16 lg:py-0">
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-rhode-text leading-[1.1]"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-stone leading-[1.1]"
+                  class="font-chillax"
                 >
                   Let's
                   <span className="block">Connect</span>
                 </h2>
               </div>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
                 Your questions and feedback matter to us. Reach out and we'll
                 respond within 24 hours.
               </p>
@@ -135,48 +135,48 @@ const Contact = () => {
               <div className="space-y-6 sm:space-y-8">
                 <div className="text-center lg:text-left">
                   <h3
-                    className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text mb-2"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-lg sm:text-xl md:text-2xl font-medium text-stone mb-2"
+                    class="font-chillax"
                   >
                     Email
                   </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-rhode-text/70">
+                  <p className="text-base sm:text-lg md:text-xl text-stone/70">
                     hello@dupp.com
                   </p>
                 </div>
 
                 <div className="text-center lg:text-left">
                   <h3
-                    className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text mb-2"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-lg sm:text-xl md:text-2xl font-medium text-stone mb-2"
+                    class="font-chillax"
                   >
                     Phone
                   </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-rhode-text/70">
+                  <p className="text-base sm:text-lg md:text-xl text-stone/70">
                     +1 (555) 123-4567
                   </p>
                 </div>
 
                 <div className="text-center lg:text-left">
                   <h3
-                    className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text mb-2"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-lg sm:text-xl md:text-2xl font-medium text-stone mb-2"
+                    class="font-chillax"
                   >
                     Location
                   </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-rhode-text/70">
+                  <p className="text-base sm:text-lg md:text-xl text-stone/70">
                     Los Angeles, CA
                   </p>
                 </div>
 
                 <div className="text-center lg:text-left">
                   <h3
-                    className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text mb-2"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-lg sm:text-xl md:text-2xl font-medium text-stone mb-2"
+                    class="font-chillax"
                   >
                     Hours
                   </h3>
-                  <p className="text-base sm:text-lg md:text-xl text-rhode-text/70">
+                  <p className="text-base sm:text-lg md:text-xl text-stone/70">
                     Monday - Friday
                     <br />
                     9AM - 6PM PST
@@ -215,12 +215,12 @@ const Contact = () => {
                     </svg>
                   </div>
                   <h3
-                    className="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-rhode-text"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-xl sm:text-2xl md:text-3xl font-medium mb-3 sm:mb-4 text-stone"
+                    class="font-chillax"
                   >
                     Message Sent!
                   </h3>
-                  <p className="text-sm sm:text-base md:text-lg text-rhode-text/80 leading-relaxed font-light">
+                  <p className="text-sm sm:text-base md:text-lg text-stone/80 leading-relaxed font-light">
                     Thank you for reaching out. We'll be in touch soon.
                   </p>
                 </div>
@@ -234,8 +234,8 @@ const Contact = () => {
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-sm sm:text-base font-medium text-rhode-text mb-1 sm:mb-2"
-                          style={{ fontFamily: "Chillax, sans-serif" }}
+                          className="block text-sm sm:text-base font-medium text-stone mb-1 sm:mb-2"
+                          class="font-chillax"
                         >
                           Full Name
                         </label>
@@ -246,16 +246,16 @@ const Contact = () => {
                           value={formData.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-rhode-text/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-rhode-text/30 transition-all duration-300 text-sm sm:text-base"
-                          style={{ fontFamily: "Chillax, sans-serif" }}
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-stone/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone/30 transition-all duration-300 text-sm sm:text-base"
+                          class="font-chillax"
                           placeholder="Your name"
                         />
                       </div>
                       <div>
                         <label
                           htmlFor="email"
-                          className="block text-sm sm:text-base font-medium text-rhode-text mb-1 sm:mb-2"
-                          style={{ fontFamily: "Chillax, sans-serif" }}
+                          className="block text-sm sm:text-base font-medium text-stone mb-1 sm:mb-2"
+                          class="font-chillax"
                         >
                           Email Address
                         </label>
@@ -266,8 +266,8 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-rhode-text/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-rhode-text/30 transition-all duration-300 text-sm sm:text-base"
-                          style={{ fontFamily: "Chillax, sans-serif" }}
+                          className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-stone/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone/30 transition-all duration-300 text-sm sm:text-base"
+                          class="font-chillax"
                           placeholder="your@email.com"
                         />
                       </div>
@@ -275,8 +275,8 @@ const Contact = () => {
                     <div>
                       <label
                         htmlFor="subject"
-                        className="block text-sm sm:text-base font-medium text-rhode-text mb-1 sm:mb-2"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="block text-sm sm:text-base font-medium text-stone mb-1 sm:mb-2"
+                        class="font-chillax"
                       >
                         Subject
                       </label>
@@ -287,16 +287,16 @@ const Contact = () => {
                         value={formData.subject}
                         onChange={handleChange}
                         required
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-rhode-text/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-rhode-text/30 transition-all duration-300 text-sm sm:text-base"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-stone/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone/30 transition-all duration-300 text-sm sm:text-base"
+                        class="font-chillax"
                         placeholder="How can we help?"
                       />
                     </div>
                     <div>
                       <label
                         htmlFor="message"
-                        className="block text-sm sm:text-base font-medium text-rhode-text mb-1 sm:mb-2"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="block text-sm sm:text-base font-medium text-stone mb-1 sm:mb-2"
+                        class="font-chillax"
                       >
                         Message
                       </label>
@@ -307,8 +307,8 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={3}
-                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-rhode-text/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-rhode-text/30 transition-all duration-300 resize-none text-sm sm:text-base"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="w-full px-3 sm:px-4 py-2 sm:py-3 bg-white border border-stone/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-stone/30 transition-all duration-300 resize-none text-sm sm:text-base"
+                        class="font-chillax"
                         placeholder="Tell us more about your inquiry..."
                       />
                     </div>
@@ -316,8 +316,8 @@ const Contact = () => {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="bg-rhode-text text-white px-5 sm:px-6 md:px-7 py-2 sm:py-3 md:py-3 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50"
-                        style={{ fontFamily: "Chillax, sans-serif" }}
+                        className="bg-stone text-white px-5 sm:px-6 md:px-7 py-2 sm:py-3 md:py-3 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-opacity-90 transition-all duration-300 disabled:opacity-50"
+                        class="font-chillax"
                       >
                         {isSubmitting ? "Sending..." : "Send Message"}
                       </button>
@@ -331,13 +331,13 @@ const Contact = () => {
             <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex flex-col justify-center h-full py-8 sm:py-12 md:py-16 lg:py-0 order-1 lg:order-2">
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
                 <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-rhode-text leading-[1.1]"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-stone leading-[1.1]"
+                  class="font-chillax"
                 >
                   Send us a<span className="block">Message</span>
                 </h2>
               </div>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
                 We'll get back to you within 24 hours with a thoughtful response
                 to your inquiry.
               </p>
@@ -349,18 +349,18 @@ const Contact = () => {
       {/* FAQ Section */}
       <section
         data-section="faq"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center"
       >
         <div className="w-full h-full flex items-center">
           <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full">
             <div className="text-center mb-4 sm:mb-6 md:mb-8">
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 tracking-tight text-stone leading-tight"
+                class="font-chillax"
               >
                 FAQ
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-rhode-text/80 leading-relaxed font-light max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base md:text-lg text-stone/80 leading-relaxed font-light max-w-2xl mx-auto">
                 Quick answers to common questions
               </p>
             </div>
@@ -373,13 +373,13 @@ const Contact = () => {
                   className="w-full p-3 sm:p-4 text-left flex justify-between items-center hover:bg-white/20 transition-colors"
                 >
                   <h3
-                    className="text-sm sm:text-base md:text-lg font-medium text-rhode-text pr-3"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-sm sm:text-base md:text-lg font-medium text-stone pr-3"
+                    class="font-chillax"
                   >
                     How long does shipping take?
                   </h3>
                   <svg
-                    className={`w-4 h-4 sm:w-5 sm:h-5 text-rhode-text transition-transform duration-300 flex-shrink-0 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-stone transition-transform duration-300 flex-shrink-0 ${
                       openFAQ === 0 ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -396,7 +396,7 @@ const Contact = () => {
                 </button>
                 {openFAQ === 0 && (
                   <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                    <p className="text-xs sm:text-sm md:text-base text-rhode-text/80 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm md:text-base text-stone/80 leading-relaxed font-light">
                       We offer free shipping on orders over $50. Standard
                       shipping takes 3-5 business days, while express shipping
                       takes 1-2 business days.
@@ -412,13 +412,13 @@ const Contact = () => {
                   className="w-full p-3 sm:p-4 text-left flex justify-between items-center hover:bg-white/20 transition-colors"
                 >
                   <h3
-                    className="text-sm sm:text-base md:text-lg font-medium text-rhode-text pr-3"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-sm sm:text-base md:text-lg font-medium text-stone pr-3"
+                    class="font-chillax"
                   >
                     What is your return policy?
                   </h3>
                   <svg
-                    className={`w-4 h-4 sm:w-5 sm:h-5 text-rhode-text transition-transform duration-300 flex-shrink-0 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-stone transition-transform duration-300 flex-shrink-0 ${
                       openFAQ === 1 ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -435,7 +435,7 @@ const Contact = () => {
                 </button>
                 {openFAQ === 1 && (
                   <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                    <p className="text-xs sm:text-sm md:text-base text-rhode-text/80 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm md:text-base text-stone/80 leading-relaxed font-light">
                       We offer a 30-day return policy for unopened products. If
                       you're not satisfied, contact us within 30 days for a full
                       refund.
@@ -451,13 +451,13 @@ const Contact = () => {
                   className="w-full p-3 sm:p-4 text-left flex justify-between items-center hover:bg-white/20 transition-colors"
                 >
                   <h3
-                    className="text-sm sm:text-base md:text-lg font-medium text-rhode-text pr-3"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-sm sm:text-base md:text-lg font-medium text-stone pr-3"
+                    class="font-chillax"
                   >
                     Are your products cruelty-free?
                   </h3>
                   <svg
-                    className={`w-4 h-4 sm:w-5 sm:h-5 text-rhode-text transition-transform duration-300 flex-shrink-0 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-stone transition-transform duration-300 flex-shrink-0 ${
                       openFAQ === 2 ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -474,7 +474,7 @@ const Contact = () => {
                 </button>
                 {openFAQ === 2 && (
                   <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                    <p className="text-xs sm:text-sm md:text-base text-rhode-text/80 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm md:text-base text-stone/80 leading-relaxed font-light">
                       Yes, all düpp products are cruelty-free and never tested
                       on animals. We're committed to ethical beauty practices.
                     </p>
@@ -489,13 +489,13 @@ const Contact = () => {
                   className="w-full p-3 sm:p-4 text-left flex justify-between items-center hover:bg-white/20 transition-colors"
                 >
                   <h3
-                    className="text-sm sm:text-base md:text-lg font-medium text-rhode-text pr-3"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-sm sm:text-base md:text-lg font-medium text-stone pr-3"
+                    class="font-chillax"
                   >
                     Do you offer international shipping?
                   </h3>
                   <svg
-                    className={`w-4 h-4 sm:w-5 sm:h-5 text-rhode-text transition-transform duration-300 flex-shrink-0 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-stone transition-transform duration-300 flex-shrink-0 ${
                       openFAQ === 3 ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -512,7 +512,7 @@ const Contact = () => {
                 </button>
                 {openFAQ === 3 && (
                   <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                    <p className="text-xs sm:text-sm md:text-base text-rhode-text/80 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm md:text-base text-stone/80 leading-relaxed font-light">
                       Currently, we ship within the United States and Canada.
                       International shipping options are coming soon!
                     </p>
@@ -527,13 +527,13 @@ const Contact = () => {
                   className="w-full p-3 sm:p-4 text-left flex justify-between items-center hover:bg-white/20 transition-colors"
                 >
                   <h3
-                    className="text-sm sm:text-base md:text-lg font-medium text-rhode-text pr-3"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="text-sm sm:text-base md:text-lg font-medium text-stone pr-3"
+                    class="font-chillax"
                   >
                     How can I track my order?
                   </h3>
                   <svg
-                    className={`w-4 h-4 sm:w-5 sm:h-5 text-rhode-text transition-transform duration-300 flex-shrink-0 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 text-stone transition-transform duration-300 flex-shrink-0 ${
                       openFAQ === 4 ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -550,7 +550,7 @@ const Contact = () => {
                 </button>
                 {openFAQ === 4 && (
                   <div className="px-3 sm:px-4 pb-3 sm:pb-4">
-                    <p className="text-xs sm:text-sm md:text-base text-rhode-text/80 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm md:text-base text-stone/80 leading-relaxed font-light">
                       Once your order ships, you'll receive a tracking number
                       via email. You can also check your order status in your
                       account dashboard.
@@ -566,19 +566,19 @@ const Contact = () => {
       {/* Stay In Touch Section */}
       <section
         data-section="stay-in-touch"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center justify-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center justify-center"
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full text-center">
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-6 sm:mb-8 md:mb-10 tracking-tight text-rhode-text leading-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-6 sm:mb-8 md:mb-10 tracking-tight text-stone leading-tight"
+            class="font-chillax"
           >
             Stay In Touch
           </h2>
 
           <p
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto text-rhode-text font-medium"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto text-stone font-medium"
+            class="font-chillax"
           >
             Be the first to know about new products, exclusive offers, and
             behind-the-scenes content.
@@ -588,19 +588,19 @@ const Contact = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 sm:px-8 py-4 sm:py-5 md:py-6 rounded-full border border-rhode-text/20 focus:outline-none focus:border-rhode-text/50 text-base sm:text-lg md:text-xl"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="flex-1 px-6 sm:px-8 py-4 sm:py-5 md:py-6 rounded-full border border-stone/20 focus:outline-none focus:border-stone/50 text-base sm:text-lg md:text-xl"
+              class="font-chillax"
             />
             <button
               type="submit"
-              className="bg-rhode-text text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full hover:bg-rhode-text/90 transition-colors text-base sm:text-lg md:text-xl font-medium"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="bg-stone text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full hover:bg-stone/90 transition-colors text-base sm:text-lg md:text-xl font-medium"
+              class="font-chillax"
             >
               Subscribe
             </button>
           </form>
 
-          <p className="text-sm sm:text-base md:text-lg text-rhode-text/60 font-medium">
+          <p className="text-sm sm:text-base md:text-lg text-stone/60 font-medium">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>
@@ -618,12 +618,12 @@ const Contact = () => {
               {/* Brand Section */}
               <div className="md:col-span-2 lg:col-span-2 space-y-6 sm:space-y-8">
                 <h3
-                  className="text-3xl sm:text-4xl md:text-5xl font-medium text-rhode-text"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="text-3xl sm:text-4xl md:text-5xl font-medium text-stone"
+                  class="font-chillax"
                 >
                   düpp
                 </h3>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/70 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/70 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                   Soft, simple, and sensibly priced. Discover our curated
                   collection of essentials that blend luxury with everyday
                   simplicity.
@@ -631,15 +631,15 @@ const Contact = () => {
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-6">
                   <Link
                     to="/shop"
-                    className="bg-rhode-text text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-rhode-text/90 transition-colors font-medium"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="bg-stone text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-stone/90 transition-colors font-medium"
+                    class="font-chillax"
                   >
                     Shop Now
                   </Link>
                   <Link
                     to="/about"
-                    className="border border-rhode-text text-rhode-text px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-rhode-text hover:text-white transition-colors font-medium"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="border border-stone text-stone px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-stone hover:text-white transition-colors font-medium"
+                    class="font-chillax"
                   >
                     Learn More
                   </Link>
@@ -648,14 +648,14 @@ const Contact = () => {
 
               {/* Quick Links */}
               <div className="space-y-6 sm:space-y-8">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-stone">
                   Quick Links
                 </h4>
-                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-rhode-text/70">
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-stone/70">
                   <li>
                     <Link
                       to="/shop"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Shop
                     </Link>
@@ -663,7 +663,7 @@ const Contact = () => {
                   <li>
                     <Link
                       to="/about"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       About
                     </Link>
@@ -671,7 +671,7 @@ const Contact = () => {
                   <li>
                     <Link
                       to="/contact"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Contact
                     </Link>
@@ -679,7 +679,7 @@ const Contact = () => {
                   <li>
                     <Link
                       to="/faq"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       FAQ
                     </Link>
@@ -689,14 +689,14 @@ const Contact = () => {
 
               {/* Customer Care */}
               <div className="space-y-6 sm:space-y-8">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-stone">
                   Customer Care
                 </h4>
-                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-rhode-text/70">
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-stone/70">
                   <li>
                     <Link
                       to="/privacy"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Privacy Policy
                     </Link>
@@ -704,7 +704,7 @@ const Contact = () => {
                   <li>
                     <Link
                       to="/terms"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Terms of Service
                     </Link>
@@ -712,7 +712,7 @@ const Contact = () => {
                   <li>
                     <Link
                       to="/accessibility"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Accessibility
                     </Link>
@@ -722,14 +722,14 @@ const Contact = () => {
             </div>
 
             {/* Bottom Footer */}
-            <div className="pt-8 sm:pt-10 border-t border-rhode-text/10 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
-              <p className="text-sm sm:text-base md:text-lg text-rhode-text/60">
+            <div className="pt-8 sm:pt-10 border-t border-stone/10 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
+              <p className="text-sm sm:text-base md:text-lg text-stone/60">
                 © 2024 düpp. All rights reserved.
               </p>
               <div className="flex space-x-6 sm:space-x-8">
                 <a
                   href="#"
-                  className="text-rhode-text/60 hover:text-rhode-text transition-colors"
+                  className="text-stone/60 hover:text-stone transition-colors"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -742,7 +742,7 @@ const Contact = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-rhode-text/60 hover:text-rhode-text transition-colors"
+                  className="text-stone/60 hover:text-stone transition-colors"
                 >
                   <span className="sr-only">Twitter</span>
                   <svg

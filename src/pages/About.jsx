@@ -76,14 +76,11 @@ const About = () => {
         </div>
 
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-rhode-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-stone mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight font-chillax">
             About
-            <span className="block text-rhode-text">düpp</span>
+            <span className="block text-stone">düpp</span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-rhode-text/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-stone/80 mb-8 sm:mb-10 md:mb-12 lg:mb-16 max-w-3xl mx-auto leading-relaxed font-light">
             Bold. Fashion-Forward. Unapologetically You.
           </p>
         </div>
@@ -113,15 +110,12 @@ const About = () => {
             {/* Text Content - Right side, centered */}
             <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex flex-col justify-center h-full py-8 sm:py-12 md:py-16 lg:py-0 order-1 lg:order-2">
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-rhode-text leading-[1.1]"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-stone leading-[1.1] font-chillax">
                   Our Story
                   <span className="block">Begins Here</span>
                 </h2>
               </div>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
                 düpp was born in true startup style - wanting to create
                 affordable, timeless pieces.
               </p>
@@ -140,15 +134,12 @@ const About = () => {
             {/* Text Content - Left side, centered */}
             <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex flex-col justify-center h-full py-8 sm:py-12 md:py-16 lg:py-0">
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-rhode-text leading-[1.1]"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-stone leading-[1.1] font-chillax">
                   What We
                   <span className="block">Stand For</span>
                 </h2>
               </div>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
                 The values that drive our dream big attitude and empower you to
                 be unapologetically yourself.
               </p>
@@ -174,7 +165,7 @@ const About = () => {
       {/* Mission Statement */}
       <section
         data-section="mission"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center"
       >
         <div className="w-full h-full flex items-center">
           <div className="grid lg:grid-cols-2 w-full h-full items-center min-h-0">
@@ -195,23 +186,19 @@ const About = () => {
             {/* Text Content - Right side, centered */}
             <div className="text-center lg:text-left space-y-6 sm:space-y-8 lg:space-y-10 px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 flex flex-col justify-center h-full py-8 sm:py-12 md:py-16 lg:py-0 order-1 lg:order-2">
               <div className="space-y-3 sm:space-y-4 md:space-y-6">
-                <h2
-                  className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-rhode-text leading-[1.1]"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tight text-stone leading-[1.1] font-chillax">
                   Our
                   <span className="block">Mission</span>
                 </h2>
               </div>
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/80 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
                 To promote powerful babes across the globe and inspire girls
                 everywhere to be exactly who they want to be.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center lg:justify-start">
                 <Link
                   to="/shop"
-                  className="bg-rhode-text text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-base sm:text-lg md:text-xl font-medium hover:bg-opacity-90 transition-all duration-300 inline-block text-center"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="bg-stone text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 rounded-full text-base sm:text-lg md:text-xl font-medium hover:bg-opacity-90 transition-all duration-300 inline-block text-center font-chillax"
                 >
                   Explore Our Products
                 </Link>
@@ -224,20 +211,14 @@ const About = () => {
       {/* Stay In Touch Section */}
       <section
         data-section="stay-in-touch"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center justify-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center justify-center"
       >
         <div className="max-w-6xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16 w-full text-center">
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-6 sm:mb-8 md:mb-10 tracking-tight text-rhode-text leading-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium mb-6 sm:mb-8 md:mb-10 tracking-tight text-stone leading-tight font-chillax">
             Stay In Touch
           </h2>
 
-          <p
-            className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto text-rhode-text font-medium"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl mb-8 sm:mb-10 md:mb-12 lg:mb-16 leading-relaxed max-w-4xl mx-auto text-stone font-medium font-chillax">
             Be the first to know about new launches, exclusive offers, and
             skincare tips from our experts.
           </p>
@@ -246,19 +227,17 @@ const About = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-6 sm:px-8 py-4 sm:py-5 md:py-6 rounded-full border border-rhode-text/20 focus:outline-none focus:border-rhode-text/50 text-base sm:text-lg md:text-xl"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="flex-1 px-6 sm:px-8 py-4 sm:py-5 md:py-6 rounded-full border border-stone/20 focus:outline-none focus:border-stone/50 text-base sm:text-lg md:text-xl font-chillax"
             />
             <button
               type="submit"
-              className="bg-rhode-text text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full hover:bg-rhode-text/90 transition-colors text-base sm:text-lg md:text-xl font-medium"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="bg-stone text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 rounded-full hover:bg-stone/90 transition-colors text-base sm:text-lg md:text-xl font-medium font-chillax"
             >
               Subscribe
             </button>
           </form>
 
-          <p className="text-sm sm:text-base md:text-lg text-rhode-text/60 font-medium">
+          <p className="text-sm sm:text-base md:text-lg text-stone/60 font-medium">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>
@@ -275,13 +254,10 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-8 sm:mb-10 md:mb-12">
               {/* Brand Section */}
               <div className="md:col-span-2 lg:col-span-2 space-y-6 sm:space-y-8">
-                <h3
-                  className="text-3xl sm:text-4xl md:text-5xl font-medium text-rhode-text"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-stone font-chillax">
                   düpp
                 </h3>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/70 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/70 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                   Bold, fashion-forward, and unapologetically you. Discover our
                   curated collection that blends affordable luxury with everyday
                   style.
@@ -289,15 +265,13 @@ const About = () => {
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-6">
                   <Link
                     to="/shop"
-                    className="bg-rhode-text text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-rhode-text/90 transition-colors font-medium"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="bg-stone text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-stone/90 transition-colors font-medium font-chillax"
                   >
                     Shop Now
                   </Link>
                   <Link
                     to="/about"
-                    className="border border-rhode-text text-rhode-text px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-rhode-text hover:text-white transition-colors font-medium"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="border border-stone text-stone px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-stone hover:text-white transition-colors font-medium font-chillax"
                   >
                     Learn More
                   </Link>
@@ -306,14 +280,14 @@ const About = () => {
 
               {/* Quick Links */}
               <div className="space-y-6 sm:space-y-8">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-stone">
                   Quick Links
                 </h4>
-                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-rhode-text/70">
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-stone/70">
                   <li>
                     <Link
                       to="/shop"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Shop
                     </Link>
@@ -321,7 +295,7 @@ const About = () => {
                   <li>
                     <Link
                       to="/about"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       About
                     </Link>
@@ -329,7 +303,7 @@ const About = () => {
                   <li>
                     <Link
                       to="/contact"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Contact
                     </Link>
@@ -337,7 +311,7 @@ const About = () => {
                   <li>
                     <Link
                       to="/faq"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       FAQ
                     </Link>
@@ -347,14 +321,14 @@ const About = () => {
 
               {/* Customer Care */}
               <div className="space-y-6 sm:space-y-8">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-stone">
                   Customer Care
                 </h4>
-                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-rhode-text/70">
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-stone/70">
                   <li>
                     <Link
                       to="/privacy"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Privacy Policy
                     </Link>
@@ -362,7 +336,7 @@ const About = () => {
                   <li>
                     <Link
                       to="/terms"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Terms of Service
                     </Link>
@@ -370,7 +344,7 @@ const About = () => {
                   <li>
                     <Link
                       to="/accessibility"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Accessibility
                     </Link>
@@ -380,14 +354,14 @@ const About = () => {
             </div>
 
             {/* Bottom Footer */}
-            <div className="pt-8 sm:pt-10 border-t border-rhode-text/10 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
-              <p className="text-sm sm:text-base md:text-lg text-rhode-text/60">
+            <div className="pt-8 sm:pt-10 border-t border-stone/10 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
+              <p className="text-sm sm:text-base md:text-lg text-stone/60">
                 © 2024 düpp. All rights reserved.
               </p>
               <div className="flex space-x-6 sm:space-x-8">
                 <a
                   href="#"
-                  className="text-rhode-text/60 hover:text-rhode-text transition-colors"
+                  className="text-stone/60 hover:text-stone transition-colors"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -400,7 +374,7 @@ const About = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-rhode-text/60 hover:text-rhode-text transition-colors"
+                  className="text-stone/60 hover:text-stone transition-colors"
                 >
                   <span className="sr-only">Twitter</span>
                   <svg

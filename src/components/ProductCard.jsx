@@ -91,7 +91,7 @@ const ProductCard = ({ product }) => {
     <Link to={`/product/${product.id}`} className="block h-full">
       <div
         ref={cardRef}
-        className="group bg-rhode-cream rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden h-full flex flex-col cursor-pointer"
+        className="group bg-sand rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden h-full flex flex-col cursor-pointer"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -99,7 +99,7 @@ const ProductCard = ({ product }) => {
         <div className="relative overflow-hidden p-4">
           <div
             ref={imageRef}
-            className="w-[200px] h-[267px] bg-rhode-light rounded-lg overflow-hidden mx-auto"
+            className="w-[200px] h-[267px] bg-sand rounded-lg overflow-hidden mx-auto"
           >
             <img
               src={
@@ -114,10 +114,7 @@ const ProductCard = ({ product }) => {
 
           {/* Badge (featured/new) */}
           {product.featured && (
-            <div
-              className="absolute top-6 left-6 bg-rhode-text text-gray-300 text-xs font-bold px-2 py-1 rounded-full shadow-sm uppercase"
-              style={{ fontFamily: "Chillax, sans-serif" }}
-            >
+            <div className="absolute top-6 left-6 bg-stone text-gray-300 text-xs font-bold px-2 py-1 rounded-full shadow-sm uppercase font-chillax">
               new
             </div>
           )}
@@ -127,23 +124,19 @@ const ProductCard = ({ product }) => {
           <div className="flex-1 flex flex-col justify-between min-h-[80px]">
             <div>
               <h3
-                className="font-medium text-base mb-1 text-rhode-text leading-tight overflow-hidden text-ellipsis"
+                className="font-medium text-base mb-1 text-stone leading-tight overflow-hidden text-ellipsis font-chillax"
                 style={{
                   display: "-webkit-box",
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical",
-                  fontFamily: "Chillax, sans-serif",
                 }}
               >
                 {product.name}
               </h3>
-              <p className="font-semibold text-lg text-rhode-text mb-1">
+              <p className="font-semibold text-lg text-stone mb-1">
                 €{product.price}
               </p>
-              <p
-                className="text-rhode-text text-xs leading-relaxed font-semibold"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
+              <p className="text-stone text-xs leading-relaxed font-semibold font-chillax">
                 {product.description?.substring(0, 40) || "Premium skincare"}
               </p>
             </div>

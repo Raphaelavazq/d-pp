@@ -1,5 +1,4 @@
 import React from "react";
-import { designSystem } from "../utils/designSystem";
 
 const Values = ({
   title = "Our Values",
@@ -16,7 +15,7 @@ const Values = ({
       description: "We care and take responsibility",
       icon: (
         <svg
-          className="w-8 h-8 text-rhode-text"
+          className="w-8 h-8 text-stone"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -36,7 +35,7 @@ const Values = ({
       description: "Design for comfort and confidence",
       icon: (
         <svg
-          className="w-8 h-8 text-rhode-text"
+          className="w-8 h-8 text-stone"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -56,7 +55,7 @@ const Values = ({
       description: "For your mind, body and wallet",
       icon: (
         <svg
-          className="w-8 h-8 text-rhode-text"
+          className="w-8 h-8 text-stone"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -76,7 +75,7 @@ const Values = ({
       description: "We're transparent, intentional, and always evolving.",
       icon: (
         <svg
-          className="w-8 h-8 text-rhode-text"
+          className="w-8 h-8 text-stone"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -106,13 +105,13 @@ const Values = ({
     <div className={className}>
       <div className="text-center mb-16">
         <h2
-          className="text-4xl md:text-5xl font-medium mb-6 tracking-tight leading-tight text-rhode-text"
+          className="text-4xl md:text-5xl font-medium mb-6 tracking-tight leading-tight text-stone"
           style={{ fontFamily: "Chillax, sans-serif" }}
         >
           {title}
         </h2>
         <p
-          className="text-xl max-w-2xl mx-auto leading-relaxed text-rhode-text"
+          className="text-xl max-w-2xl mx-auto leading-relaxed text-stone"
           style={{ fontFamily: "Chillax, sans-serif" }}
         >
           {subtitle}
@@ -122,20 +121,18 @@ const Values = ({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {valuesToRender.map((value) => (
           <div key={value.id} className={getCardClasses()}>
-            <div className="w-16 h-16 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="w-16 h-16 bg-stone/10 rounded-full flex items-center justify-center mx-auto mb-6">
               {value.icon}
             </div>
             <h3
-              className="text-xl font-medium mb-3 text-rhode-dark"
+              className="text-xl font-medium mb-3 text-coal"
               style={{ fontFamily: "Chillax, sans-serif" }}
             >
               {value.title}
             </h3>
             <p
-              className={`text-rhode-text text-sm leading-relaxed ${cardStyle === "home" ? "flex-grow" : ""}`}
-              style={{
-                fontFamily: designSystem.typography.fonts.secondary,
-              }}
+              className={`text-stone text-sm leading-relaxed ${cardStyle === "home" ? "flex-grow" : ""}`}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               {value.description}
             </p>

@@ -221,10 +221,7 @@ const Shop = () => {
         </div>
 
         <div className="relative z-20 text-center max-w-4xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
-          <h1
-            className="banner-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-white mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h1 className="banner-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-white mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight font-chillax">
             {categoryInfo ? categoryInfo.name : "Shop"}
             <span className="block text-white/90">Collection</span>
           </h1>
@@ -238,8 +235,7 @@ const Shop = () => {
       {/* Floating Filter Button - Always visible */}
       <button
         onClick={() => setSidebarOpen(true)}
-        className="fixed bottom-6 right-6 bg-rhode-text text-white p-4 rounded-full shadow-lg hover:bg-rhode-text/90 transition-all duration-300 hover:scale-105 z-[80] md:hidden"
-        style={{ fontFamily: "Chillax, sans-serif" }}
+        className="fixed bottom-6 right-6 bg-stone text-white p-4 rounded-full shadow-lg hover:bg-stone/90 transition-all duration-300 hover:scale-105 z-[80] md:hidden font-chillax"
         aria-label="Open filters"
       >
         <svg
@@ -284,19 +280,16 @@ const Shop = () => {
           <div className="p-6 h-full overflow-y-auto">
             {/* Sidebar Header */}
             <div className="flex items-center justify-between mb-8">
-              <h2
-                className="text-2xl font-medium text-rhode-text"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
+              <h2 className="text-2xl font-medium text-stone font-chillax">
                 Filters
               </h2>
               <button
                 onClick={() => setSidebarOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-rhode-text/10 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-stone/10 transition-colors"
                 aria-label="Close filters"
               >
                 <svg
-                  className="w-5 h-5 text-rhode-text"
+                  className="w-5 h-5 text-stone"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -314,10 +307,7 @@ const Shop = () => {
 
             {/* Categories */}
             <div className="mb-8">
-              <h3
-                className="text-lg font-medium mb-4 text-rhode-text"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
+              <h3 className="text-lg font-medium mb-4 text-stone font-chillax">
                 Categories
               </h3>
               <div className="space-y-2">
@@ -326,12 +316,11 @@ const Shop = () => {
                     handleCategoryChange(null);
                     setSidebarOpen(false);
                   }}
-                  className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                  className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 font-chillax ${
                     !category
-                      ? "bg-rhode-text text-white"
-                      : "bg-rhode-text/10 text-rhode-text hover:bg-rhode-text/20"
+                      ? "bg-stone text-white"
+                      : "bg-stone/10 text-stone hover:bg-stone/20"
                   }`}
-                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   All Products
                 </button>
@@ -342,12 +331,11 @@ const Shop = () => {
                       handleCategoryChange(cat.id);
                       setSidebarOpen(false);
                     }}
-                    className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 ${
+                    className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-300 font-chillax ${
                       category === cat.id
-                        ? "bg-rhode-text text-white"
-                        : "bg-rhode-text/10 text-rhode-text hover:bg-rhode-text/20"
+                        ? "bg-stone text-white"
+                        : "bg-stone/10 text-stone hover:bg-stone/20"
                     }`}
-                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     {cat.name}
                   </button>
@@ -358,21 +346,17 @@ const Shop = () => {
             {/* Subcategories */}
             {subcategories.length > 0 && (
               <div className="mb-8">
-                <h3
-                  className="text-lg font-medium mb-4 text-rhode-text"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h3 className="text-lg font-medium mb-4 text-stone font-chillax">
                   {categoryInfo?.name} Types
                 </h3>
                 <div className="space-y-2">
                   <button
                     onClick={() => setSelectedSubcategory("")}
-                    className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ${
+                    className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 font-chillax ${
                       !selectedSubcategory
                         ? "bg-charcoal text-white"
                         : "bg-charcoal/10 text-charcoal hover:bg-charcoal/20"
                     }`}
-                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     All {categoryInfo?.name}
                   </button>
@@ -380,12 +364,11 @@ const Shop = () => {
                     <button
                       key={sub}
                       onClick={() => setSelectedSubcategory(sub)}
-                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 ${
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm transition-all duration-300 font-chillax ${
                         selectedSubcategory === sub
                           ? "bg-charcoal text-white"
                           : "bg-charcoal/10 text-charcoal hover:bg-charcoal/20"
                       }`}
-                      style={{ fontFamily: "Chillax, sans-serif" }}
                     >
                       {sub}
                     </button>
@@ -396,17 +379,13 @@ const Shop = () => {
 
             {/* Sort Options */}
             <div className="mb-8">
-              <h3
-                className="text-lg font-medium mb-4 text-rhode-text"
-                style={{ fontFamily: "Chillax, sans-serif" }}
-              >
+              <h3 className="text-lg font-medium mb-4 text-stone font-chillax">
                 Sort By
               </h3>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="w-full bg-white border border-rhode-text/20 rounded-lg px-4 py-3 text-sm text-rhode-text focus:outline-none focus:ring-2 focus:ring-rhode-text/30"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="w-full bg-white border border-stone/20 rounded-lg px-4 py-3 text-sm text-stone focus:outline-none focus:ring-2 focus:ring-stone/30 font-chillax"
               >
                 <option value="featured">Featured</option>
                 <option value="newest">Newest</option>
@@ -417,8 +396,8 @@ const Shop = () => {
             </div>
 
             {/* Results Count */}
-            <div className="bg-rhode-text/10 rounded-lg p-4">
-              <span className="text-sm font-medium text-rhode-text">
+            <div className="bg-stone/10 rounded-lg p-4">
+              <span className="text-sm font-medium text-stone">
                 {filteredProducts.length}{" "}
                 {filteredProducts.length === 1 ? "product" : "products"} found
               </span>
@@ -434,13 +413,10 @@ const Shop = () => {
               {/* Top Bar */}
               <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8 sm:mb-12 relative z-10 gap-4">
                 <div>
-                  <h2
-                    className="text-2xl sm:text-3xl md:text-4xl font-medium text-rhode-text mb-2"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
-                  >
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium text-stone mb-2 font-chillax">
                     {categoryInfo ? categoryInfo.name : "All Products"}
                   </h2>
-                  <p className="text-rhode-text/70 text-sm sm:text-base">
+                  <p className="text-stone/70 text-sm sm:text-base">
                     {filteredProducts.length}{" "}
                     {filteredProducts.length === 1 ? "product" : "products"}{" "}
                     available
@@ -451,8 +427,7 @@ const Shop = () => {
                 <div className="hidden md:flex items-center gap-4">
                   <button
                     onClick={() => setSidebarOpen(true)}
-                    className="bg-rhode-text/10 text-rhode-text px-4 py-2 rounded-lg hover:bg-rhode-text/20 transition-colors font-medium flex items-center gap-2"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="bg-stone/10 text-stone px-4 py-2 rounded-lg hover:bg-stone/20 transition-colors font-medium flex items-center gap-2 font-chillax"
                   >
                     <svg
                       className="w-4 h-4"
@@ -473,8 +448,7 @@ const Shop = () => {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="bg-white border border-rhode-text/20 rounded-lg px-4 py-2 text-sm text-rhode-text focus:outline-none focus:ring-2 focus:ring-rhode-text/30"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="bg-white border border-stone/20 rounded-lg px-4 py-2 text-sm text-stone focus:outline-none focus:ring-2 focus:ring-stone/30 font-chillax"
                   >
                     <option value="featured">Featured</option>
                     <option value="newest">Newest</option>
@@ -496,10 +470,10 @@ const Shop = () => {
                 </div>
               ) : (
                 <div className="text-center py-20">
-                  <div className="bg-rhode-cream/30 rounded-2xl p-12 max-w-md mx-auto">
-                    <div className="w-16 h-16 bg-rhode-text/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-sand/30 rounded-2xl p-12 max-w-md mx-auto">
+                    <div className="w-16 h-16 bg-stone/10 rounded-full flex items-center justify-center mx-auto mb-4">
                       <svg
-                        className="w-8 h-8 text-rhode-text"
+                        className="w-8 h-8 text-stone"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -512,16 +486,10 @@ const Shop = () => {
                         />
                       </svg>
                     </div>
-                    <h3
-                      className="text-xl font-medium text-rhode-dark mb-2"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
-                    >
+                    <h3 className="text-xl font-medium text-coal mb-2 font-chillax">
                       No products found
                     </h3>
-                    <p
-                      className="text-rhode-text mb-6"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
-                    >
+                    <p className="text-stone mb-6 font-chillax">
                       Try adjusting your filters or browse all products
                     </p>
                     <button
@@ -529,8 +497,7 @@ const Shop = () => {
                         handleCategoryChange(null);
                         setSortBy("featured");
                       }}
-                      className="bg-rhode-text text-white px-6 py-3 rounded-full hover:bg-rhode-text/90 transition-colors font-medium"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="bg-stone text-white px-6 py-3 rounded-full hover:bg-stone/90 transition-colors font-medium font-chillax"
                     >
                       View All Products
                     </button>
@@ -545,20 +512,14 @@ const Shop = () => {
       {/* Stay In Touch Section */}
       <section
         data-section="stay-in-touch"
-        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center justify-center"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-sand shadow-xl flex items-center justify-center"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 w-full text-center">
-          <h2
-            className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 tracking-tight text-rhode-text leading-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 tracking-tight text-stone leading-tight font-chillax">
             Stay In Touch
           </h2>
 
-          <p
-            className="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto text-rhode-text font-medium"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <p className="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto text-stone font-medium font-chillax">
             Be the first to know about new launches, exclusive offers, and
             skincare tips from our experts.
           </p>
@@ -568,21 +529,17 @@ const Shop = () => {
               type="email"
               placeholder="Enter your email"
               required
-              className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-none border-b-2 border-rhode-text bg-transparent placeholder-rhode-text focus:outline-none focus:border-rhode-dark text-base sm:text-lg transition-all duration-200 text-rhode-dark"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-none border-b-2 border-stone bg-transparent placeholder-stone focus:outline-none focus:border-coal text-base sm:text-lg transition-all duration-200 text-coal font-chillax"
             />
             <button
               type="submit"
-              className="py-3 sm:py-4 px-6 sm:px-8 bg-rhode-text text-rhode-light hover:bg-rhode-dark transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap"
+              className="py-3 sm:py-4 px-6 sm:px-8 bg-stone text-sand hover:bg-coal transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap"
             >
               Subscribe
             </button>
           </form>
 
-          <p
-            className="text-xs sm:text-sm text-rhode-text font-light"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <p className="text-xs sm:text-sm text-stone font-light font-chillax">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>
@@ -599,13 +556,10 @@ const Shop = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-8 sm:mb-10 md:mb-12">
               {/* Brand Section */}
               <div className="md:col-span-2 lg:col-span-2 space-y-6 sm:space-y-8">
-                <h3
-                  className="text-3xl sm:text-4xl md:text-5xl font-medium text-rhode-text"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium text-stone font-chillax">
                   düpp
                 </h3>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/70 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-stone/70 max-w-lg mx-auto lg:mx-0 leading-relaxed">
                   Soft, simple, and sensibly priced. Discover our curated
                   collection of essentials that blend luxury with everyday
                   simplicity.
@@ -613,15 +567,13 @@ const Shop = () => {
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-6">
                   <Link
                     to="/shop"
-                    className="bg-rhode-text text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-rhode-text/90 transition-colors font-medium"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="bg-stone text-white px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-stone/90 transition-colors font-medium font-chillax"
                   >
                     Shop Now
                   </Link>
                   <Link
                     to="/about"
-                    className="border border-rhode-text text-rhode-text px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-rhode-text hover:text-white transition-colors font-medium"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="border border-stone text-stone px-6 py-3 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full hover:bg-stone hover:text-white transition-colors font-medium font-chillax"
                   >
                     Learn More
                   </Link>
@@ -630,14 +582,14 @@ const Shop = () => {
 
               {/* Quick Links */}
               <div className="space-y-6 sm:space-y-8">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-stone">
                   Quick Links
                 </h4>
-                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-rhode-text/70">
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-stone/70">
                   <li>
                     <Link
                       to="/shop"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Shop
                     </Link>
@@ -645,7 +597,7 @@ const Shop = () => {
                   <li>
                     <Link
                       to="/about"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       About
                     </Link>
@@ -653,7 +605,7 @@ const Shop = () => {
                   <li>
                     <Link
                       to="/contact"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Contact
                     </Link>
@@ -661,7 +613,7 @@ const Shop = () => {
                   <li>
                     <Link
                       to="/faq"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       FAQ
                     </Link>
@@ -671,14 +623,14 @@ const Shop = () => {
 
               {/* Customer Care */}
               <div className="space-y-6 sm:space-y-8">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-rhode-text">
+                <h4 className="text-lg sm:text-xl md:text-2xl font-medium text-stone">
                   Customer Care
                 </h4>
-                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-rhode-text/70">
+                <ul className="space-y-3 sm:space-y-4 text-base sm:text-lg md:text-xl text-stone/70">
                   <li>
                     <Link
                       to="/privacy"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Privacy Policy
                     </Link>
@@ -686,7 +638,7 @@ const Shop = () => {
                   <li>
                     <Link
                       to="/terms"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Terms of Service
                     </Link>
@@ -694,7 +646,7 @@ const Shop = () => {
                   <li>
                     <Link
                       to="/accessibility"
-                      className="hover:text-rhode-text transition-colors"
+                      className="hover:text-stone transition-colors"
                     >
                       Accessibility
                     </Link>
@@ -704,14 +656,14 @@ const Shop = () => {
             </div>
 
             {/* Bottom Footer */}
-            <div className="pt-8 sm:pt-10 border-t border-rhode-text/10 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
-              <p className="text-sm sm:text-base md:text-lg text-rhode-text/60">
+            <div className="pt-8 sm:pt-10 border-t border-stone/10 flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-8">
+              <p className="text-sm sm:text-base md:text-lg text-stone/60">
                 © 2024 düpp. All rights reserved.
               </p>
               <div className="flex space-x-6 sm:space-x-8">
                 <a
                   href="#"
-                  className="text-rhode-text/60 hover:text-rhode-text transition-colors"
+                  className="text-stone/60 hover:text-stone transition-colors"
                 >
                   <span className="sr-only">Instagram</span>
                   <svg
@@ -724,7 +676,7 @@ const Shop = () => {
                 </a>
                 <a
                   href="#"
-                  className="text-rhode-text/60 hover:text-rhode-text transition-colors"
+                  className="text-stone/60 hover:text-stone transition-colors"
                 >
                   <span className="sr-only">Twitter</span>
                   <svg

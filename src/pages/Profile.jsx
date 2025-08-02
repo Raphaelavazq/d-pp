@@ -162,12 +162,12 @@ const Profile = () => {
 
   if (!currentUser) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rhode-cream to-white">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sand to-white">
         <div className="text-center backdrop-blur-lg bg-white/80 border border-white/20 rounded-3xl shadow-2xl p-12">
-          <h2 className="text-3xl font-chillax text-rhode-text mb-4">
+          <h2 className="text-3xl font-chillax text-stone mb-4">
             Access Denied
           </h2>
-          <p className="text-rhode-text/70 font-[Chillax] text-lg">
+          <p className="text-stone/70 font-[Chillax] text-lg">
             Please log in to view your profile.
           </p>
         </div>
@@ -176,12 +176,12 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rhode-cream to-white py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-sand to-white py-12 px-4">
       {/* Floating background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-rhode-text/5 rounded-full blur-xl animate-pulse"></div>
-        <div className="absolute top-60 right-20 w-24 h-24 bg-rhode-text/10 rounded-full blur-lg animate-pulse delay-1000"></div>
-        <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-rhode-text/3 rounded-full blur-2xl animate-pulse delay-500"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-stone/5 rounded-full blur-xl animate-pulse"></div>
+        <div className="absolute top-60 right-20 w-24 h-24 bg-stone/10 rounded-full blur-lg animate-pulse delay-1000"></div>
+        <div className="absolute bottom-40 left-1/4 w-40 h-40 bg-stone/3 rounded-full blur-2xl animate-pulse delay-500"></div>
       </div>
 
       <div className="max-w-6xl mx-auto">
@@ -190,12 +190,12 @@ const Profile = () => {
           className="backdrop-blur-lg bg-white/80 border border-white/20 rounded-3xl shadow-2xl overflow-hidden"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-rhode-text to-rhode-text/90 px-8 py-12 text-white relative overflow-hidden">
+          <div className="bg-gradient-to-r from-stone to-stone/90 px-8 py-12 text-white relative overflow-hidden">
             <div className="absolute inset-0 bg-black/20"></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div>
                 <h1 className="text-4xl font-chillax mb-2">Profile Settings</h1>
-                <p className="text-rhode-cream/80 font-[Chillax] text-lg">
+                <p className="text-sand/80 font-[Chillax] text-lg">
                   Manage your account and preferences
                 </p>
               </div>
@@ -210,11 +210,11 @@ const Profile = () => {
 
             {/* Floating elements */}
             <div className="absolute top-6 right-6 w-16 h-16 bg-white/10 rounded-full blur-sm animate-float"></div>
-            <div className="absolute bottom-4 right-1/4 w-10 h-10 bg-rhode-cream/20 rounded-full blur-sm animate-float-delayed"></div>
+            <div className="absolute bottom-4 right-1/4 w-10 h-10 bg-sand/20 rounded-full blur-sm animate-float-delayed"></div>
           </div>
 
           {/* Navigation Tabs */}
-          <div className="border-b border-rhode-text/10 bg-white/50 backdrop-blur-sm">
+          <div className="border-b border-stone/10 bg-white/50 backdrop-blur-sm">
             <nav className="flex space-x-8 px-8">
               {[
                 {
@@ -238,8 +238,8 @@ const Profile = () => {
                   onClick={() => setActiveTab(tab.id)}
                   className={`flex items-center space-x-2 py-4 px-1 border-b-2 font-[Chillax] font-medium text-sm transition-colors ${
                     activeTab === tab.id
-                      ? "border-rhode-text text-rhode-text"
-                      : "border-transparent text-rhode-text/60 hover:text-rhode-text/80 hover:border-rhode-text/30"
+                      ? "border-stone text-stone"
+                      : "border-transparent text-stone/60 hover:text-stone/80 hover:border-stone/30"
                   }`}
                 >
                   <svg
@@ -307,7 +307,7 @@ const Profile = () => {
                 {/* Profile Picture Section */}
                 <div className="text-center">
                   <div className="relative inline-block">
-                    <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-rhode-text/20 shadow-lg bg-gradient-to-br from-rhode-cream to-white">
+                    <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-stone/20 shadow-lg bg-gradient-to-br from-sand to-white">
                       {imagePreview ? (
                         <img
                           src={imagePreview}
@@ -317,7 +317,7 @@ const Profile = () => {
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
                           <svg
-                            className="w-16 h-16 text-rhode-text/40"
+                            className="w-16 h-16 text-stone/40"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -336,7 +336,7 @@ const Profile = () => {
                     <button
                       type="button"
                       onClick={triggerFileInput}
-                      className="absolute bottom-2 right-2 bg-rhode-text text-white rounded-full p-3 shadow-lg hover:bg-rhode-text/90 transition-all duration-300 hover:scale-110"
+                      className="absolute bottom-2 right-2 bg-stone text-white rounded-full p-3 shadow-lg hover:bg-stone/90 transition-all duration-300 hover:scale-110"
                     >
                       <svg
                         className="w-5 h-5"
@@ -368,14 +368,14 @@ const Profile = () => {
                     className="hidden"
                   />
 
-                  <p className="mt-4 text-sm text-rhode-text/60 font-[Chillax]">
+                  <p className="mt-4 text-sm text-stone/60 font-[Chillax]">
                     Click the camera icon to upload a new photo (max 5MB)
                   </p>
                 </div>
 
                 {/* Personal Information */}
                 <div className="bg-white/50 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-chillax text-rhode-text mb-6 flex items-center space-x-2">
+                  <h2 className="text-2xl font-chillax text-stone mb-6 flex items-center space-x-2">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -394,7 +394,7 @@ const Profile = () => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-rhode-text font-[Chillax] mb-2">
+                      <label className="block text-stone font-[Chillax] mb-2">
                         First Name
                       </label>
                       <input
@@ -402,13 +402,13 @@ const Profile = () => {
                         name="firstName"
                         value={formData.firstName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/50 border border-rhode-text/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-rhode-text/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                        className="w-full px-4 py-3 bg-white/50 border border-stone/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-stone/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
                         placeholder="Enter first name"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-rhode-text font-[Chillax] mb-2">
+                      <label className="block text-stone font-[Chillax] mb-2">
                         Last Name
                       </label>
                       <input
@@ -416,13 +416,13 @@ const Profile = () => {
                         name="lastName"
                         value={formData.lastName}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/50 border border-rhode-text/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-rhode-text/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                        className="w-full px-4 py-3 bg-white/50 border border-stone/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-stone/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
                         placeholder="Enter last name"
                       />
                     </div>
 
                     <div>
-                      <label className="block text-rhode-text font-[Chillax] mb-2">
+                      <label className="block text-stone font-[Chillax] mb-2">
                         Email
                       </label>
                       <input
@@ -430,16 +430,16 @@ const Profile = () => {
                         name="email"
                         value={formData.email}
                         disabled
-                        className="w-full px-4 py-3 bg-gray-100 border border-rhode-text/20 rounded-xl text-rhode-text/60 cursor-not-allowed"
+                        className="w-full px-4 py-3 bg-gray-100 border border-stone/20 rounded-xl text-stone/60 cursor-not-allowed"
                         placeholder="Email address"
                       />
-                      <p className="mt-1 text-xs text-rhode-text/50 font-[Chillax]">
+                      <p className="mt-1 text-xs text-stone/50 font-[Chillax]">
                         Email cannot be changed
                       </p>
                     </div>
 
                     <div>
-                      <label className="block text-rhode-text font-[Chillax] mb-2">
+                      <label className="block text-stone font-[Chillax] mb-2">
                         Phone Number
                       </label>
                       <input
@@ -447,14 +447,14 @@ const Profile = () => {
                         name="phone"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 bg-white/50 border border-rhode-text/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-rhode-text/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+                        className="w-full px-4 py-3 bg-white/50 border border-stone/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-stone/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
                         placeholder="Enter phone number"
                       />
                     </div>
                   </div>
 
                   <div className="mt-6">
-                    <label className="block text-rhode-text font-[Chillax] mb-2">
+                    <label className="block text-stone font-[Chillax] mb-2">
                       Bio
                     </label>
                     <textarea
@@ -462,7 +462,7 @@ const Profile = () => {
                       value={formData.bio}
                       onChange={handleInputChange}
                       rows={4}
-                      className="w-full px-4 py-3 bg-white/50 border border-rhode-text/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-rhode-text/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm resize-none"
+                      className="w-full px-4 py-3 bg-white/50 border border-stone/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-stone/30 focus:border-transparent transition-all duration-300 backdrop-blur-sm resize-none"
                       placeholder="Tell us about yourself..."
                     />
                   </div>
@@ -472,7 +472,7 @@ const Profile = () => {
                 <div className="flex justify-end space-x-4">
                   <button
                     type="button"
-                    className="px-6 py-3 border border-rhode-text/20 text-rhode-text rounded-xl font-[Chillax] font-medium hover:bg-rhode-text/5 transition-all duration-300 backdrop-blur-sm"
+                    className="px-6 py-3 border border-stone/20 text-stone rounded-xl font-[Chillax] font-medium hover:bg-stone/5 transition-all duration-300 backdrop-blur-sm"
                   >
                     Cancel
                   </button>
@@ -480,7 +480,7 @@ const Profile = () => {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="px-6 py-3 bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white rounded-xl font-[Chillax] font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
+                    className="px-6 py-3 bg-gradient-to-r from-stone to-stone/90 text-white rounded-xl font-[Chillax] font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
                   >
                     {loading ? "Updating..." : "Update Profile"}
                   </button>
@@ -492,7 +492,7 @@ const Profile = () => {
             {activeTab === "preferences" && (
               <div className="space-y-8">
                 <div className="bg-white/50 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-chillax text-rhode-text mb-6 flex items-center space-x-2">
+                  <h2 className="text-2xl font-chillax text-stone mb-6 flex items-center space-x-2">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -510,12 +510,12 @@ const Profile = () => {
                   </h2>
 
                   <div className="space-y-6">
-                    <div className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-rhode-text/10">
+                    <div className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-stone/10">
                       <div>
-                        <h3 className="font-[Chillax] font-medium text-rhode-text">
+                        <h3 className="font-[Chillax] font-medium text-stone">
                           Newsletter Subscription
                         </h3>
-                        <p className="text-sm text-rhode-text/60 font-[Chillax]">
+                        <p className="text-sm text-stone/60 font-[Chillax]">
                           Receive our weekly newsletter with updates and tips
                         </p>
                       </div>
@@ -527,16 +527,16 @@ const Profile = () => {
                           onChange={handleInputChange}
                           className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-rhode-text/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rhode-text"></div>
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-stone/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-stone"></div>
                       </label>
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-rhode-text/10">
+                    <div className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-stone/10">
                       <div>
-                        <h3 className="font-[Chillax] font-medium text-rhode-text">
+                        <h3 className="font-[Chillax] font-medium text-stone">
                           Promotional Emails
                         </h3>
-                        <p className="text-sm text-rhode-text/60 font-[Chillax]">
+                        <p className="text-sm text-stone/60 font-[Chillax]">
                           Get notified about sales and special offers
                         </p>
                       </div>
@@ -548,16 +548,16 @@ const Profile = () => {
                           onChange={handleInputChange}
                           className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-rhode-text/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rhode-text"></div>
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-stone/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-stone"></div>
                       </label>
                     </div>
 
-                    <div className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-rhode-text/10">
+                    <div className="flex items-center justify-between p-4 bg-white/50 rounded-xl border border-stone/10">
                       <div>
-                        <h3 className="font-[Chillax] font-medium text-rhode-text">
+                        <h3 className="font-[Chillax] font-medium text-stone">
                           Product Recommendations
                         </h3>
-                        <p className="text-sm text-rhode-text/60 font-[Chillax]">
+                        <p className="text-sm text-stone/60 font-[Chillax]">
                           Receive personalized product suggestions
                         </p>
                       </div>
@@ -569,7 +569,7 @@ const Profile = () => {
                           onChange={handleInputChange}
                           className="sr-only peer"
                         />
-                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-rhode-text/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rhode-text"></div>
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-stone/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-stone"></div>
                       </label>
                     </div>
                   </div>
@@ -579,7 +579,7 @@ const Profile = () => {
                   <button
                     onClick={handleSubmit}
                     disabled={loading}
-                    className="px-6 py-3 bg-gradient-to-r from-rhode-text to-rhode-text/90 text-white rounded-xl font-[Chillax] font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
+                    className="px-6 py-3 bg-gradient-to-r from-stone to-stone/90 text-white rounded-xl font-[Chillax] font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
                   >
                     {loading ? "Saving..." : "Save Preferences"}
                   </button>
@@ -591,7 +591,7 @@ const Profile = () => {
             {activeTab === "security" && (
               <div className="space-y-8">
                 <div className="bg-white/50 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-chillax text-rhode-text mb-6 flex items-center space-x-2">
+                  <h2 className="text-2xl font-chillax text-stone mb-6 flex items-center space-x-2">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -609,11 +609,11 @@ const Profile = () => {
                   </h2>
 
                   <div className="space-y-6">
-                    <div className="p-4 bg-white/50 rounded-xl border border-rhode-text/10">
-                      <h3 className="font-[Chillax] font-medium text-rhode-text mb-2">
+                    <div className="p-4 bg-white/50 rounded-xl border border-stone/10">
+                      <h3 className="font-[Chillax] font-medium text-stone mb-2">
                         Account Information
                       </h3>
-                      <div className="space-y-2 text-sm text-rhode-text/70">
+                      <div className="space-y-2 text-sm text-stone/70">
                         <p>
                           <span className="font-medium">Email:</span>{" "}
                           {currentUser?.email}
@@ -633,8 +633,8 @@ const Profile = () => {
                       </div>
                     </div>
 
-                    <div className="p-4 bg-white/50 rounded-xl border border-rhode-text/10">
-                      <h3 className="font-[Chillax] font-medium text-rhode-text mb-4">
+                    <div className="p-4 bg-white/50 rounded-xl border border-stone/10">
+                      <h3 className="font-[Chillax] font-medium text-stone mb-4">
                         Password & Authentication
                       </h3>
                       <Button

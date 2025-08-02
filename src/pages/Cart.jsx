@@ -11,20 +11,20 @@ const Cart = () => {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h1
             className="text-6xl md:text-8xl font-normal text-charcoal mb-8"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="font-chillax"
           >
             Cart
           </h1>
           <p
             className="text-xl text-charcoal/70 font-light mb-8"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="font-chillax"
           >
             Your cart is empty
           </p>
           <Link
             to="/shop"
             className="inline-block bg-charcoal text-white px-8 py-3 rounded-full font-medium hover:bg-charcoal/90 transition-colors duration-200"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="font-chillax"
           >
             Continue Shopping
           </Link>
@@ -40,14 +40,14 @@ const Cart = () => {
         <div className="flex items-center justify-between mb-12">
           <h1
             className="text-4xl md:text-6xl font-normal text-charcoal"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="font-chillax"
           >
             Cart ({items.length})
           </h1>
           <button
             onClick={clearCart}
             className="text-charcoal/70 hover:text-charcoal font-light underline"
-            style={{ fontFamily: "Chillax, sans-serif" }}
+            className="font-chillax"
           >
             Clear all
           </button>
@@ -70,7 +70,7 @@ const Cart = () => {
               <div className="flex-1">
                 <h3
                   className="text-lg font-medium text-charcoal mb-1"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="font-chillax"
                 >
                   {item.name}
                 </h3>
@@ -78,12 +78,12 @@ const Cart = () => {
                 {/* Size & Color */}
                 <div className="flex gap-4 text-sm text-charcoal/70 mb-2">
                   {item.selectedSize && (
-                    <span style={{ fontFamily: "Chillax, sans-serif" }}>
+                    <span className="font-chillax">
                       Size: {item.selectedSize}
                     </span>
                   )}
                   {item.selectedColor && (
-                    <span style={{ fontFamily: "Chillax, sans-serif" }}>
+                    <span className="font-chillax">
                       Color: {item.selectedColor}
                     </span>
                   )}
@@ -92,7 +92,7 @@ const Cart = () => {
                 {/* Price */}
                 <p
                   className="text-lg font-medium text-charcoal mb-3"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
+                  className="font-chillax"
                 >
                   €{item.price.toFixed(2)}
                 </p>
@@ -108,7 +108,7 @@ const Cart = () => {
                     </button>
                     <span
                       className="text-charcoal font-medium"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
+                      className="font-chillax"
                     >
                       {item.quantity}
                     </span>
@@ -123,7 +123,7 @@ const Cart = () => {
                   <button
                     onClick={() => removeFromCart(item.id, item.selectedSize, item.selectedColor)}
                     className="text-charcoal/70 hover:text-charcoal font-light underline text-sm"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    className="font-chillax"
                   >
                     Remove
                   </button>
@@ -138,13 +138,13 @@ const Cart = () => {
           <div className="flex justify-between items-center mb-8">
             <span
               className="text-xl font-medium text-charcoal"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-chillax"
             >
               Total
             </span>
             <span
               className="text-2xl font-medium text-charcoal"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-chillax"
             >
               €{getTotalPrice().toFixed(2)}
             </span>
@@ -154,14 +154,14 @@ const Cart = () => {
             <Link
               to="/shop"
               className="flex-1 text-center border border-charcoal text-charcoal px-8 py-4 rounded-full font-medium hover:bg-charcoal hover:text-white transition-colors duration-200"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-chillax"
             >
               Continue Shopping
             </Link>
             <Link
               to="/checkout"
               className="flex-1 text-center bg-charcoal text-white px-8 py-4 rounded-full font-medium hover:bg-charcoal/90 transition-colors duration-200"
-              style={{ fontFamily: "Chillax, sans-serif" }}
+              className="font-chillax"
             >
               CHECKOUT - €{getTotalPrice().toFixed(2)}
             </Link>

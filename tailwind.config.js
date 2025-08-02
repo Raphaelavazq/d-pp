@@ -5,19 +5,21 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Existing brand colors
+        // Core brand colors
         cream: "#F7FFBB",
         taupe: "#D6C5C5",
         bluegray: "#B0BBC1",
         charcoal: "#3A3A3A",
 
-        // Rhode-inspired color palette
-        "rhode-cream": "#F1F0ED",
-        "rhode-dark": "#1A1A1A",
-        "rhode-text": "#68655F",
-        "rhode-light": "#F1F0ED",
+        // Proper semantic color system with exact original colors
+        stone: "#68655F", // Main text color (was rhode-text, editorial-text)
+        coal: "#2A2926", // Dark accents/hover states (was rhode-dark)
+        sand: "#F1F0ED", // Light text on dark backgrounds & light backgrounds (was rhode-light, rhode-cream)
+        obsidian: "#1A1A1A",
+        pearl: "#F1F0ED",
+        ash: "#A8A5A0",
 
-        // New design system colors
+        // Semantic design system colors
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -78,14 +80,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        // Primary font family - Chillax only
-        primary: [
-          "Chillax",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "sans-serif",
-        ],
+        // Primary typeface system
         chillax: ["Chillax", "sans-serif"],
         // Updated sans with Chillax as primary
         sans: [
@@ -96,6 +91,28 @@ export default {
           "system-ui",
           "sans-serif",
         ],
+      },
+      fontSize: {
+        // Six editorial typography styles
+        caption: ["0.75rem", { lineHeight: "1.5", fontWeight: "300" }],
+        body: ["0.875rem", { lineHeight: "1.6", fontWeight: "400" }],
+        text: ["1rem", { lineHeight: "1.7", fontWeight: "400" }],
+        lead: ["1.125rem", { lineHeight: "1.6", fontWeight: "500" }],
+        heading: ["1.25rem", { lineHeight: "1.5", fontWeight: "500" }],
+        title: ["1.5rem", { lineHeight: "1.4", fontWeight: "600" }],
+        display: ["1.875rem", { lineHeight: "1.3", fontWeight: "600" }],
+        hero: ["2.25rem", { lineHeight: "1.2", fontWeight: "700" }],
+        // Standard scale preserved
+        xs: "0.75rem",
+        sm: "0.875rem",
+        base: "1rem",
+        lg: "1.125rem",
+        xl: "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem",
+        "6xl": "3.75rem",
       },
       fontWeight: {
         thin: "200",

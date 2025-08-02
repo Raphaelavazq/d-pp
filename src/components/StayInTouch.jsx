@@ -50,18 +50,12 @@ const StayInTouch = ({ className = "" }) => {
   return (
     <section ref={sectionRef} className={`py-20 bg-white ${className}`}>
       <div className="max-w-6xl mx-auto px-8">
-        <div className="bg-rhode-cream rounded-3xl p-12 lg:p-16 shadow-sm text-center">
-          <h2
-            className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+        <div className="bg-sand rounded-3xl p-12 lg:p-16 shadow-sm text-center">
+          <h2 className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-stone leading-tight font-chillax">
             Stay In Touch
           </h2>
 
-          <p
-            className="text-lg  md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto text-rhode-text font-medium"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <p className="text-lg  md:text-xl mb-12 leading-relaxed max-w-2xl mx-auto text-stone font-medium font-chillax">
             Be the first to know about new launches, exclusive offers, and
             skincare tips from our experts.
           </p>
@@ -77,8 +71,7 @@ const StayInTouch = ({ className = "" }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 px-6 py-4 rounded-none border-b-2 border-rhode-text bg-transparent placeholder-rhode-text focus:outline-none focus:border-rhode-dark text-lg transition-all duration-200 text-rhode-dark"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                className="flex-1 px-6 py-4 rounded-none border-b-2 border-stone bg-transparent placeholder-stone focus:outline-none focus:border-coal text-lg transition-all duration-200 text-coal font-chillax"
               />
               <Button
                 type="submit"
@@ -90,21 +83,15 @@ const StayInTouch = ({ className = "" }) => {
             </form>
           ) : (
             <div className="max-w-lg mx-auto mb-8">
-              <div className="bg-rhode-light border border-rhode-text py-4 px-8 rounded-lg">
-                <p
-                  className="text-rhode-dark font-medium"
-                  style={{ fontFamily: "Chillax, sans-serif" }}
-                >
+              <div className="bg-sand border border-stone py-4 px-8 rounded-lg">
+                <p className="text-coal font-medium font-chillax">
                   ✓ Thank you for subscribing! Welcome to the düpp community.
                 </p>
               </div>
             </div>
           )}
 
-          <p
-            className="text-sm text-rhode-text font-light"
-            style={{ fontFamily: "Chillax, sans-serif" }}
-          >
+          <p className="text-sm text-stone font-light font-chillax">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </div>

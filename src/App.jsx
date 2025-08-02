@@ -8,7 +8,7 @@ import {
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { CartProvider } from "./context/CartContext";
-import { AuthProvider } from "./contexts/AuthContext";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { FirestoreProvider } from "./contexts/FirestoreContext";
 import { usePasswordProtection } from "./hooks/usePasswordProtection";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -38,8 +38,8 @@ const Profile = lazy(() => import("./pages/Profile"));
 const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 
-// Initialize Stripe (use test key for demo)
-const stripePromise = loadStripe("pk_test_demo_key");
+// Initialize Stripe (use environment variable)
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 // Loading component for lazy loaded routes
 const PageLoader = () => (

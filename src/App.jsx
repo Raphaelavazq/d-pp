@@ -44,12 +44,15 @@ function Layout({ children }) {
   const location = useLocation();
   const isAuthPage = ["/auth", "/login", "/signup"].includes(location.pathname);
   const isHomePage = location.pathname === "/";
+  const hasInlineFooter =
+    ["/about", "/contact", "/shop"].includes(location.pathname) ||
+    location.pathname.startsWith("/shop/");
 
   return (
     <div className="min-h-screen bg-white">
       {!isAuthPage && <Navbar />}
       <main>{children}</main>
-      {!isAuthPage && !isHomePage && <Footer />}
+      {!isAuthPage && !isHomePage && !hasInlineFooter && <Footer />}
       <AdminAccess />
     </div>
   );

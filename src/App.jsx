@@ -46,7 +46,7 @@ const PageLoader = () => (
   <div className="min-h-screen bg-white flex items-center justify-center">
     <div className="text-center">
       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-charcoal mx-auto mb-3"></div>
-      <p 
+      <p
         className="text-charcoal/70 text-sm"
         style={{ fontFamily: "Chillax, sans-serif" }}
       >

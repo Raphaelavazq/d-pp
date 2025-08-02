@@ -114,8 +114,8 @@ export class DemoStripeService {
         firestoreId: orderRef.id,
       };
     } catch (error) {
-      console.error("Error creating demo order:", error);
-      throw error;
+      // In production, log to monitoring service instead
+      throw new Error(`Failed to create order: ${error.message}`);
     }
   }
 

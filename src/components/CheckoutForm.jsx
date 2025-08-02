@@ -10,7 +10,7 @@ import { useAuth } from "../hooks/useAuth";
 import { httpsCallable } from "firebase/functions";
 import { functions } from "../config/firebase";
 
-const CheckoutForm = ({ clientSecret, onSuccess, onError }) => {
+const CheckoutForm = ({ onSuccess, onError }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { items, getTotalPrice, clearCart } = useCart();

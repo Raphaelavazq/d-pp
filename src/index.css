@@ -1,36 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Chillax:wght@200..800&display=swap");
+/* Chillax Font Family - Professional Typography */
+@import url("https://api.fontshare.com/v2/css?f[]=chillax@200,300,400,500,600,700&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Swiss";
-  src: url("https://www.rhodeskin.com/cdn/shop/t/1030/assets/195b0c1b-165f-4bd1-b23f-cbb6a9a3aa24.woff2?v=83533615405617532041753302970");
-  font-weight: normal;
-  font-style: normal;
-}
+:root {
+  /* Chillax Font Family */
+  --font-primary: "Chillax", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
 
-@font-face {
-  font-family: "Swiss";
-  src: url("https://www.rhodeskin.com/cdn/shop/t/1030/assets/60a6c625-19b1-4df2-8635-49ba40161273.woff2?v=102607975385634896091753302970");
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Rektorat Heavy";
-  src: url("https://www.rhodeskin.com/cdn/shop/t/1030/assets/NNRektoratWeb-Heavy.woff2?v=64959517310183983311753302974");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Aglonema";
-  src: url("https://www.rhodeskin.com/cdn/shop/t/1030/assets/AglonemaCompact.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
+  /* Professional Typography Scale */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+  --font-size-6xl: 3.75rem; /* 60px */
 }
 
 @layer base {
@@ -123,23 +113,13 @@
       "rlig" 1,
       "calt" 1;
     margin: 0;
-    font-family:
-      "Swiss",
-      "Chillax",
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      "Roboto",
-      "Oxygen",
-      "Ubuntu",
-      "Cantarell",
-      "Open Sans",
-      "Helvetica Neue",
-      sans-serif;
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
   }
 }
 
@@ -253,31 +233,176 @@
 }
 
 /* Typography improvements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Chillax", sans-serif;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.025em;
-}
+/* Editorial Typography System */
 
-p {
-  font-family: "Chillax", sans-serif;
-  font-weight: 300;
+/* Base Typography */
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-base);
   line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
-/* Button improvements */
-button,
-.btn {
-  font-family: "Chillax", sans-serif;
+/* Headings - Editorial Style */
+h1 {
+  font-family: var(--font-primary);
+  font-weight: 600;
+  font-size: var(--font-size-5xl);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: var(--font-primary);
   font-weight: 500;
+  font-size: var(--font-size-4xl);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-3xl);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-2xl);
+  line-height: 1.4;
+  margin-bottom: 0.875rem;
+}
+
+h5 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-xl);
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+h6 {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+/* Body Text - Editorial */
+p {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Professional Text Variants */
+.text-lead {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-xl);
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+}
+
+.text-small {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-xs);
+  line-height: 1.4;
+  color: #6b7280;
+}
+
+/* Editorial Emphasis */
+.text-emphasis {
+  font-family: var(--font-primary);
+  font-weight: 500;
+}
+
+.text-strong {
+  font-family: var(--font-primary);
+  font-weight: 600;
+}
+
+.text-light {
+  font-family: var(--font-primary);
+  font-weight: 300;
+}
+
+.text-extralight {
+  font-family: var(--font-primary);
+  font-weight: 200;
+}
+
+/* Professional UI Elements */
+/* Buttons */
+.btn,
+button {
+  font-family: var(--font-primary);
+  font-weight: 600; /* semibold for sophistication */
+  font-size: var(--font-size-sm);
   letter-spacing: 0.025em;
   transition: all 0.3s ease;
+}
+
+/* Navigation */
+.nav-link {
+  font-family: var(--font-primary);
+  font-weight: 600; /* semibold for sophistication */
+  font-size: var(--font-size-base);
+  letter-spacing: -0.005em;
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: var(--font-size-base);
+}
+
+/* Labels */
+label {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: var(--font-size-4xl);
+  }
+  h2 {
+    font-size: var(--font-size-3xl);
+  }
+  h3 {
+    font-size: var(--font-size-2xl);
+  }
+  h4 {
+    font-size: var(--font-size-xl);
+  }
+
+  .text-lead {
+    font-size: var(--font-size-lg);
+  }
 }
 
 /* Selection styling */

@@ -107,7 +107,7 @@ const Values = ({
       <div className="text-center mb-16">
         <h2
           className="text-4xl md:text-5xl font-medium mb-6 tracking-tight text-rhode-text leading-tight"
-          style={{ fontFamily: "Aglonema, serif" }}
+          style={{ fontFamily: "Chillax, sans-serif" }}
         >
           {title}
         </h2>
@@ -127,7 +127,7 @@ const Values = ({
             </div>
             <h3
               className="text-xl font-medium mb-3 text-rhode-dark"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               {value.title}
             </h3>

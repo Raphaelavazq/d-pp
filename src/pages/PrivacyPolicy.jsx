@@ -1,6 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Button from "../components/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -289,9 +290,13 @@ const PrivacyPolicy = () => {
           <p className="text-white opacity-90 mb-8 max-w-xl mx-auto">
             We're here to help. Reach out to our privacy team anytime.
           </p>
-          <button className="bg-[#f6febb] text-[#b2bbc1] px-8 py-4 rounded-full font-semibold hover:bg-white transition-all duration-300 transform hover:scale-105">
+          <Button
+            variant="primary"
+            size="large"
+            className="bg-[#f6febb] text-[#b2bbc1] rounded-full hover:bg-white transform hover:scale-105"
+          >
             Contact Privacy Team
-          </button>
+          </Button>
         </div>
       </section>
     </div>

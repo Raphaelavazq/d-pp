@@ -31,9 +31,9 @@ export const designSystem = {
   // Typography Scale
   typography: {
     fonts: {
-      primary: "Aglonema, serif",
+      primary: "Chillax, sans-serif",
       secondary: "Chillax, sans-serif",
-      body: "Inter, sans-serif",
+      body: "Chillax, sans-serif",
     },
     sizes: {
       xs: "0.75rem", // 12px

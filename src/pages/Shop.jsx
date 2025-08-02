@@ -147,17 +147,17 @@ const Shop = () => {
               <div className="text-center lg:text-left space-y-8">
                 <h1
                   className="text-4xl md:text-5xl lg:text-6xl font-bold text-rhode-dark leading-tight tracking-tight"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   {categoryInfo ? categoryInfo.name : "Shop"}
-                  <span className="block text-transparent bg-gradient-to-r from-rhode-text to-charcoal bg-clip-text text-2xl md:text-3xl mt-2">
+                  <span className="block text-transparent bg-gradient-to-r from-rhode-text to-charcoal bg-clip-text text-2xl md:text-3xl mt-2 tracking-wider">
                     Collection
                   </span>
                 </h1>
 
                 <p
                   className="text-xl md:text-2xl text-rhode-text leading-relaxed max-w-2xl font-normal"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   {categoryInfo?.description ||
                     "Discover our premium collection of carefully curated skincare essentials"}
@@ -216,7 +216,7 @@ const Shop = () => {
             <div className="mb-8">
               <h3
                 className="text-xl font-medium mb-4 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Categories
               </h3>
@@ -342,7 +342,7 @@ const Shop = () => {
                 </div>
                 <h3
                   className="text-xl font-medium text-rhode-dark mb-2"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   No products found
                 </h3>

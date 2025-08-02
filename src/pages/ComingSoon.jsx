@@ -54,7 +54,7 @@ const ComingSoon = ({ onPasswordSubmit }) => {
             />
             <p
               className="text-lg sm:text-xl md:text-2xl text-white/80 mb-2 px-4"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Something Beautiful is Coming
             </p>
@@ -64,7 +64,7 @@ const ComingSoon = ({ onPasswordSubmit }) => {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 mx-4 sm:mx-0">
             <h2
               className="text-xl sm:text-2xl font-medium text-white mb-4 sm:mb-6 text-center"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Early Access
             </h2>

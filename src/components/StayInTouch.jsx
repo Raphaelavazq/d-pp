@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Button from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +53,7 @@ const StayInTouch = ({ className = "" }) => {
         <div className="bg-rhode-cream rounded-3xl p-12 lg:p-16 shadow-sm text-center">
           <h2
             className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-            style={{ fontFamily: "Aglonema, serif" }}
+            style={{ fontFamily: "Chillax, sans-serif" }}
           >
             Stay In Touch
           </h2>
@@ -79,13 +80,13 @@ const StayInTouch = ({ className = "" }) => {
                 className="flex-1 px-6 py-4 rounded-none border-b-2 border-rhode-text bg-transparent placeholder-rhode-text focus:outline-none focus:border-rhode-dark text-lg transition-all duration-200 text-rhode-dark"
                 style={{ fontFamily: "Chillax, sans-serif" }}
               />
-              <button
+              <Button
                 type="submit"
-                className="bg-charcoal text-white text-chillax-bold font-medium py-4 px-8 rounded-none uppercase tracking-wider text-sm hover:opacity-80 transition-all duration-300 whitespace-nowrap"
-                style={{ fontFamily: "Chillax, sans-serif" }}
+                variant="dark"
+                className="py-4 px-8 rounded-none uppercase tracking-wider text-sm whitespace-nowrap"
               >
                 Subscribe
-              </button>
+              </Button>
             </form>
           ) : (
             <div className="max-w-lg mx-auto mb-8">

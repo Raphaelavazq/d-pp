@@ -159,17 +159,17 @@ const Impact = () => {
           <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-8 lg:p-16 shadow-2xl border border-white/20 text-center">
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-rhode-dark leading-tight tracking-tight mb-6"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Our
-              <span className="block text-transparent bg-gradient-to-r from-green-600 to-rhode-text bg-clip-text">
+              <span className="block text-transparent bg-gradient-to-r from-green-600 to-rhode-text bg-clip-text tracking-wider">
                 Impact
               </span>
             </h1>
 
             <p
               className="text-xl md:text-2xl text-rhode-text leading-relaxed max-w-3xl mx-auto font-normal mb-8"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Making a positive difference for our planet, one product at a
               time.
@@ -198,7 +198,7 @@ const Impact = () => {
                 </div>
                 <h3
                   className="text-2xl font-bold text-green-700 mb-2"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   Carbon Neutral
                 </h3>
@@ -220,7 +220,7 @@ const Impact = () => {
           <div className="text-center mb-16">
             <h2
               className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Impact by Numbers
             </h2>
@@ -257,7 +257,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-lg font-medium text-green-800 mb-1"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Trees Planted
               </h3>
@@ -293,7 +293,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-lg font-medium text-blue-800 mb-1"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Plastic Avoided
               </h3>
@@ -329,7 +329,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-lg font-medium text-purple-800 mb-1"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 CO₂ Offset
               </h3>
@@ -365,7 +365,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-lg font-medium text-cyan-800 mb-1"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Water Saved
               </h3>
@@ -389,7 +389,7 @@ const Impact = () => {
           <div className="text-center mb-16">
             <h2
               className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Our Initiatives
             </h2>
@@ -423,7 +423,7 @@ const Impact = () => {
                   <div>
                     <h3
                       className="text-xl font-medium mb-2 text-rhode-dark"
-                      style={{ fontFamily: "Aglonema, serif" }}
+                      style={{ fontFamily: "Chillax, sans-serif" }}
                     >
                       Reforestation Program
                     </h3>
@@ -459,7 +459,7 @@ const Impact = () => {
                   <div>
                     <h3
                       className="text-xl font-medium mb-2 text-rhode-dark"
-                      style={{ fontFamily: "Aglonema, serif" }}
+                      style={{ fontFamily: "Chillax, sans-serif" }}
                     >
                       Zero Waste Packaging
                     </h3>
@@ -495,7 +495,7 @@ const Impact = () => {
                   <div>
                     <h3
                       className="text-xl font-medium mb-2 text-rhode-dark"
-                      style={{ fontFamily: "Aglonema, serif" }}
+                      style={{ fontFamily: "Chillax, sans-serif" }}
                     >
                       Renewable Energy
                     </h3>
@@ -515,7 +515,7 @@ const Impact = () => {
               <div className="bg-gradient-to-br from-green-400 to-blue-500 rounded-3xl p-8 text-white text-center">
                 <h3
                   className="text-2xl font-bold mb-4"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   Join Our Mission
                 </h3>
@@ -544,7 +544,7 @@ const Impact = () => {
           <div className="text-center mb-16">
             <h2
               className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Our Commitments
             </h2>
@@ -575,7 +575,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-xl font-medium mb-4 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 2030 Goals
               </h3>
@@ -608,7 +608,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-xl font-medium mb-4 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Certifications
               </h3>
@@ -641,7 +641,7 @@ const Impact = () => {
               </div>
               <h3
                 className="text-xl font-medium mb-4 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Community
               </h3>

@@ -186,28 +186,28 @@ export default function Home() {
                 <div ref={heroTextRef} className="space-y-4">
                   <h1
                     className="text-4xl md:text-5xl lg:text-6xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
-                    soft, simple
+                    Soft, Simple
                     <span
                       className="block text-4xl md:text-5xl lg:text-6xl font-medium text-rhode-text leading-tight"
                       style={{
-                        fontFamily: "Aglonema, serif",
+                        fontFamily: "Chillax, sans-serif",
                       }}
                     >
-                      and sensibly priced
+                      and Sensibly Priced
                     </span>
                   </h1>
                 </div>
 
                 <div ref={heroSubtitleRef} className="space-y-3">
                   <p
-                    className="text-lg md:text-xl text-rhode-text leading-relaxed max-w-2xl font-normal"
+                    className="text-lg md:text-xl text-rhode-text  max-w-2xl font-normal"
                     style={{
                       fontFamily: designSystem.typography.fonts.secondary,
                     }}
                   >
-                    Discover our curated collection of skincare essentials that
+                    Discover our curated collection of essentials that
                     blend luxury with everyday simplicity.
                   </p>
                 </div>
@@ -263,8 +263,7 @@ export default function Home() {
       {/* Featured Products Carousel */}
       <Carousel />
 
-      {/* Stay In Touch */}
-      <StayInTouch />
+     
 
       {/* Enhanced Brand Story Section */}
       <section className="py-24 bg-white">
@@ -277,7 +276,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <h2
                       className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                      style={{ fontFamily: "Aglonema, serif" }}
+                      style={{ fontFamily: "Chillax, sans-serif" }}
                     >
                       Confident and Effortlessly Cool
                     </h2>
@@ -318,6 +317,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+  
+    {/* Stay In Touch */}
+    <StayInTouch />
     </div>
   );
 }

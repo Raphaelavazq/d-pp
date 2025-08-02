@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import StayInTouch from "../components/StayInTouch";
+import Button from "../components/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -139,17 +140,17 @@ const Contact = () => {
           <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-8 lg:p-16 shadow-2xl border border-white/20 text-center">
             <h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-rhode-dark leading-tight tracking-tight mb-6"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Get in
-              <span className="block text-transparent bg-gradient-to-r from-rhode-text to-charcoal bg-clip-text">
+              <span className="block text-transparent bg-gradient-to-r from-rhode-text to-charcoal bg-clip-text tracking-wider">
                 Touch
               </span>
             </h1>
 
             <p
               className="text-xl md:text-2xl text-rhode-text leading-relaxed max-w-3xl mx-auto font-normal"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               We'd love to hear from you. Send us a message and we'll respond as
               soon as possible.
@@ -199,7 +200,7 @@ const Contact = () => {
               </div>
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Email Us
               </h3>
@@ -229,7 +230,7 @@ const Contact = () => {
               </div>
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Call Us
               </h3>
@@ -265,7 +266,7 @@ const Contact = () => {
               </div>
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Visit Us
               </h3>
@@ -295,7 +296,7 @@ const Contact = () => {
               </div>
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Hours
               </h3>
@@ -320,7 +321,7 @@ const Contact = () => {
             <div className="text-center mb-12">
               <h2
                 className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Send us a Message
               </h2>
@@ -351,7 +352,7 @@ const Contact = () => {
                 </div>
                 <h3
                   className="text-2xl font-medium mb-4 text-rhode-dark"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   Message Sent!
                 </h3>
@@ -450,40 +451,16 @@ const Contact = () => {
                 </div>
 
                 <div className="text-center">
-                  <button
+                  <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="px-8 py-4 bg-rhode-text text-white rounded-full font-medium hover:bg-rhode-dark transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
+                    loading={isSubmitting}
+                    variant="primary"
+                    size="large"
+                    className="rounded-full transform hover:scale-105 shadow-lg hover:shadow-xl"
                   >
-                    {isSubmitting ? (
-                      <span className="flex items-center">
-                        <svg
-                          className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                        >
-                          <circle
-                            className="opacity-25"
-                            cx="12"
-                            cy="12"
-                            r="10"
-                            stroke="currentColor"
-                            strokeWidth="4"
-                          ></circle>
-                          <path
-                            className="opacity-75"
-                            fill="currentColor"
-                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                          ></path>
-                        </svg>
-                        Sending...
-                      </span>
-                    ) : (
-                      "Send Message"
-                    )}
-                  </button>
+                    Send Message
+                  </Button>
                 </div>
               </form>
             )}
@@ -497,7 +474,7 @@ const Contact = () => {
           <div className="text-center mb-16">
             <h2
               className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Frequently Asked Questions
             </h2>
@@ -513,7 +490,7 @@ const Contact = () => {
             <div className="bg-rhode-cream/30 rounded-2xl p-6">
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 How long does shipping take?
               </h3>
@@ -530,7 +507,7 @@ const Contact = () => {
             <div className="bg-rhode-cream/30 rounded-2xl p-6">
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 What is your return policy?
               </h3>
@@ -546,7 +523,7 @@ const Contact = () => {
             <div className="bg-rhode-cream/30 rounded-2xl p-6">
               <h3
                 className="text-lg font-medium mb-2 text-rhode-dark"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Are your products cruelty-free?
               </h3>

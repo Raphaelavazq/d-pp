@@ -65,8 +65,8 @@ export default function Carousel() {
         <div className="bg-rhode-cream rounded-3xl p-12 lg:p-16 shadow-sm">
           <div className="text-center mb-16">
             <h2
-              className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
+              className="text-4xl md:text-5xl font-medium mb-4  text-rhode-text tracking-wider"
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Featured Products
             </h2>

@@ -10,17 +10,14 @@ const Footer = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
             {/* NAVIGATE */}
             <div>
-              <h4
-                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
+              <h4 className="text-xl md:text-xl font-semibold mb-4 tracking-tight text-rhode-text leading-tight">
                 Navigate
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     to="/shop"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Shop
                   </Link>
@@ -28,7 +25,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/about"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Our Story
                   </Link>
@@ -36,7 +33,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/impact"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Impact
                   </Link>
@@ -44,7 +41,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/vlog"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     VLOG
                   </Link>
@@ -54,17 +51,14 @@ const Footer = () => {
 
             {/* OFFICIAL */}
             <div>
-              <h4
-                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
+              <h4 className="text-xl md:text-xl font-semibold mb-4 tracking-tight text-rhode-text leading-tight">
                 Official
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     to="/privacy"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Privacy
                   </Link>
@@ -72,7 +66,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/terms"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Terms
                   </Link>
@@ -80,7 +74,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/accessibility"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Accessibility
                   </Link>
@@ -88,7 +82,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/faq"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     FAQ
                   </Link>
@@ -96,7 +90,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/contact"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Contact
                   </Link>
@@ -106,17 +100,14 @@ const Footer = () => {
 
             {/* SUPPORT */}
             <div>
-              <h4
-                className="text-xl md:text-xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Aglonema, serif" }}
-              >
+              <h4 className="text-xl md:text-xl font-semibold mb-4 tracking-tight text-rhode-text leading-tight">
                 Support
               </h4>
               <ul className="space-y-2">
                 <li>
                   <Link
                     to="/contact"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     We're here M–F 9am – 5pm CET
                   </Link>
@@ -124,7 +115,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/contact"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Drop us a note anytime
                   </Link>
@@ -132,7 +123,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/privacy"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Do Not Sell / Share
                   </Link>
@@ -140,7 +131,7 @@ const Footer = () => {
                 <li>
                   <Link
                     to="/cookie"
-                    className="text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase"
+                    className="text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300"
                   >
                     Cookie Preferences
                   </Link>

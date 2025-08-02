@@ -6,13 +6,13 @@ import { useAuth } from "../hooks/useAuth";
 import { useClickOutside } from "../hooks/useClickOutside";
 import CartDrawer from "./CartDrawer";
 import MobileMenu from "./MobileMenu";
+import Button from "./Button";
 import logoSvg from "../assets/logo.svg";
 
 const navItems = [
   { label: "Shop", to: "/shop" },
   { label: "About", to: "/about" },
   { label: "Impact", to: "/impact" },
-  { label: "Contact", to: "/contact" },
 ];
 
 const Navbar = () => {
@@ -127,10 +127,9 @@ const Navbar = () => {
                     <Link
                       key={item.to}
                       to={item.to}
-                      className={`text-lg font-normal text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 uppercase ${
+                      className={`text-lg font-semibold text-rhode-text leading-relaxed hover:text-rhode-dark transition-all duration-300 ${
                         location.pathname === item.to ? "text-rhode-dark" : ""
                       }`}
-                      style={{ fontFamily: "Aglonema, serif" }}
                     >
                       {item.label}
                     </Link>
@@ -237,13 +236,13 @@ const Navbar = () => {
                   <div className="flex items-center space-x-2">
                     <Link
                       to="/login"
-                      className="px-4 py-2 text-sm text-rhode-text hover:text-rhode-text/80 transition-colors font-medium"
+                      className="px-4 py-2 text-sm text-rhode-text hover:text-rhode-text/80 transition-colors font-semibold"
                     >
                       Sign In
                     </Link>
                     <Link
                       to="/signup"
-                      className="px-6 py-2 text-sm bg-rhode-text text-rhode-light rounded-full hover:bg-rhode-text/90 transition-all duration-300 hover:scale-105 font-medium"
+                      className="px-6 py-2 text-sm bg-rhode-text text-rhode-light rounded-full hover:bg-rhode-text/90 transition-all duration-300 hover:scale-105 font-semibold"
                     >
                       Sign Up
                     </Link>

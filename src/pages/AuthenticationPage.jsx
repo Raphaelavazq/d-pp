@@ -171,7 +171,7 @@ const AuthenticationPage = () => {
           <div className="flex flex-col justify-center items-center h-full">
             <h2
               className="text-4xl font-bold mb-6"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               {!isSignUp ? "New Here?" : "Already Have Account?"}
             </h2>
@@ -197,7 +197,7 @@ const AuthenticationPage = () => {
           <div className="flex flex-col justify-center items-center h-full">
             <h2
               className="text-2xl xl:text-3xl text-rhode-text leading-relaxed max-w-2xl font-normal mb-8 text-center"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Sign In
             </h2>
@@ -290,7 +290,7 @@ const AuthenticationPage = () => {
           <div className="flex flex-col justify-center items-center h-full">
             <h2
               className="text-2xl xl:text-3xl text-rhode-text leading-relaxed max-w-2xl font-normal mb-8 text-center"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Create Account
             </h2>
@@ -449,7 +449,7 @@ const AuthenticationPage = () => {
             <div className="max-w-sm mx-auto text-center">
               <h1
                 className="text-2xl sm:text-3xl font-bold mb-4"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 {isSignUp ? "Create Account" : "Welcome Back"}
               </h1>
@@ -472,7 +472,7 @@ const AuthenticationPage = () => {
             <div className="max-w-sm mx-auto">
               <h2
                 className="text-xl sm:text-2xl text-rhode-text font-normal mb-6 text-center"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 {isSignUp ? "Sign Up" : "Sign In"}
               </h2>

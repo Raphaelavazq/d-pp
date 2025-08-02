@@ -168,12 +168,11 @@ const MobileMenu = ({
                 key={item.to}
                 to={item.to}
                 onClick={handleLinkClick}
-                className={`block text-lg font-medium transition-colors ${
+                className={`block text-lg font-semibold transition-colors ${
                   location.pathname === item.to
                     ? "text-rhode-dark"
                     : "text-gray-700 hover:text-rhode-dark"
                 }`}
-                style={{ fontFamily: "Aglonema, serif" }}
               >
                 {item.label}
               </Link>

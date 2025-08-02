@@ -261,7 +261,7 @@ const ProductDetail2 = () => {
                 <div>
                   <h1
                     className="text-3xl md:text-4xl font-bold text-rhode-dark leading-tight tracking-tight mb-4"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     {product.name}
                   </h1>
@@ -530,7 +530,7 @@ const ProductDetail2 = () => {
                 <div>
                   <h3
                     className="text-xl font-medium mb-4 text-rhode-dark"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     Product Description
                   </h3>
@@ -547,7 +547,7 @@ const ProductDetail2 = () => {
                 <div>
                   <h3
                     className="text-xl font-medium mb-4 text-rhode-dark"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     Key Ingredients
                   </h3>
@@ -564,7 +564,7 @@ const ProductDetail2 = () => {
                 <div>
                   <h3
                     className="text-xl font-medium mb-4 text-rhode-dark"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     How to Use
                   </h3>
@@ -592,7 +592,7 @@ const ProductDetail2 = () => {
             <div className="text-center mb-16">
               <h2
                 className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 You Might Also Like
               </h2>
@@ -618,7 +618,7 @@ const ProductDetail2 = () => {
                     />
                     <h3
                       className="font-medium text-rhode-dark mb-2"
-                      style={{ fontFamily: "Aglonema, serif" }}
+                      style={{ fontFamily: "Chillax, sans-serif" }}
                     >
                       {relatedProduct.name}
                     </h3>

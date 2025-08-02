@@ -135,7 +135,7 @@ export default function CarouselCard({ product, index }) {
                   display: "-webkit-box",
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical",
-                  fontFamily: "Aglonema, serif",
+                  fontFamily: "Chillax, sans-serif",
                 }}
               >
                 {product.name}

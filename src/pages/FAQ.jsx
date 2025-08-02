@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ChevronDown } from "lucide-react";
+import Button from "../components/Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -221,9 +222,13 @@ const FAQ = () => {
             Our team is here to help. Reach out and we'll get back to you within
             24 hours.
           </p>
-          <button className="bg-[#b2bbc1] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#a0a9b0] transition-all duration-300 transform hover:scale-105">
+          <Button
+            variant="neutral"
+            size="large"
+            className="rounded-full transform hover:scale-105"
+          >
             Contact Support
-          </button>
+          </Button>
         </div>
       </section>
     </div>

@@ -225,7 +225,7 @@ const About = () => {
               <div className="text-center lg:text-left space-y-8">
                 <h1
                   className="text-4xl md:text-5xl lg:text-6xl font-bold text-rhode-dark leading-tight tracking-tight"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   About
                   <span className="block text-transparent bg-gradient-to-r from-rhode-text to-charcoal bg-clip-text">
@@ -235,7 +235,7 @@ const About = () => {
 
                 <p
                   className="text-xl md:text-2xl text-rhode-text leading-relaxed max-w-2xl font-normal"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   One of EVERYTHING really GOOD.
                   <span className="block mt-4 text-lg opacity-80">
@@ -308,7 +308,7 @@ const About = () => {
             <div className="text-center mb-16">
               <h2
                 className="text-4xl md:text-5xl font-medium mb-6 tracking-tight text-rhode-text leading-tight"
-                style={{ fontFamily: "Aglonema, serif" }}
+                style={{ fontFamily: "Chillax, sans-serif" }}
               >
                 Our Story
               </h2>
@@ -326,7 +326,7 @@ const About = () => {
               <div className="space-y-6">
                 <h3
                   className="text-2xl font-medium text-rhode-text"
-                  style={{ fontFamily: "Aglonema, serif" }}
+                  style={{ fontFamily: "Chillax, sans-serif" }}
                 >
                   Founded on Authenticity
                 </h3>
@@ -350,7 +350,7 @@ const About = () => {
                 <div className="bg-white/50 p-6 rounded-2xl">
                   <h4
                     className="font-medium text-rhode-dark mb-2"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     Quality First
                   </h4>
@@ -364,7 +364,7 @@ const About = () => {
                 <div className="bg-white/50 p-6 rounded-2xl">
                   <h4
                     className="font-medium text-rhode-dark mb-2"
-                    style={{ fontFamily: "Aglonema, serif" }}
+                    style={{ fontFamily: "Chillax, sans-serif" }}
                   >
                     Sustainable Beauty
                   </h4>
@@ -402,7 +402,7 @@ const About = () => {
           <div className="bg-rhode-cream/50 backdrop-blur-sm rounded-3xl p-12 lg:p-16 shadow-lg border border-white/20">
             <h2
               className="text-3xl md:text-4xl font-medium mb-8 tracking-tight text-rhode-text leading-tight"
-              style={{ fontFamily: "Aglonema, serif" }}
+              style={{ fontFamily: "Chillax, sans-serif" }}
             >
               Our Mission
             </h2>

@@ -78,26 +78,24 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        // Existing fonts
-        chillax: ["Chillax", "sans-serif"],
-        // New professional fonts
-        swiss: ["Swiss", "sans-serif"],
-        rektorat: ["Rektorat Heavy", "sans-serif"],
-        roboto: ["Roboto", "sans-serif"],
-        // Updated sans with priority
-        sans: [
-          "Swiss",
+        // Primary font family - Chillax only
+        primary: [
           "Chillax",
-          "ui-sans-serif",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "sans-serif",
+        ],
+        chillax: ["Chillax", "sans-serif"],
+        // Updated sans with Chillax as primary
+        sans: [
+          "Chillax",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
           "system-ui",
           "sans-serif",
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"',
         ],
-        display: ["Swiss", "Chillax", "system-ui", "sans-serif"],
-        body: ["Swiss", "Chillax", "system-ui", "sans-serif"],
       },
       fontWeight: {
         thin: "200",

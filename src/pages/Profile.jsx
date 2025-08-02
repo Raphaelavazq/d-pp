@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button";
 
 const Profile = () => {
   const { currentUser, updateUserProfile, logout } = useAuth();
@@ -163,7 +164,7 @@ const Profile = () => {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-rhode-cream to-white">
         <div className="text-center backdrop-blur-lg bg-white/80 border border-white/20 rounded-3xl shadow-2xl p-12">
-          <h2 className="text-3xl font-[Aglonema] text-rhode-text mb-4">
+          <h2 className="text-3xl font-chillax text-rhode-text mb-4">
             Access Denied
           </h2>
           <p className="text-rhode-text/70 font-[Chillax] text-lg">
@@ -193,9 +194,7 @@ const Profile = () => {
             <div className="absolute inset-0 bg-black/20"></div>
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between">
               <div>
-                <h1 className="text-4xl font-[Aglonema] mb-2">
-                  Profile Settings
-                </h1>
+                <h1 className="text-4xl font-chillax mb-2">Profile Settings</h1>
                 <p className="text-rhode-cream/80 font-[Chillax] text-lg">
                   Manage your account and preferences
                 </p>
@@ -376,7 +375,7 @@ const Profile = () => {
 
                 {/* Personal Information */}
                 <div className="bg-white/50 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-[Aglonema] text-rhode-text mb-6 flex items-center space-x-2">
+                  <h2 className="text-2xl font-chillax text-rhode-text mb-6 flex items-center space-x-2">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -493,7 +492,7 @@ const Profile = () => {
             {activeTab === "preferences" && (
               <div className="space-y-8">
                 <div className="bg-white/50 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-[Aglonema] text-rhode-text mb-6 flex items-center space-x-2">
+                  <h2 className="text-2xl font-chillax text-rhode-text mb-6 flex items-center space-x-2">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -592,7 +591,7 @@ const Profile = () => {
             {activeTab === "security" && (
               <div className="space-y-8">
                 <div className="bg-white/50 rounded-2xl p-6 backdrop-blur-sm">
-                  <h2 className="text-2xl font-[Aglonema] text-rhode-text mb-6 flex items-center space-x-2">
+                  <h2 className="text-2xl font-chillax text-rhode-text mb-6 flex items-center space-x-2">
                     <svg
                       className="w-6 h-6"
                       fill="none"
@@ -638,9 +637,13 @@ const Profile = () => {
                       <h3 className="font-[Chillax] font-medium text-rhode-text mb-4">
                         Password & Authentication
                       </h3>
-                      <button className="w-full sm:w-auto bg-rhode-text text-white px-6 py-3 rounded-xl font-[Chillax] font-medium hover:bg-rhode-text/90 transition-all duration-300">
+                      <Button
+                        variant="primary"
+                        size="medium"
+                        className="w-full sm:w-auto rounded-xl"
+                      >
                         Change Password
-                      </button>
+                      </Button>
                     </div>
 
                     <div className="p-4 bg-red-50 rounded-xl border border-red-200">
@@ -651,9 +654,13 @@ const Profile = () => {
                         Once you delete your account, there is no going back.
                         Please be certain.
                       </p>
-                      <button className="bg-red-600 text-white px-6 py-2 rounded-xl font-[Chillax] font-medium hover:bg-red-700 transition-all duration-300">
+                      <Button
+                        variant="destructive"
+                        size="medium"
+                        className="rounded-xl"
+                      >
                         Delete Account
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 </div>

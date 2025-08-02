@@ -43,12 +43,13 @@ const stripePromise = loadStripe("pk_test_demo_key");
 function Layout({ children }) {
   const location = useLocation();
   const isAuthPage = ["/auth", "/login", "/signup"].includes(location.pathname);
+  const isHomePage = location.pathname === "/";
 
   return (
     <div className="min-h-screen bg-white">
       {!isAuthPage && <Navbar />}
       <main>{children}</main>
-      {!isAuthPage && <Footer />}
+      {!isAuthPage && !isHomePage && <Footer />}
       <AdminAccess />
     </div>
   );

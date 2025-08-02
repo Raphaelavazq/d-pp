@@ -106,13 +106,17 @@ const Values = ({
     <div className={className}>
       <div className="text-center mb-16">
         <h2
-          className="text-4xl md:text-5xl font-medium mb-6 tracking-tight text-rhode-text leading-tight"
+          className={`text-4xl md:text-5xl font-medium mb-6 tracking-tight leading-tight ${
+            cardStyle === "home" ? "text-rhode-text" : "text-rhode-text"
+          }`}
           style={{ fontFamily: "Chillax, sans-serif" }}
         >
           {title}
         </h2>
         <p
-          className="text-xl text-rhode-text max-w-2xl mx-auto leading-relaxed"
+          className={`text-xl max-w-2xl mx-auto leading-relaxed ${
+            cardStyle === "home" ? "text-rhode-text" : "text-rhode-text"
+          }`}
           style={{ fontFamily: "Chillax, sans-serif" }}
         >
           {subtitle}

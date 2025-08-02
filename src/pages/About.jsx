@@ -18,10 +18,10 @@ const About = () => {
   // Custom values for About page
   const aboutValues = [
     {
-      id: "honest-care",
-      title: "Honest Care",
+      id: "authentic-self",
+      title: "Authentic Self",
       description:
-        "We care about your skin and the planet, making choices that benefit both",
+        "We believe in empowering you to be unapologetically yourself, whatever your style or vibe",
       icon: (
         <svg
           className="w-8 h-8 text-rhode-text"
@@ -39,9 +39,10 @@ const About = () => {
       ),
     },
     {
-      id: "simple-power",
-      title: "Simple Power",
-      description: "Powerful results through simple, effective formulations",
+      id: "powerful-babes",
+      title: "Powerful Babes",
+      description:
+        "Promoting confident, powerful women across the globe who dream big and achieve bigger",
       icon: (
         <svg
           className="w-8 h-8 text-rhode-text"
@@ -59,10 +60,10 @@ const About = () => {
       ),
     },
     {
-      id: "proven-quality",
-      title: "Proven Quality",
+      id: "affordable-quality",
+      title: "Affordable Quality",
       description:
-        "Every product is rigorously tested for safety and effectiveness",
+        "Carefully handpicked pieces at affordable prices without compromising on quality",
       icon: (
         <svg
           className="w-8 h-8 text-rhode-text"
@@ -74,15 +75,16 @@ const About = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
           />
         </svg>
       ),
     },
     {
-      id: "sustainable-future",
-      title: "Sustainable Future",
-      description: "Building a better tomorrow through responsible practices",
+      id: "trend-forward",
+      title: "Trend Forward",
+      description:
+        "Bold, fashion-forward designs that keep you on the ever-changing trends of the 21st century",
       icon: (
         <svg
           className="w-8 h-8 text-rhode-text"
@@ -94,7 +96,28 @@ const About = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
+          />
+        </svg>
+      ),
+    },
+    {
+      id: "trend-forward",
+      title: "Trend Forward",
+      description:
+        "Bold, fashion-forward designs that keep you on the ever-changing trends of the 21st century",
+      icon: (
+        <svg
+          className="w-8 h-8 text-rhode-text"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
           />
         </svg>
       ),
@@ -237,10 +260,10 @@ const About = () => {
                   className="text-xl md:text-2xl text-rhode-text leading-relaxed max-w-2xl font-normal"
                   style={{ fontFamily: "Chillax, sans-serif" }}
                 >
-                  One of EVERYTHING really GOOD.
+                  Bold. Fashion-Forward. Unapologetically You.
                   <span className="block mt-4 text-lg opacity-80">
-                    We believe in quality. We believe in honesty. We don't
-                    compromise.
+                    Empowering powerful babes across the globe with affordable
+                    luxury that keeps you on trend.
                   </span>
                 </p>
 
@@ -316,9 +339,9 @@ const About = () => {
                 className="text-xl text-rhode-text max-w-3xl mx-auto leading-relaxed"
                 style={{ fontFamily: "Chillax, sans-serif" }}
               >
-                düpp was born from a simple belief: skincare should be
-                effective, honest, and accessible. We're here to cut through the
-                noise and deliver what really works.
+                düpp was born in true startup style - wanting to create
+                affordable, timeless pieces. düpp is considered to be our long
+                lost love that has finally been shared with you.
               </p>
             </div>
 
@@ -328,22 +351,25 @@ const About = () => {
                   className="text-2xl font-medium text-rhode-text"
                   style={{ fontFamily: "Chillax, sans-serif" }}
                 >
-                  Founded on Authenticity
+                  Taking Over the World
                 </h3>
                 <p
                   className="text-rhode-text leading-relaxed"
                   style={{ fontFamily: "Chillax, sans-serif" }}
                 >
-                  In a world of overcomplicated routines and empty promises, we
-                  chose a different path. Every product we create is tested,
-                  refined, and perfected before it reaches you.
+                  Taking over wardrobes across the world, düpp is a bold,
+                  fashion-forward brand with a dream big attitude. We believe in
+                  creating pieces that make you feel confident and effortlessly
+                  cool.
                 </p>
                 <p
                   className="text-rhode-text leading-relaxed"
                   style={{ fontFamily: "Chillax, sans-serif" }}
                 >
-                  We believe in transparency, sustainability, and most
-                  importantly, results that speak for themselves.
+                  Whatever your style, whatever your vibe, it's important to us
+                  that you feel unapologetically yourself. That's why we've
+                  carefully handpicked these pieces that we bring to you at
+                  affordable prices and good quality.
                 </p>
               </div>
               <div className="space-y-4">
@@ -352,13 +378,13 @@ const About = () => {
                     className="font-medium text-rhode-dark mb-2"
                     style={{ fontFamily: "Chillax, sans-serif" }}
                   >
-                    Quality First
+                    Affordable Luxury
                   </h4>
                   <p
                     className="text-sm text-rhode-text"
                     style={{ fontFamily: "Chillax, sans-serif" }}
                   >
-                    Every ingredient is carefully sourced and rigorously tested
+                    High-quality pieces at prices that won't break the bank
                   </p>
                 </div>
                 <div className="bg-white/50 p-6 rounded-2xl">
@@ -366,13 +392,13 @@ const About = () => {
                     className="font-medium text-rhode-dark mb-2"
                     style={{ fontFamily: "Chillax, sans-serif" }}
                   >
-                    Sustainable Beauty
+                    Trend-Forward
                   </h4>
                   <p
                     className="text-sm text-rhode-text"
                     style={{ fontFamily: "Chillax, sans-serif" }}
                   >
-                    Committed to eco-friendly practices and packaging
+                    Keeping you on the ever-changing trends of the 21st century
                   </p>
                 </div>
               </div>
@@ -388,8 +414,8 @@ const About = () => {
       >
         <div className="max-w-6xl mx-auto px-8">
           <Values
-            title="Our Values"
-            subtitle="The principles that guide everything we do"
+            title="What We Stand For"
+            subtitle="The values that drive our dream big attitude"
             values={aboutValues}
             cardStyle="default"
           />
@@ -410,8 +436,17 @@ const About = () => {
               className="text-xl md:text-2xl text-rhode-text leading-relaxed mb-8"
               style={{ fontFamily: "Chillax, sans-serif" }}
             >
-              To create skincare that works as hard as you do, without the
-              complexity or compromise.
+              Our mission is really simple: to promote powerful babes across the
+              globe and inspire girls everywhere to be exactly who they want to
+              be.
+            </p>
+            <p
+              className="text-lg text-rhode-text leading-relaxed mb-12 opacity-80"
+              style={{ fontFamily: "Chillax, sans-serif" }}
+            >
+              Whatever your style, whatever your vibe, it's important to us that
+              you feel unapologetically yourself. We're here to help you express
+              your unique beauty with confidence and authenticity.
             </p>
             <Link
               to="/shop"

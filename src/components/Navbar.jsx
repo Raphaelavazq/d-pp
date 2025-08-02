@@ -79,9 +79,9 @@ const Navbar = () => {
   if (loading) {
     return (
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="bg-rhode-cream rounded-t-3xl shadow-sm">
-            <div className="grid grid-cols-3 items-center h-20 px-8">
+        <div className="w-full">
+          <div className="bg-rhode-cream shadow-sm">
+            <div className="grid grid-cols-3 items-center h-20 px-16">
               <div className="animate-pulse bg-gray-200 h-6 w-32 rounded"></div>
               <div className="flex justify-center">
                 <div className="animate-pulse bg-gray-200 h-12 w-12 rounded"></div>
@@ -106,9 +106,9 @@ const Navbar = () => {
         }`}
         onMouseEnter={() => setIsVisible(true)}
       >
-        <div className="max-w-6xl mx-auto px-8">
-          <div className="bg-rhode-cream rounded-t-3xl shadow-sm">
-            <div className="grid grid-cols-3 items-center h-20 px-8">
+        <div className="w-full">
+          <div className="bg-rhode-cream shadow-sm">
+            <div className="grid grid-cols-3 items-center h-20 px-16">
               {/* Left Side - Logo on mobile, Navigation on desktop */}
               <div className="flex items-center">
                 {/* Logo - Mobile */}

@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import Carousel from "../components/Carousel";
 import ImpactButton from "../components/ImpactButton";
-import StayInTouch from "../components/StayInTouch";
 import Values from "../components/Values";
 import { designSystem } from "../utils/designSystem";
 
@@ -19,12 +18,12 @@ export default function Home() {
   const heroImageRef = useRef(null);
   const heroSubtitleRef = useRef(null);
   const heroButtonsRef = useRef(null);
-  const brandStoryRef = useRef(null);
-  const valuesRef = useRef(null);
-  const statsRef = useRef(null);
 
   useEffect(() => {
-    // Set initial states
+    // Enable smooth scrolling
+    ScrollTrigger.normalizeScroll(true);
+
+    // Set initial states for hero elements
     gsap.set(
       [heroTextRef.current, heroSubtitleRef.current, heroButtonsRef.current],
       {
@@ -34,45 +33,54 @@ export default function Home() {
     );
     gsap.set(heroImageRef.current, {
       opacity: 0,
-      scale: 0.9,
-      y: 40,
+      scale: 1.05,
+    });
+
+    // Get all sections with data-section attribute
+    const sections = document.querySelectorAll("[data-section]");
+
+    // Minimal Cityzen-style pinning and animations
+    sections.forEach((section) => {
+      // Pin each section
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "bottom top",
+        pin: true,
+        pinSpacing: false,
+        scrub: 0.5,
+      });
+
+      // From bottom animation on enter
+      gsap.fromTo(
+        section,
+        {
+          opacity: 0,
+          y: 60,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: section,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
     });
 
     // Hero entrance animation
-    const heroTl = gsap.timeline({
-      delay: 0.3,
-    });
-
+    const heroTl = gsap.timeline({ delay: 0.2 });
     heroTl
       .to(heroTextRef.current, {
         opacity: 1,
         y: 0,
-        duration: 1.2,
-        ease: "power3.out",
+        duration: 0.8,
+        ease: "power2.out",
       })
       .to(
         heroSubtitleRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power2.out",
-        },
-        "-=0.6"
-      )
-      .to(
-        heroImageRef.current,
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 1,
-          ease: "back.out(1.2)",
-        },
-        "-=0.8"
-      )
-      .to(
-        heroButtonsRef.current,
         {
           opacity: 1,
           y: 0,
@@ -80,84 +88,27 @@ export default function Home() {
           ease: "power2.out",
         },
         "-=0.4"
-      );
-
-    // Parallax effect for hero image
-    gsap.to(heroImageRef.current, {
-      y: -50,
-      ease: "none",
-      scrollTrigger: {
-        trigger: heroRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: 1,
-      },
-    });
-
-    // Brand story section animation
-    if (brandStoryRef.current) {
-      const brandElements = brandStoryRef.current.children;
-      gsap.fromTo(
-        brandElements,
-        { opacity: 0, y: 40 },
+      )
+      .to(
+        heroImageRef.current,
         {
           opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: brandStoryRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-
-    // Values section animation
-    if (valuesRef.current) {
-      const valueCards = valuesRef.current.querySelectorAll(".value-card");
-      gsap.fromTo(
-        valueCards,
-        { opacity: 0, y: 30, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
           scale: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: "back.out(1.3)",
-          scrollTrigger: {
-            trigger: valuesRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.6"
+      )
+      .to(
+        heroButtonsRef.current,
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        },
+        "-=0.3"
       );
-    }
-
-    // Counter animation for stats
-    if (statsRef.current) {
-      const counters = statsRef.current.querySelectorAll("[data-count]");
-      counters.forEach((counter) => {
-        const target = parseInt(counter.dataset.count);
-        ScrollTrigger.create({
-          trigger: counter,
-          start: "top 90%",
-          onEnter: () => {
-            gsap.to(counter, {
-              textContent: target,
-              duration: 2,
-              ease: "power2.out",
-              snap: { textContent: 1 },
-              stagger: 0.2,
-            });
-          },
-        });
-      });
-    }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -165,161 +116,388 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      {/* Enhanced Hero Section */}
+    <div className="relative pt-16 md:pt-20">
+      {/* New Hero Section - Ready to Experience düpp? */}
       <section
-        ref={heroRef}
-        className="relative min-h-[80vh] flex items-center justify-center bg-white"
-        style={{ paddingTop: "5rem" }}
+        data-section="new-hero"
+        className="h-screen w-full overflow-hidden bg-white shadow-xl flex items-center justify-center relative"
       >
-        {/* Floating Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-rhode-text/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-charcoal/5 rounded-full blur-2xl animate-pulse delay-1000"></div>
+        {/* Video background */}
+        <div className="absolute inset-0 opacity-20 md:opacity-30">
+          <video
+            src={heroVideo}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          />
         </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8">
-          <div className="bg-white/40 backdrop-blur-sm rounded-3xl p-6 lg:p-12 shadow-2xl border border-white/20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Enhanced Text Content */}
-              <div className="text-center lg:text-left space-y-6">
-                <div ref={heroTextRef} className="space-y-4">
-                  <h1
-                    className="text-4xl md:text-5xl lg:text-6xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                    style={{ fontFamily: "Chillax, sans-serif" }}
-                  >
-                    Soft, Simple
-                    <span
-                      className="block text-4xl md:text-5xl lg:text-6xl font-medium text-rhode-text leading-tight"
-                      style={{
-                        fontFamily: "Chillax, sans-serif",
-                      }}
-                    >
-                      and Sensibly Priced
-                    </span>
-                  </h1>
-                </div>
-
-                <div ref={heroSubtitleRef} className="space-y-3">
-                  <p
-                    className="text-lg md:text-xl text-rhode-text  max-w-2xl font-normal"
-                    style={{
-                      fontFamily: designSystem.typography.fonts.secondary,
-                    }}
-                  >
-                    Discover our curated collection of essentials that
-                    blend luxury with everyday simplicity.
-                  </p>
-                </div>
-
-                <div
-                  ref={heroButtonsRef}
-                  className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-                >
-                  <ImpactButton
-                    variant="filled"
-                    className="px-6 py-3 text-sm font-medium tracking-wide transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  >
-                    Discover Collection
-                  </ImpactButton>
-                  <ImpactButton
-                    variant="outline"
-                    className="px-6 py-3 text-sm font-medium tracking-wide transform hover:scale-105 transition-all duration-300"
-                  >
-                    Our Impact
-                  </ImpactButton>
-                </div>
-              </div>
-
-              {/* Enhanced Video */}
-              <div ref={heroImageRef} className="relative">
-                <div className="relative z-10">
-                  <video
-                    src={heroVideo}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="relative w-full h-auto rounded-2xl shadow-xl object-cover"
-                    style={{ aspectRatio: "3/4", maxHeight: "500px" }}
-                  >
-                    <source src={heroVideo} type="video/mp4" />
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-rhode-text/30 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-rhode-text/50 rounded-full mt-2 animate-pulse"></div>
+        {/* Content */}
+        <div className="relative z-10 text-center max-w-4xl px-4 sm:px-6 md:px-8 lg:px-12">
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium text-rhode-text mb-4 sm:mb-6 md:mb-8 lg:mb-12 leading-[0.9]"
+            style={{ fontFamily: "Chillax, sans-serif" }}
+          >
+            Ready to
+            <span className="block text-rhode-text">Experience düpp?</span>
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-rhode-text/80 mb-6 sm:mb-8 md:mb-10 lg:mb-16 max-w-2xl mx-auto leading-relaxed font-light">
+            Join thousands who have discovered the perfect blend of luxury and
+            simplicity
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-center">
+            <ImpactButton
+              variant="filled"
+              className="px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 text-sm sm:text-base md:text-lg font-medium tracking-wide"
+            >
+              Shop Collection
+            </ImpactButton>
+            <ImpactButton
+              variant="outline"
+              className="px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 text-sm sm:text-base md:text-lg font-medium tracking-wide"
+            >
+              Learn More
+            </ImpactButton>
           </div>
         </div>
       </section>
 
-      {/* Featured Products Carousel */}
-      <Carousel />
+      {/* Story Section */}
+      <section
+        data-section="story"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-white shadow-xl flex items-center"
+      >
+        <div className="w-full h-full flex items-center">
+          <div className="grid lg:grid-cols-2 w-full h-full items-center">
+            {/* Video - Now on the left, full width to edge */}
+            <div className="relative h-full flex items-center justify-center order-2 lg:order-1 bg-gray-50">
+              <video
+                src={sectionvid1}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            </div>
 
-     
-
-      {/* Enhanced Brand Story Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-white rounded-3xl p-12 lg:p-20 shadow-xl">
-            <div ref={brandStoryRef} className="space-y-16">
-              {/* Hero-style layout with text and video side by side */}
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-                <div className="space-y-6">
-                  <div className="space-y-4">
-                    <h2
-                      className="text-4xl md:text-5xl font-medium mb-4 tracking-tight text-rhode-text leading-tight"
-                      style={{ fontFamily: "Chillax, sans-serif" }}
-                    >
-                      Confident and Effortlessly Cool
-                    </h2>
-                    <p
-                      className="text-xl md:text-2xl text-rhode-text font-normal leading-relaxed"
-                      style={{
-                        fontFamily: designSystem.typography.fonts.secondary,
-                      }}
-                    >
-                      Welcome to düpp
-                    </p>
-                  </div>
-                </div>
-
-                <div className="relative group">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-rhode-text/20 to-charcoal/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <video
-                    src={sectionvid1}
-                    className="relative w-full h-auto rounded-3xl shadow-2xl transform group-hover:scale-105 transition-transform duration-500"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    aria-label="düpp sustainable beauty video"
-                  />
-                </div>
+            {/* Text Content - Now on the right, centered */}
+            <div className="text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8 order-1 lg:order-2 px-6 sm:px-8 md:px-8 lg:px-12 flex flex-col justify-center h-full py-8 md:py-0">
+              <div className="space-y-2 sm:space-y-4">
+                <h2
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-rhode-text leading-[1.1] px-2 sm:px-0"
+                  style={{ fontFamily: "Chillax, sans-serif" }}
+                >
+                  Confident and
+                  <span className="block">Effortlessly Cool</span>
+                </h2>
               </div>
+
+              <div className="space-y-2 sm:space-y-4 hidden md:block">
+                <p
+                  className="text-sm sm:text-base md:text-lg lg:text-xl text-rhode-text sm:text-rhode-text/70 max-w-xl font-light leading-relaxed"
+                  style={{
+                    fontFamily: designSystem.typography.fonts.secondary,
+                  }}
+                >
+                  Welcome to düpp
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Original Hero Section - Now moved down */}
+      <section
+        ref={heroRef}
+        data-section="hero"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-white shadow-xl flex items-center justify-center"
+      >
+        <div className="w-full h-full flex items-center">
+          <div className="grid lg:grid-cols-2 w-full h-full items-center">
+            {/* Text Content - On the left, centered */}
+            <div className="text-center lg:text-left space-y-4 sm:space-y-6 lg:space-y-8 px-6 sm:px-8 md:px-8 lg:px-12 flex flex-col justify-center h-full py-8 md:py-0">
+              <div ref={heroTextRef} className="space-y-2 sm:space-y-4">
+                <h1
+                  className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium tracking-tight text-rhode-text leading-[1.1] px-2 sm:px-0"
+                  style={{ fontFamily: "Chillax, sans-serif" }}
+                >
+                  Soft, Simple
+                  <span className="block">and Sensibly Priced</span>
+                </h1>
+              </div>
+
+              <div
+                ref={heroSubtitleRef}
+                className="space-y-2 sm:space-y-4 hidden md:block"
+              >
+                <p
+                  className="text-sm sm:text-base md:text-lg lg:text-xl text-rhode-text sm:text-rhode-text/70 max-w-xl font-light leading-relaxed"
+                  style={{
+                    fontFamily: designSystem.typography.fonts.secondary,
+                  }}
+                >
+                  Discover our curated collection of essentials that blend
+                  luxury with everyday simplicity.
+                </p>
+              </div>
+
+              <div
+                ref={heroButtonsRef}
+                className="hidden md:flex flex-col sm:flex-row gap-3 sm:gap-4 lg:gap-6 justify-center lg:justify-start pt-2 sm:pt-4"
+              >
+                <ImpactButton
+                  variant="filled"
+                  className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-medium tracking-wide"
+                >
+                  Discover Collection
+                </ImpactButton>
+                <ImpactButton
+                  variant="outline"
+                  className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-medium tracking-wide"
+                >
+                  Our Impact
+                </ImpactButton>
+              </div>
+            </div>
+
+            {/* Video - On the right, full width to edge */}
+            <div
+              ref={heroImageRef}
+              className="relative h-full flex items-center justify-center bg-gray-50"
+            >
+              {/* Light grey overlay */}
+              <div className="absolute inset-0 bg-gray-300/30 z-10"></div>
+              <video
+                src={heroVideo}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                <source src={heroVideo} type="video/mp4" />
+              </video>
             </div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gradient-to-br from-white to-rhode-light/30">
-        <div className="max-w-6xl mx-auto px-8">
-          <div ref={valuesRef}>
-            <Values cardStyle="home" />
-          </div>
+      <section
+        data-section="values"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-white  shadow-xl items-center hidden lg:flex"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 w-full">
+          <Values cardStyle="home" />
         </div>
       </section>
-  
-    {/* Stay In Touch */}
-    <StayInTouch />
+
+      {/* Stay In Touch Section */}
+      <section
+        data-section="stay-in-touch"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-rhode-cream shadow-xl flex items-center justify-center"
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 w-full text-center">
+          <h2
+            className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 tracking-tight text-rhode-text leading-tight"
+            style={{ fontFamily: "Chillax, sans-serif" }}
+          >
+            Stay In Touch
+          </h2>
+
+          <p
+            className="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-2xl mx-auto text-rhode-text font-medium"
+            style={{ fontFamily: "Chillax, sans-serif" }}
+          >
+            Be the first to know about new launches, exclusive offers, and
+            skincare tips from our experts.
+          </p>
+
+          <form className="flex flex-col sm:flex-row gap-3 sm:gap-4 max-w-lg mx-auto mb-6 sm:mb-8">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              required
+              className="flex-1 px-4 sm:px-6 py-3 sm:py-4 rounded-none border-b-2 border-rhode-text bg-transparent placeholder-rhode-text focus:outline-none focus:border-rhode-dark text-base sm:text-lg transition-all duration-200 text-rhode-dark"
+              style={{ fontFamily: "Chillax, sans-serif" }}
+            />
+            <button
+              type="submit"
+              className="py-3 sm:py-4 px-6 sm:px-8 bg-rhode-text text-rhode-light hover:bg-rhode-dark transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm whitespace-nowrap"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          <p
+            className="text-xs sm:text-sm text-rhode-text font-light"
+            style={{ fontFamily: "Chillax, sans-serif" }}
+          >
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </div>
+      </section>
+
+      {/* Footer Section */}
+      <section
+        data-section="footer"
+        className="h-screen w-full rounded-t-[2rem] md:rounded-t-[3rem] overflow-hidden bg-white shadow-xl flex items-center justify-center"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 w-full">
+          <footer className="text-center lg:text-left">
+            {/* Main Footer Content */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 md:gap-12 lg:gap-16 mb-8 sm:mb-10 md:mb-12">
+              {/* Brand Section */}
+              <div className="md:col-span-2 lg:col-span-2 space-y-4 sm:space-y-6">
+                <h3
+                  className="text-2xl sm:text-3xl font-medium text-rhode-text"
+                  style={{ fontFamily: "Chillax, sans-serif" }}
+                >
+                  düpp
+                </h3>
+                <p className="text-sm sm:text-base md:text-lg text-rhode-text/70 max-w-md mx-auto lg:mx-0 leading-relaxed">
+                  Soft, simple, and sensibly priced. Discover our curated
+                  collection of essentials that blend luxury with everyday
+                  simplicity.
+                </p>
+                <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
+                  <ImpactButton
+                    variant="filled"
+                    className="px-4 py-2 sm:px-6 sm:py-3 text-sm"
+                  >
+                    Shop Now
+                  </ImpactButton>
+                  <ImpactButton
+                    variant="outline"
+                    className="px-4 py-2 sm:px-6 sm:py-3 text-sm"
+                  >
+                    Learn More
+                  </ImpactButton>
+                </div>
+              </div>
+
+              {/* Quick Links - Hidden on small screens */}
+              <div className="space-y-3 sm:space-y-4 hidden sm:block">
+                <h4
+                  className="text-lg sm:text-xl font-medium text-rhode-text"
+                  style={{ fontFamily: "Chillax, sans-serif" }}
+                >
+                  Quick Links
+                </h4>
+                <ul className="space-y-2 sm:space-y-3">
+                  <li>
+                    <a
+                      href="/shop"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      Shop
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/about"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      About
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/impact"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      Impact
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/contact"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Support - Hidden on small screens */}
+              <div className="space-y-3 sm:space-y-4 hidden sm:block">
+                <h4
+                  className="text-lg sm:text-xl font-medium text-rhode-text"
+                  style={{ fontFamily: "Chillax, sans-serif" }}
+                >
+                  Support
+                </h4>
+                <ul className="space-y-2 sm:space-y-3">
+                  <li>
+                    <a
+                      href="/faq"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      FAQ
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/shipping"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      Shipping
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/returns"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      Returns
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/help"
+                      className="text-sm sm:text-base text-rhode-text/70 hover:text-rhode-text transition-colors"
+                    >
+                      Help Center
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Bottom Footer */}
+            <div className="border-t border-rhode-text/20 pt-6 sm:pt-8 flex flex-col lg:flex-row justify-between items-center space-y-3 sm:space-y-4 lg:space-y-0">
+              <p className="text-rhode-text/60 text-xs sm:text-sm">
+                © 2024 düpp. All rights reserved.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+                <a
+                  href="/privacy"
+                  className="text-rhode-text/60 hover:text-rhode-text text-xs sm:text-sm transition-colors"
+                >
+                  Privacy Policy
+                </a>
+                <a
+                  href="/terms"
+                  className="text-rhode-text/60 hover:text-rhode-text text-xs sm:text-sm transition-colors"
+                >
+                  Terms of Service
+                </a>
+                <a
+                  href="/cookies"
+                  className="text-rhode-text/60 hover:text-rhode-text text-xs sm:text-sm transition-colors"
+                >
+                  Cookies
+                </a>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
     </div>
   );
 }

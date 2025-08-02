@@ -120,23 +120,16 @@ export class DemoStripeService {
   }
 
   static async updateInventory(items) {
-    // Simulate inventory updates with realistic delays
-    for (const item of items) {
+    // Demo: Simulate inventory update with delay
+    for (const _item of items) {
       await this.delay(150);
-      console.log(
-        `✅ Demo: Updated inventory for ${item.name} - Reduced by ${item.quantity}`
-      );
+      // Demo: Updated inventory for product
     }
   }
 
-  static async sendConfirmationEmail(order) {
+  static async sendConfirmationEmail() {
     await this.delay(500);
-    console.log(
-      `📧 Demo: Confirmation email sent to ${order.customerInfo?.email || "customer@example.com"}`
-    );
-    console.log(
-      `📦 Order ${order.id} confirmed - Tracking: ${order.trackingNumber}`
-    );
+    // Demo: Confirmation email sent and order confirmed
   }
 
   static getCardBrand(cardNumber) {

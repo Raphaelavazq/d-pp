@@ -4,7 +4,7 @@ export const announcementData = [
     href: "/impact",
   },
   {
-    text: "EVERY PURCHASE = ONE TREE PLANTED � see your impact at checkout",
+    text: "EVERY PURCHASE = ONE TREE PLANTED ➺ see your impact at checkout",
     href: "/impact",
   },
   {

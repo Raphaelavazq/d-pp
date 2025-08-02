@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
-import { useAuth } from "../hooks/useAuth";
 import DemoCheckoutForm from "../components/DemoCheckoutForm";
 
 const Checkout = () => {
   const { items, getTotalPrice } = useCart();
-  const { user } = useAuth();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
@@ -18,7 +16,7 @@ const Checkout = () => {
   }, [items, navigate]);
 
   const handlePaymentSuccess = (paymentIntent, order) => {
-    console.log("Demo payment succeeded:", paymentIntent);
+    // Demo payment succeeded - redirect to confirmation
     navigate("/order-confirmation", {
       state: {
         paymentIntentId: paymentIntent.id,

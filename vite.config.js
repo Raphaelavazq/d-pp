@@ -12,50 +12,33 @@ export default defineConfig(() => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Vendor chunks
-          if (id.includes('node_modules')) {
-            // React core
-            if (id.includes('react') || id.includes('react-dom')) {
-              return 'react-vendor';
-            }
-            // Router
-            if (id.includes('react-router')) {
-              return 'router';
-            }
-            // Firebase
-            if (id.includes('firebase') || id.includes('@firebase')) {
-              return 'firebase';
-            }
-            // Stripe
-            if (id.includes('@stripe') || id.includes('stripe')) {
-              return 'stripe';
-            }
-            // GSAP animations
-            if (id.includes('gsap')) {
-              return 'animations';
-            }
-            // Framer Motion
-            if (id.includes('framer-motion')) {
-              return 'framer';
-            }
-            // Lucide icons
-            if (id.includes('lucide-react')) {
-              return 'icons';
-            }
-            // Other vendors
-            return 'vendor';
+          if (!id.includes('node_modules')) {
+            // App chunks - simplified grouping
+            if (id.includes('/pages/')) return 'pages';
+            if (id.includes('/components/')) return 'components';
+            if (id.includes('/hooks/') || id.includes('/utils/') || id.includes('/services/')) return 'utils';
+            return undefined;
+          }
+
+          // Vendor chunk mapping
+          const vendorMap = {
+            'react': 'react-vendor',
+            'react-dom': 'react-vendor',
+            'react-router': 'router',
+            'firebase': 'firebase',
+            '@firebase': 'firebase',
+            '@stripe': 'stripe',
+            'stripe': 'stripe',
+            'gsap': 'animations',
+            'framer-motion': 'framer',
+            'lucide-react': 'icons'
+          };
+
+          for (const [key, chunk] of Object.entries(vendorMap)) {
+            if (id.includes(key)) return chunk;
           }
           
-          // App chunks
-          if (id.includes('/pages/')) {
-            return 'pages';
-          }
-          if (id.includes('/components/')) {
-            return 'components';
-          }
-          if (id.includes('/hooks/') || id.includes('/utils/') || id.includes('/services/')) {
-            return 'utils';
-          }
+          return 'vendor';
         },
       },
     },

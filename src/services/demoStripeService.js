@@ -121,7 +121,7 @@ export class DemoStripeService {
 
   static async updateInventory(items) {
     // Demo: Simulate inventory update with delay
-    for (const _item of items) {
+    for (let i = 0; i < items.length; i++) {
       await this.delay(150);
       // Demo: Updated inventory for product
     }

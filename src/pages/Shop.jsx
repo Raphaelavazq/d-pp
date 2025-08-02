@@ -265,18 +265,11 @@ const Shop = () => {
       >
         {/* Sidebar Overlay */}
         {sidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300"
+          <button
+            className="fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300 border-0 cursor-default"
             onClick={() => setSidebarOpen(false)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                setSidebarOpen(false);
-              }
-            }}
-            role="button"
-            tabIndex={0}
             aria-label="Close sidebar"
+            type="button"
           />
         )}
 

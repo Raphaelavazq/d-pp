@@ -71,6 +71,15 @@ const MobileMenu = ({
         ref={overlayRef}
         className="absolute inset-0 bg-black/50"
         onClick={onClose}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onClose();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Close menu"
       />
 
       {/* Menu Content */}

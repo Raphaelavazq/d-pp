@@ -79,6 +79,15 @@ const CartDrawer = () => {
         ref={overlayRef}
         className="cart-overlay absolute inset-0 bg-charcoal/20 backdrop-blur-sm"
         onClick={toggleCart}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleCart();
+          }
+        }}
+        role="button"
+        tabIndex={0}
+        aria-label="Close cart"
       />
 
       {/* Drawer */}

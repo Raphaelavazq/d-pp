@@ -268,6 +268,14 @@ const Shop = () => {
           <div
             className="fixed inset-0 bg-black/50 z-[60] transition-opacity duration-300"
             onClick={() => setSidebarOpen(false)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                setSidebarOpen(false);
+              }
+            }}
+            role="button"
+            tabIndex={0}
             aria-label="Close sidebar"
           />
         )}

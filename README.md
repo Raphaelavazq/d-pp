@@ -2,14 +2,25 @@
 
 A high-performance, production-ready e-commerce website for "düpp," a brand focused on stylish and affordable designer dupes. The site features stunning visuals, immersive animations, and showcases expert-level frontend development using modern tooling.
 
-## 🚀 Features
+## � IMPORTANT: Development Guidelines
+
+**Before making ANY changes to this project, read:**
+
+- 📖 [`.github/copilot-instructions.md`](.github/copilot-instructions.md) - Copilot context & critical rules
+- 📋 [`PROJECT-GUIDELINES.md`](PROJECT-GUIDELINES.md) - Development rules & best practices
+- 📚 [`PROJECT-INSTRUCTIONS.md`](PROJECT-INSTRUCTIONS.md) - Complete architecture reference
+
+**Key Rule: ALWAYS analyze existing structure before creating new files!**
+
+## �🚀 Features
 
 - **Award-level User Experience**: Inspired by Awwwards and CSSDA winners
 - **Advanced Animations**: GSAP + ScrollTrigger for scroll-based storytelling
 - **Responsive Design**: Mobile-first approach with polished UI
 - **Shopping Cart**: Real-time updates with persistent storage
 - **Product Filtering**: Advanced filters for price, style, and categories
-- **Stripe Integration**: Demo checkout with payment processing
+- **Complete E-commerce System**: Firebase + Stripe + BigBuy integration
+- **Admin Dashboard**: Full CRUD operations and analytics
 - **Performance Optimized**: Fast loading and smooth interactions
 
 ## 🛠 Tech Stack
@@ -18,6 +29,9 @@ A high-performance, production-ready e-commerce website for "düpp," a brand foc
 - **Vite** - Lightning-fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework with custom design system
 - **GSAP + ScrollTrigger** - Professional animations and scroll effects
+- **Firebase** - Authentication, Firestore, Cloud Functions, Hosting
+- **Stripe** - Payment processing and checkout
+- **BigBuy API** - Dropshipping integration
 - **React Router** - Client-side routing
 - **Stripe** - Payment processing (demo mode)
 - **Lucide React** - Beautiful icons
@@ -51,7 +65,7 @@ src/
 ## 🎨 Design System
 
 - **Colors**: Custom primary/secondary palette with extensive shade variations
-- **Typography**: Inter font family for modern, clean aesthetics
+- **Typography**: Chillax font family (premium custom typeface) for luxury aesthetics
 - **Animations**: Consistent timing and easing with GSAP
 - **Components**: Modular, accessible, and reusable
 

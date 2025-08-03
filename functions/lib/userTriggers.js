@@ -62,7 +62,12 @@ exports.onUserCreate = functions.auth.user().onCreate(async (user) => {
         await addToMarketingList(user.email, userData);
         // Create welcome notification
         await createWelcomeNotification(user.uid);
-        console.log(`User ${user.uid} created successfully`);
+        // GDPR-compliant logging - no personal data
+        console.log("User creation completed", {
+            timestamp: new Date().toISOString(),
+            action: "user_created",
+            role: userData.role,
+        });
     }
     catch (error) {
         console.error(`Error creating user ${user.uid}:`, error);
@@ -88,7 +93,11 @@ exports.onUserDelete = functions.auth.user().onDelete(async (user) => {
         await batch.commit();
         // Remove from marketing lists
         await removeFromMarketingList(user.email);
-        console.log(`User ${user.uid} deleted successfully`);
+        // GDPR-compliant logging - no personal data
+        console.log("User deletion completed", {
+            timestamp: new Date().toISOString(),
+            action: "user_deleted",
+        });
     }
     catch (error) {
         console.error(`Error deleting user ${user.uid}:`, error);
@@ -269,7 +278,11 @@ async function addToMarketingList(email, userData) {
             subscribedAt: admin.firestore.FieldValue.serverTimestamp(),
             preferences: userData.preferences,
         });
-        console.log(`Added ${email} to marketing list`);
+        // GDPR-compliant logging - no personal data
+        console.log("User added to marketing list", {
+            timestamp: new Date().toISOString(),
+            action: "marketing_opt_in",
+        });
     }
     catch (error) {
         console.error(`Error adding ${email} to marketing list:`, error);
@@ -281,7 +294,11 @@ async function removeFromMarketingList(email) {
             subscribed: false,
             unsubscribedAt: admin.firestore.FieldValue.serverTimestamp(),
         });
-        console.log(`Removed ${email} from marketing list`);
+        // GDPR-compliant logging - no personal data
+        console.log("User removed from marketing list", {
+            timestamp: new Date().toISOString(),
+            action: "marketing_opt_out",
+        });
     }
     catch (error) {
         console.error(`Error removing ${email} from marketing list:`, error);
@@ -297,7 +314,12 @@ async function createWelcomeNotification(userId) {
             read: false,
             createdAt: admin.firestore.FieldValue.serverTimestamp(),
         });
-        console.log(`Created welcome notification for user ${userId}`);
+        // GDPR-compliant logging - no personal data
+        console.log("Welcome notification created", {
+            timestamp: new Date().toISOString(),
+            action: "notification_created",
+            type: "welcome",
+        });
     }
     catch (error) {
         console.error(`Error creating welcome notification for user ${userId}:`, error);

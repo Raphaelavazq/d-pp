@@ -1,0 +1,18 @@
+{
+  "name": "dupp-admin-scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Secure administrative scripts for düpp e-commerce platform",
+  "scripts": {
+    "create-admin": "node createAdminSecure.js",
+    "audit-security": "node securityAudit.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "firebase": "^10.0.0",
+    "chalk": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

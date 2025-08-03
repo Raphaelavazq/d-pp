@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.scheduledAnalytics = exports.scheduledInventoryUpdate = exports.scheduledProductSync = exports.healthCheck = void 0;
+exports.scheduledAnalytics = exports.scheduledInventoryUpdate = exports.scheduledProductSync = exports.healthCheck = exports.scheduledBigBuyStockSync = exports.syncBigBuyStock = exports.getBigBuyCategories = exports.getBigBuyProductDetails = exports.searchBigBuyProducts = exports.scheduledStockUpdate = exports.batchUpdateBigBuyStock = exports.getBigBuyStock = exports.syncBigBuyProducts = exports.checkBigBuyStock = void 0;
 const functions = __importStar(require("firebase-functions"));
 const admin = __importStar(require("firebase-admin"));
 // Initialize Firebase Admin
@@ -45,6 +45,22 @@ require("./inventoryUpdates");
 require("./userTriggers");
 require("./notifications");
 require("./analytics");
+// Import BigBuy stock API
+var bigbuyStock_1 = require("./bigbuyStock");
+Object.defineProperty(exports, "checkBigBuyStock", { enumerable: true, get: function () { return bigbuyStock_1.checkBigBuyStock; } });
+// Import BigBuy admin functions
+var bigbuyAdmin_1 = require("./bigbuyAdmin");
+Object.defineProperty(exports, "syncBigBuyProducts", { enumerable: true, get: function () { return bigbuyAdmin_1.syncBigBuyProducts; } });
+Object.defineProperty(exports, "getBigBuyStock", { enumerable: true, get: function () { return bigbuyAdmin_1.getBigBuyStock; } });
+Object.defineProperty(exports, "batchUpdateBigBuyStock", { enumerable: true, get: function () { return bigbuyAdmin_1.batchUpdateBigBuyStock; } });
+Object.defineProperty(exports, "scheduledStockUpdate", { enumerable: true, get: function () { return bigbuyAdmin_1.scheduledStockUpdate; } });
+// Import BigBuy importer functions
+var bigbuyImporter_1 = require("./bigbuyImporter");
+Object.defineProperty(exports, "searchBigBuyProducts", { enumerable: true, get: function () { return bigbuyImporter_1.searchBigBuyProducts; } });
+Object.defineProperty(exports, "getBigBuyProductDetails", { enumerable: true, get: function () { return bigbuyImporter_1.getBigBuyProductDetails; } });
+Object.defineProperty(exports, "getBigBuyCategories", { enumerable: true, get: function () { return bigbuyImporter_1.getBigBuyCategories; } });
+Object.defineProperty(exports, "syncBigBuyStock", { enumerable: true, get: function () { return bigbuyImporter_1.syncBigBuyStock; } });
+Object.defineProperty(exports, "scheduledBigBuyStockSync", { enumerable: true, get: function () { return bigbuyImporter_1.scheduledBigBuyStockSync; } });
 // Health check function
 exports.healthCheck = functions.https.onRequest((request, response) => {
     response.json({

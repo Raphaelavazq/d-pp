@@ -1,12 +1,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../hooks/useCart";
+import { useBigBuyStock } from "../hooks/useBigBuyStock";
 import { gsap } from "gsap";
 import ImpactButton from "./ImpactButton";
+import StockStatus from "./StockStatus";
 
 const ProductCard = ({ product }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const { addToCart } = useCart();
+  const { inStock, isLoading: stockLoading } = useBigBuyStock(
+    product.bigbuyId || product.id
+  );
   const cardRef = useRef(null);
   const imageRef = useRef(null);
   // const contentRef = useRef(null);
@@ -26,6 +31,11 @@ const ProductCard = ({ product }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
+    // Don't add to cart if out of stock
+    if (!inStock) {
+      return;
+    }
 
     // Rhode-style button animation
     if (buttonRef.current) {
@@ -139,16 +149,30 @@ const ProductCard = ({ product }) => {
               <p className="text-stone text-xs leading-relaxed font-semibold font-chillax">
                 {product.description?.substring(0, 40) || "Premium skincare"}
               </p>
+
+              {/* Stock Status */}
+              <StockStatus
+                productId={product.bigbuyId || product.id}
+                className="mt-2"
+              />
             </div>
           </div>
 
           <ImpactButton
             ref={buttonRef}
-            className="w-full mt-4 py-2.5 px-4 text-sm"
+            className={`w-full mt-4 py-2.5 px-4 text-sm ${
+              !inStock ? "opacity-50 cursor-not-allowed" : ""
+            }`}
             onClick={handleAddToCart}
             variant="outline"
+            disabled={!inStock}
+            title={!inStock ? "Unavailable right now" : undefined}
           >
-            {product.buttonText || "Add to Cart"}
+            {stockLoading
+              ? "Checking..."
+              : !inStock
+                ? "Out of Stock"
+                : product.buttonText || "Add to Cart"}
           </ImpactButton>
         </div>
       </div>

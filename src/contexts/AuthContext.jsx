@@ -117,11 +117,12 @@ export const AuthProvider = ({ children }) => {
       const userDoc = await getDoc(doc(db, "users", uid));
       if (userDoc.exists()) {
         const data = userDoc.data();
-        setUserProfile({
+        const profile = {
           ...data,
           createdAt: data.createdAt?.toDate() || new Date(),
           updatedAt: data.updatedAt?.toDate() || new Date(),
-        });
+        };
+        setUserProfile(profile);
       }
     } catch (error) {
       console.error("Error fetching user profile:", error);
@@ -154,6 +155,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     resetPassword,
     updateUserProfile,
+    isAdmin: userProfile?.role === "admin",
   };
 
   return (

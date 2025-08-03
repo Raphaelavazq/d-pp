@@ -12,6 +12,26 @@ import "./userTriggers";
 import "./notifications";
 import "./analytics";
 
+// Import BigBuy stock API
+export { checkBigBuyStock } from "./bigbuyStock";
+
+// Import BigBuy admin functions
+export {
+  syncBigBuyProducts,
+  getBigBuyStock,
+  batchUpdateBigBuyStock,
+  scheduledStockUpdate,
+} from "./bigbuyAdmin";
+
+// Import BigBuy importer functions
+export {
+  searchBigBuyProducts,
+  getBigBuyProductDetails,
+  getBigBuyCategories,
+  syncBigBuyStock,
+  scheduledBigBuyStockSync,
+} from "./bigbuyImporter";
+
 // Health check function
 export const healthCheck = functions.https.onRequest((request, response) => {
   response.json({

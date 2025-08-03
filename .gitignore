@@ -36,6 +36,15 @@ firebase-debug.log
 config/secrets.js
 config/keys.js
 
+# Additional security patterns
+**/private/
+**/*-key.*
+**/*-secret.*
+**/.env.*
+!**/.env.example
+functions/.env
+functions/.runtimeconfig.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

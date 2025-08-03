@@ -30,7 +30,17 @@ This is a premium e-commerce web application built with React + Vite, featuring:
 
 ## 🚨 CRITICAL DEVELOPMENT RULES
 
-### 1. ALWAYS ANALYZE FIRST - NEVER ASSUME
+### 1. SECURITY FIRST - MANDATORY COMPLIANCE
+
+Before ANY code changes:
+
+- 🔒 **READ SECURITY_GUIDELINES.md** - Mandatory for all developers
+- 🛡️ **Follow security checklist** - Pre-deployment requirements
+- 🇪🇺 **Ensure GDPR compliance** - EU data protection standards
+- 🔐 **Validate authentication** - Multi-layer security verification
+- 🚨 **Never expose secrets** - Server-side API keys only
+
+### 2. ALWAYS ANALYZE FIRST - NEVER ASSUME
 
 Before making ANY changes:
 
@@ -39,8 +49,9 @@ Before making ANY changes:
 - 🎯 Identify the specific goal/requirement
 - 🧩 Check if solution already exists
 - 💭 Plan minimal necessary changes
+- 📚 **Consult DEVELOPER_DOCUMENTATION.md** for guidance
 
-### 2. FILE CREATION POLICY - STRICT
+### 3. FILE CREATION POLICY - STRICT
 
 ❌ NEVER CREATE NEW FILES WITHOUT CHECKING:
 
@@ -48,6 +59,7 @@ Before making ANY changes:
 - Can this be added to an existing file?
 - Is this truly a separation of concerns?
 - Is there absolutely no other way?
+- **Does it pass security review?**
 
 ✅ ONLY CREATE NEW FILES FOR:
 
@@ -55,11 +67,13 @@ Before making ANY changes:
 - New major features/components
 - Documentation (when missing)
 - Configuration files (when needed)
+- **Security-approved architectures**
 
-### 3. MODIFICATION OVER CREATION
+### 4. MODIFICATION OVER CREATION
 
 - ✅ FIRST: Look for existing files to modify
 - ✅ SECOND: Extend existing functionality
+- ✅ THIRD: Check security implications
 - ✅ LAST RESORT: Create new files
 
 ## Code Style Guidelines
@@ -71,6 +85,18 @@ Before making ANY changes:
 - Use GSAP for complex animations and ScrollTrigger for scroll-based effects
 - Keep components modular and reusable
 - Clean and professional code with descriptive naming
+
+## Documentation System
+
+The project includes a comprehensive documentation system:
+
+- 📋 **DEVELOPER_DOCUMENTATION.md** - Complete developer hub with navigation to all technical docs
+- 🔒 **SECURITY_GUIDELINES.md** - Mandatory security practices and compliance requirements
+- 🏗️ **SECURITY_OVERVIEW.md** - Security architecture and threat model overview
+- 📊 **ADMIN-INTEGRATION-COMPLETE.md** - Admin system implementation details
+- 🔥 **FIREBASE-SETUP.md** - Firebase configuration and deployment guide
+
+All developers MUST consult the documentation system before making changes.
 
 ## File Structure
 

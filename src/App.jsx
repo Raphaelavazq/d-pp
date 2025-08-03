@@ -37,6 +37,9 @@ const AuthenticationPage = lazy(() => import("./pages/AuthenticationPage"));
 const Profile = lazy(() => import("./pages/Profile"));
 const OrderConfirmation = lazy(() => import("./pages/OrderConfirmation"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
+const AdminLogin = lazy(() => import("./pages/admin/AdminLogin"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const DuppDocsHub = lazy(() => import("./pages/DuppDocsHub"));
 
 // Initialize Stripe (use environment variable)
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -60,6 +63,8 @@ const PageLoader = () => (
 function Layout({ children }) {
   const location = useLocation();
   const isAuthPage = ["/auth", "/login", "/signup"].includes(location.pathname);
+  const isAdminPage = location.pathname.startsWith("/admin");
+  const isDocsHub = location.pathname === "/düppdoc";
   const isHomePage = location.pathname === "/";
   const hasInlineFooter =
     ["/about", "/contact", "/shop"].includes(location.pathname) ||
@@ -67,10 +72,14 @@ function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-white">
-      {!isAuthPage && <Navbar />}
+      {!isAuthPage && !isAdminPage && !isDocsHub && <Navbar />}
       <main>{children}</main>
-      {!isAuthPage && !isHomePage && !hasInlineFooter && <Footer />}
-      <AdminAccess />
+      {!isAuthPage &&
+        !isAdminPage &&
+        !isHomePage &&
+        !hasInlineFooter &&
+        !isDocsHub && <Footer />}
+      {!isAdminPage && !isDocsHub && <AdminAccess />}
     </div>
   );
 }
@@ -152,6 +161,20 @@ function App() {
                       element={
                         <ProtectedRoute>
                           <Profile />
+                        </ProtectedRoute>
+                      }
+                    />
+
+                    {/* Documentation Hub */}
+                    <Route path="/düppdoc" element={<DuppDocsHub />} />
+
+                    {/* Admin Routes */}
+                    <Route path="/admin" element={<AdminLogin />} />
+                    <Route
+                      path="/admin/dashboard/*"
+                      element={
+                        <ProtectedRoute adminOnly>
+                          <AdminDashboard />
                         </ProtectedRoute>
                       }
                     />

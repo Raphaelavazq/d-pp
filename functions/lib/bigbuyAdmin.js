@@ -35,7 +35,12 @@ var __importStar = (this && this.__importStar) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.scheduledStockUpdate = exports.batchUpdateBigBuyStock = exports.getBigBuyStock = exports.syncBigBuyProducts = void 0;
 const functions = __importStar(require("firebase-functions"));
+const scheduler_1 = require("firebase-functions/v2/scheduler");
 const admin = __importStar(require("firebase-admin"));
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps.length) {
+    admin.initializeApp();
+}
 const db = admin.firestore();
 // Sync products from BigBuy API
 exports.syncBigBuyProducts = functions.https.onCall(async (data, context) => {
@@ -276,9 +281,10 @@ exports.batchUpdateBigBuyStock = functions.https.onCall(async (data, context) =>
     }
 });
 // Schedule automatic stock updates (runs every 6 hours)
-exports.scheduledStockUpdate = functions.pubsub
-    .schedule("every 6 hours")
-    .onRun(async (context) => {
+exports.scheduledStockUpdate = (0, scheduler_1.onSchedule)({
+    schedule: "every 6 hours",
+    region: "europe-west1",
+}, async (event) => {
     try {
         // Get all BigBuy products
         const productsSnapshot = await db

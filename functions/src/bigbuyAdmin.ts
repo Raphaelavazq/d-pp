@@ -1,5 +1,11 @@
 import * as functions from "firebase-functions";
+import { onSchedule } from "firebase-functions/v2/scheduler";
 import * as admin from "firebase-admin";
+
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
 
 const db = admin.firestore();
 
@@ -358,9 +364,12 @@ export const batchUpdateBigBuyStock = functions.https.onCall(
 );
 
 // Schedule automatic stock updates (runs every 6 hours)
-export const scheduledStockUpdate = functions.pubsub
-  .schedule("every 6 hours")
-  .onRun(async (context) => {
+export const scheduledStockUpdate = onSchedule(
+  {
+    schedule: "every 6 hours",
+    region: "europe-west1",
+  },
+  async (event) => {
     try {
       // Get all BigBuy products
       const productsSnapshot = await db
@@ -458,4 +467,5 @@ export const scheduledStockUpdate = functions.pubsub
     } catch (error) {
       console.error("Scheduled stock update failed:", error);
     }
-  });
+  }
+);

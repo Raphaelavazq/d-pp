@@ -161,7 +161,6 @@ const ProductDetail = () => {
           <div className="w-16 h-16 border-4 border-stone border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
           <p
             className="text-stone"
-            className="font-chillax"
           >
             Loading product...
           </p>
@@ -194,7 +193,6 @@ const ProductDetail = () => {
               <Link
                 to="/"
                 className="text-stone hover:text-coal transition-colors"
-                className="font-chillax"
               >
                 Home
               </Link>
@@ -202,14 +200,12 @@ const ProductDetail = () => {
               <Link
                 to="/shop"
                 className="text-stone hover:text-coal transition-colors"
-                className="font-chillax"
               >
                 Shop
               </Link>
               <span className="text-stone/50">/</span>
               <span
                 className="text-coal font-medium"
-                className="font-chillax"
               >
                 {product.name}
               </span>
@@ -261,7 +257,6 @@ const ProductDetail = () => {
                 <div>
                   <h1
                     className="text-3xl md:text-4xl font-bold text-coal leading-tight tracking-tight mb-4"
-                    className="font-chillax"
                   >
                     {product.name}
                   </h1>
@@ -269,14 +264,12 @@ const ProductDetail = () => {
                   <div className="flex items-center space-x-4 mb-6">
                     <span
                       className="text-2xl font-bold text-stone"
-                      className="font-chillax"
                     >
                       ${product.price}
                     </span>
                     {product.originalPrice && (
                       <span
                         className="text-lg text-stone/60 line-through"
-                        className="font-chillax"
                       >
                         ${product.originalPrice}
                       </span>
@@ -309,7 +302,6 @@ const ProductDetail = () => {
                       </div>
                       <span
                         className="text-sm text-stone"
-                        className="font-chillax"
                       >
                         ({product.rating}) • {product.reviews || 0} reviews
                       </span>
@@ -318,7 +310,6 @@ const ProductDetail = () => {
 
                   <p
                     className="text-stone leading-relaxed mb-8"
-                    className="font-chillax"
                   >
                     {product.description}
                   </p>
@@ -331,7 +322,6 @@ const ProductDetail = () => {
                     <div>
                       <label
                         className="block text-sm font-medium text-coal mb-3"
-                        className="font-chillax"
                       >
                         Size
                       </label>
@@ -345,7 +335,6 @@ const ProductDetail = () => {
                                 ? "border-stone bg-stone text-white"
                                 : "border-stone/20 text-stone hover:border-stone"
                             }`}
-                            className="font-chillax"
                           >
                             {size}
                           </button>
@@ -359,7 +348,6 @@ const ProductDetail = () => {
                     <div>
                       <label
                         className="block text-sm font-medium text-coal mb-3"
-                        className="font-chillax"
                       >
                         Color
                       </label>
@@ -373,7 +361,6 @@ const ProductDetail = () => {
                                 ? "border-stone bg-stone text-white"
                                 : "border-stone/20 text-stone hover:border-stone"
                             }`}
-                            className="font-chillax"
                           >
                             {color}
                           </button>
@@ -386,7 +373,6 @@ const ProductDetail = () => {
                   <div>
                     <label
                       className="block text-sm font-medium text-coal mb-3"
-                      className="font-chillax"
                     >
                       Quantity
                     </label>
@@ -400,7 +386,6 @@ const ProductDetail = () => {
                         </button>
                         <span
                           className="px-4 py-2 border-x-2 border-stone/20 min-w-[60px] text-center"
-                          className="font-chillax"
                         >
                           {quantity}
                         </span>
@@ -419,7 +404,6 @@ const ProductDetail = () => {
                 <button
                   onClick={handleAddToCart}
                   className="w-full bg-stone text-white py-4 rounded-full font-medium hover:bg-coal transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  className="font-chillax"
                 >
                   Add to Cart - ${(product.price * quantity).toFixed(2)}
                 </button>
@@ -444,7 +428,6 @@ const ProductDetail = () => {
                     </div>
                     <div
                       className="text-sm font-medium text-coal"
-                      className="font-chillax"
                     >
                       Free Shipping
                     </div>
@@ -467,7 +450,6 @@ const ProductDetail = () => {
                     </div>
                     <div
                       className="text-sm font-medium text-coal"
-                      className="font-chillax"
                     >
                       Cruelty Free
                     </div>
@@ -490,7 +472,6 @@ const ProductDetail = () => {
                     </div>
                     <div
                       className="text-sm font-medium text-coal"
-                      className="font-chillax"
                     >
                       30-Day Return
                     </div>
@@ -517,7 +498,6 @@ const ProductDetail = () => {
                       ? "bg-stone text-white shadow-lg"
                       : "bg-white/80 text-stone hover:bg-white"
                   }`}
-                  className="font-chillax"
                 >
                   {tab}
                 </button>
@@ -530,13 +510,11 @@ const ProductDetail = () => {
                 <div>
                   <h3
                     className="text-xl font-medium mb-4 text-coal"
-                    className="font-chillax"
                   >
                     Product Description
                   </h3>
                   <p
                     className="text-stone leading-relaxed"
-                    className="font-chillax"
                   >
                     {product.description ||
                       "This premium skincare product is carefully formulated with the finest ingredients to deliver exceptional results. Experience the düpp difference with our commitment to quality and sustainability."}
@@ -547,13 +525,11 @@ const ProductDetail = () => {
                 <div>
                   <h3
                     className="text-xl font-medium mb-4 text-coal"
-                    className="font-chillax"
                   >
                     Key Ingredients
                   </h3>
                   <p
                     className="text-stone leading-relaxed"
-                    className="font-chillax"
                   >
                     {product.ingredients ||
                       "Aqua, Glycerin, Hyaluronic Acid, Vitamin E, Natural Botanical Extracts. All ingredients are sustainably sourced and cruelty-free."}
@@ -564,13 +540,11 @@ const ProductDetail = () => {
                 <div>
                   <h3
                     className="text-xl font-medium mb-4 text-coal"
-                    className="font-chillax"
                   >
                     How to Use
                   </h3>
                   <p
                     className="text-stone leading-relaxed"
-                    className="font-chillax"
                   >
                     {product.usage ||
                       "Apply to clean skin morning and evening. Gently massage until fully absorbed. For best results, use consistently as part of your daily skincare routine."}
@@ -592,13 +566,11 @@ const ProductDetail = () => {
             <div className="text-center mb-16">
               <h2
                 className="text-3xl md:text-4xl font-medium mb-4 tracking-tight text-stone leading-tight"
-                className="font-chillax"
               >
                 You Might Also Like
               </h2>
               <p
                 className="text-stone leading-relaxed"
-                className="font-chillax"
               >
                 Discover more from the {product.category} collection
               </p>
@@ -618,13 +590,11 @@ const ProductDetail = () => {
                     />
                     <h3
                       className="font-medium text-coal mb-2"
-                      className="font-chillax"
                     >
                       {relatedProduct.name}
                     </h3>
                     <p
                       className="text-stone font-medium"
-                      className="font-chillax"
                     >
                       ${relatedProduct.price}
                     </p>

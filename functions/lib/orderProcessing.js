@@ -36,18 +36,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.orderProcessing = exports.cancelOrder = exports.processOrder = exports.updateOrderStatus = exports.createOrder = exports.createPaymentIntent = void 0;
-const functions = __importStar(require("firebase-functions"));
+exports.getUserOrders = exports.processOrder = exports.createOrder = exports.createPaymentIntent = void 0;
+const firestore_1 = require("firebase-functions/v2/firestore");
+const https_1 = require("firebase-functions/v2/https");
 const admin = __importStar(require("firebase-admin"));
 const stripe_1 = __importDefault(require("stripe"));
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps.length) {
+    admin.initializeApp();
+}
 const db = admin.firestore();
 const stripe = new stripe_1.default(process.env.STRIPE_SECRET_KEY, {
     apiVersion: "2023-10-16",
 });
 // Create payment intent (Step 1 of checkout)
-exports.createPaymentIntent = functions.https.onCall(async (data, context) => {
+exports.createPaymentIntent = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
     try {
-        const { items, userId } = data;
+        const { items, userId } = request.data;
         // Calculate totals
         let subtotal = 0;
         for (const item of items) {
@@ -56,7 +61,7 @@ exports.createPaymentIntent = functions.https.onCall(async (data, context) => {
                 .doc(item.productId)
                 .get();
             if (!productDoc.exists) {
-                throw new functions.https.HttpsError("not-found", `Product ${item.productId} not found`);
+                throw new Error(`Product ${item.productId} not found`);
             }
             const product = productDoc.data();
             subtotal += product.price * item.quantity;
@@ -83,18 +88,18 @@ exports.createPaymentIntent = functions.https.onCall(async (data, context) => {
     }
     catch (error) {
         console.error("Payment intent creation error:", error);
-        throw new functions.https.HttpsError("internal", "Payment intent creation failed");
+        throw new Error("Payment intent creation failed");
     }
 });
 // Create order (Step 2 - after successful payment)
-exports.createOrder = functions.https.onCall(async (data, context) => {
-    var _a, _b, _c, _d, _e;
+exports.createOrder = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
+    var _a, _b;
     try {
-        const { items, paymentIntentId, userId } = data;
+        const { items, paymentIntentId, userId } = request.data;
         // Verify payment intent
         const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
         if (paymentIntent.status !== "succeeded") {
-            throw new functions.https.HttpsError("failed-precondition", "Payment not completed");
+            throw new Error("Payment not completed");
         }
         // Calculate totals and prepare order items
         let subtotal = 0;
@@ -105,7 +110,7 @@ exports.createOrder = functions.https.onCall(async (data, context) => {
                 .doc(item.productId)
                 .get();
             if (!productDoc.exists) {
-                throw new functions.https.HttpsError("not-found", `Product ${item.productId} not found`);
+                throw new Error(`Product ${item.productId} not found`);
             }
             const product = productDoc.data();
             const itemTotal = product.price * item.quantity;
@@ -125,7 +130,7 @@ exports.createOrder = functions.https.onCall(async (data, context) => {
         const calculatedTotal = subtotal + tax + shipping;
         // Create order in Firestore
         const orderData = {
-            userId: userId || ((_b = context.auth) === null || _b === void 0 ? void 0 : _b.uid) || "guest",
+            userId: userId || ((_b = request.auth) === null || _b === void 0 ? void 0 : _b.uid) || "guest",
             items: orderItems,
             subtotal,
             tax,
@@ -133,46 +138,12 @@ exports.createOrder = functions.https.onCall(async (data, context) => {
             total: calculatedTotal,
             status: "pending",
             paymentStatus: "paid",
-            shippingAddress: ((_c = paymentIntent.shipping) === null || _c === void 0 ? void 0 : _c.address)
-                ? {
-                    firstName: ((_d = paymentIntent.shipping.name) === null || _d === void 0 ? void 0 : _d.split(" ")[0]) || "",
-                    lastName: ((_e = paymentIntent.shipping.name) === null || _e === void 0 ? void 0 : _e.split(" ").slice(1).join(" ")) ||
-                        "",
-                    address1: paymentIntent.shipping.address.line1 || "",
-                    address2: paymentIntent.shipping.address.line2 || "",
-                    city: paymentIntent.shipping.address.city || "",
-                    state: paymentIntent.shipping.address.state || "",
-                    zipCode: paymentIntent.shipping.address.postal_code || "",
-                    country: paymentIntent.shipping.address.country || "",
-                }
-                : {},
+            shippingAddress: {}, // Will be populated from form
             billingAddress: {}, // Will be populated if different from shipping
             createdAt: admin.firestore.FieldValue.serverTimestamp(),
             updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         };
         const orderRef = await db.collection("orders").add(orderData);
-        // Update inventory
-        const batch = db.batch();
-        for (const item of orderItems) {
-            const inventoryRef = db.collection("inventory").doc(item.productId);
-            const inventoryDoc = await inventoryRef.get();
-            if (inventoryDoc.exists) {
-                batch.update(inventoryRef, {
-                    quantity: admin.firestore.FieldValue.increment(-item.quantity),
-                    lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
-                });
-            }
-            else {
-                // Create inventory record if it doesn't exist
-                batch.set(inventoryRef, {
-                    productId: item.productId,
-                    quantity: Math.max(0, 100 - item.quantity), // Assume initial stock of 100
-                    lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
-                });
-            }
-        }
-        await batch.commit();
-        // Send order confirmation email (we'll implement this later)
         console.log(`Order ${orderRef.id} created successfully for user ${userId}`);
         return {
             orderId: orderRef.id,
@@ -182,72 +153,24 @@ exports.createOrder = functions.https.onCall(async (data, context) => {
     }
     catch (error) {
         console.error("Order creation error:", error);
-        throw new functions.https.HttpsError("internal", "Order creation failed");
-    }
-});
-// Update order status
-exports.updateOrderStatus = functions.https.onCall(async (data, context) => {
-    if (!context.auth) {
-        throw new functions.https.HttpsError("unauthenticated", "Authentication required");
-    }
-    try {
-        const { orderId, status, trackingNumber } = data;
-        const orderRef = db.collection("orders").doc(orderId);
-        const orderDoc = await orderRef.get();
-        if (!orderDoc.exists) {
-            throw new functions.https.HttpsError("not-found", "Order not found");
-        }
-        const updateData = {
-            status,
-            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-        };
-        if (trackingNumber) {
-            updateData.trackingNumber = trackingNumber;
-        }
-        await orderRef.update(updateData);
-        // Send notification email
-        if (status === "shipped" && trackingNumber) {
-            const orderData = Object.assign({ id: orderId }, orderDoc.data());
-            await sendShippingNotification(orderData, trackingNumber);
-        }
-        return { success: true };
-    }
-    catch (error) {
-        console.error("Order update error:", error);
-        throw new functions.https.HttpsError("internal", "Order update failed");
+        throw new Error("Order creation failed");
     }
 });
 // Process order (triggered when order is created)
-exports.processOrder = functions.firestore
-    .document("orders/{orderId}")
-    .onCreate(async (snap, context) => {
-    const order = snap.data();
-    const orderId = context.params.orderId;
+exports.processOrder = (0, firestore_1.onDocumentCreated)({
+    document: "orders/{orderId}",
+    region: "europe-west1",
+}, async (event) => {
+    var _a;
+    const order = (_a = event.data) === null || _a === void 0 ? void 0 : _a.data();
+    const orderId = event.params.orderId;
     try {
-        // Group items by supplier
-        const supplierOrders = new Map();
-        for (const item of order.items) {
-            if (!supplierOrders.has(item.supplierId)) {
-                supplierOrders.set(item.supplierId, []);
-            }
-            supplierOrders.get(item.supplierId).push(item);
+        if (!order) {
+            console.error("No order data in event");
+            return;
         }
-        // Create supplier orders
-        const batch = db.batch();
-        for (const [supplierId, items] of supplierOrders) {
-            const supplierOrderRef = db.collection("supplierOrders").doc();
-            batch.set(supplierOrderRef, {
-                orderId,
-                supplierId,
-                items,
-                status: "pending",
-                createdAt: admin.firestore.FieldValue.serverTimestamp(),
-                shippingAddress: order.shippingAddress,
-            });
-        }
-        await batch.commit();
         // Update order status to processing
-        await snap.ref.update({
+        await db.collection("orders").doc(orderId).update({
             status: "processing",
             updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         });
@@ -255,73 +178,43 @@ exports.processOrder = functions.firestore
     }
     catch (error) {
         console.error(`Error processing order ${orderId}:`, error);
-        // Update order status to failed
-        await snap.ref.update({
-            status: "cancelled",
+        // Update order status to indicate error
+        await db
+            .collection("orders")
+            .doc(orderId)
+            .update({
+            status: "pending",
+            processingError: error instanceof Error ? error.message : "Unknown error",
             updatedAt: admin.firestore.FieldValue.serverTimestamp(),
         });
     }
 });
-// Cancel order
-exports.cancelOrder = functions.https.onCall(async (data, context) => {
-    if (!context.auth) {
-        throw new functions.https.HttpsError("unauthenticated", "Authentication required");
+// Get user orders
+exports.getUserOrders = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
+    if (!request.auth) {
+        throw new Error("Authentication required");
     }
     try {
-        const { orderId, reason } = data;
-        const userId = context.auth.uid;
-        const orderRef = db.collection("orders").doc(orderId);
-        const orderDoc = await orderRef.get();
-        if (!orderDoc.exists) {
-            throw new functions.https.HttpsError("not-found", "Order not found");
+        const { limit = 10, status } = request.data;
+        const userId = request.auth.uid;
+        let query = db
+            .collection("orders")
+            .where("userId", "==", userId)
+            .orderBy("createdAt", "desc")
+            .limit(limit);
+        if (status) {
+            query = query.where("status", "==", status);
         }
-        const order = orderDoc.data();
-        // Check if user owns the order or is admin
-        if (order.userId !== userId && !context.auth.token.admin) {
-            throw new functions.https.HttpsError("permission-denied", "Access denied");
-        }
-        // Can only cancel pending or processing orders
-        if (!["pending", "processing"].includes(order.status)) {
-            throw new functions.https.HttpsError("failed-precondition", "Order cannot be cancelled");
-        }
-        // Update order status
-        await orderRef.update({
-            status: "cancelled",
-            cancelReason: reason,
-            cancelledAt: admin.firestore.FieldValue.serverTimestamp(),
-            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-        });
-        // Restore inventory
-        const batch = db.batch();
-        for (const item of order.items) {
-            const inventoryRef = db.collection("inventory").doc(item.productId);
-            batch.update(inventoryRef, {
-                quantity: admin.firestore.FieldValue.increment(item.quantity),
-                lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
-            });
-        }
-        await batch.commit();
-        // Process refund if payment was made
-        if (order.paymentStatus === "paid") {
-            // Implement refund logic here
-            console.log(`Processing refund for order ${orderId}`);
-        }
-        return { success: true };
+        const snapshot = await query.get();
+        const orders = snapshot.docs.map((doc) => (Object.assign({ id: doc.id }, doc.data())));
+        return {
+            success: true,
+            orders,
+        };
     }
     catch (error) {
-        console.error("Order cancellation error:", error);
-        throw new functions.https.HttpsError("internal", "Order cancellation failed");
+        console.error("Error getting user orders:", error);
+        throw new Error("Failed to get user orders");
     }
 });
-async function sendShippingNotification(order, trackingNumber) {
-    // Implementation for sending shipping notification email
-    console.log(`Sending shipping notification for order ${order.id} with tracking ${trackingNumber}`);
-    // This would integrate with your email service (SendGrid, etc.)
-}
-exports.orderProcessing = {
-    processOrder: exports.processOrder,
-    createOrder: exports.createOrder,
-    updateOrderStatus: exports.updateOrderStatus,
-    cancelOrder: exports.cancelOrder,
-};
 //# sourceMappingURL=orderProcessing.js.map

@@ -282,7 +282,6 @@ const TermsConditions = () => {
         <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
           <h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-medium text-stone mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-[0.9] tracking-tight"
-            className="font-chillax"
           >
             Terms &
             <span className="block text-stone">Conditions</span>
@@ -308,7 +307,6 @@ const TermsConditions = () => {
           <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
             <h2
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-stone mb-4 sm:mb-6 md:mb-8 leading-[0.95] tracking-tight"
-              className="font-chillax"
             >
               {section.title}
             </h2>
@@ -330,7 +328,6 @@ const TermsConditions = () => {
         <div className="relative z-20 text-center max-w-5xl mx-auto px-6 sm:px-8 md:px-12 lg:px-16">
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-white mb-6 sm:mb-8 md:mb-10 leading-[0.95] tracking-tight"
-            className="font-chillax"
           >
             Questions?
           </h2>

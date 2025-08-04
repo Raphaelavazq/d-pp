@@ -5,6 +5,17 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Apply Chillax font globally */
+* {
+  font-family:
+    "Chillax",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+}
+
 :root {
   /* Chillax Font Family */
   --font-primary: "Chillax", -apple-system, BlinkMacSystemFont, "Segoe UI",

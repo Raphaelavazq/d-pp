@@ -1,0 +1,119 @@
+rules_version = '2';
+
+// Firebase Storage Security Rules for düpp E-Commerce Platform
+// GDPR Compliant - EU Data Processing Only
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // =====================================
+    // 🛍️ PRODUCT IMAGES (Public Read)
+    // =====================================
+    match /products/{productId}/{imageFile} {
+      // Public read access for product images
+      allow read: if true;
+      
+      // Only admins and suppliers can upload/update product images
+      allow write: if request.auth != null && 
+        (isAdmin(request.auth.uid) || isSupplier(request.auth.uid)) &&
+        isValidImage(resource) &&
+        resource.size < 10 * 1024 * 1024; // 10MB limit
+    }
+    
+    // =====================================
+    // 👤 USER PROFILE IMAGES (Private)
+    // =====================================
+    match /users/{userId}/profile/{imageFile} {
+      // Users can read their own profile images
+      allow read: if request.auth != null && 
+        (request.auth.uid == userId || isAdmin(request.auth.uid));
+      
+      // Users can upload their own profile images
+      allow write: if request.auth != null && 
+        request.auth.uid == userId &&
+        isValidImage(resource) &&
+        resource.size < 5 * 1024 * 1024; // 5MB limit
+    }
+    
+    // =====================================
+    // 📄 ORDER DOCUMENTS (Highly Restricted)
+    // =====================================
+    match /orders/{orderId}/documents/{documentFile} {
+      // Only order owner and admins can access
+      allow read: if request.auth != null && 
+        (isOrderOwner(request.auth.uid, orderId) || isAdmin(request.auth.uid));
+      
+      // Only admins can upload order documents
+      allow write: if request.auth != null && isAdmin(request.auth.uid) &&
+        isValidDocument(resource) &&
+        resource.size < 20 * 1024 * 1024; // 20MB limit
+    }
+    
+    // =====================================
+    // 🏢 SUPPLIER DOCUMENTS (Restricted)
+    // =====================================
+    match /suppliers/{supplierId}/documents/{documentFile} {
+      // Only supplier owner and admins can access
+      allow read: if request.auth != null && 
+        (isSupplierOwner(request.auth.uid, supplierId) || isAdmin(request.auth.uid));
+      
+      // Suppliers can upload their own documents
+      allow write: if request.auth != null && 
+        (isSupplierOwner(request.auth.uid, supplierId) || isAdmin(request.auth.uid)) &&
+        isValidDocument(resource) &&
+        resource.size < 50 * 1024 * 1024; // 50MB limit
+    }
+    
+    // =====================================
+    // 🔒 ADMIN ONLY AREAS
+    // =====================================
+    match /admin/{adminFile=**} {
+      // Only admins can access admin files
+      allow read, write: if request.auth != null && isAdmin(request.auth.uid);
+    }
+    
+    // =====================================
+    // 🚫 DENY ALL OTHER ACCESS
+    // =====================================
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+  
+  // =====================================
+  // 🔧 HELPER FUNCTIONS
+  // =====================================
+  
+  // Check if user is admin
+  function isAdmin(userId) {
+    return exists(/databases/(default)/documents/users/$(userId)) &&
+           get(/databases/(default)/documents/users/$(userId)).data.role == 'admin';
+  }
+  
+  // Check if user is supplier
+  function isSupplier(userId) {
+    return exists(/databases/(default)/documents/users/$(userId)) &&
+           get(/databases/(default)/documents/users/$(userId)).data.role == 'supplier';
+  }
+  
+  // Check if user owns the order
+  function isOrderOwner(userId, orderId) {
+    return exists(/databases/(default)/documents/orders/$(orderId)) &&
+           get(/databases/(default)/documents/orders/$(orderId)).data.userId == userId;
+  }
+  
+  // Check if user owns the supplier account
+  function isSupplierOwner(userId, supplierId) {
+    return exists(/databases/(default)/documents/suppliers/$(supplierId)) &&
+           get(/databases/(default)/documents/suppliers/$(supplierId)).data.userId == userId;
+  }
+  
+  // Validate image file types
+  function isValidImage(resource) {
+    return resource.contentType.matches('image/(jpeg|jpg|png|gif|webp)');
+  }
+  
+  // Validate document file types
+  function isValidDocument(resource) {
+    return resource.contentType.matches('(image|application/pdf|text|application/msword|application/vnd.openxmlformats-officedocument).*');
+  }
+}

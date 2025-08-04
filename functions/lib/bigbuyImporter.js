@@ -35,69 +35,48 @@ var __importStar = (this && this.__importStar) || (function () {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.scheduledBigBuyStockSync = exports.syncBigBuyStock = exports.getBigBuyCategories = exports.getBigBuyProductDetails = exports.searchBigBuyProducts = void 0;
-const functions = __importStar(require("firebase-functions"));
+const https_1 = require("firebase-functions/v2/https");
+const scheduler_1 = require("firebase-functions/v2/scheduler");
 const admin = __importStar(require("firebase-admin"));
 const axios_1 = __importDefault(require("axios"));
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps.length) {
+    admin.initializeApp();
+}
 // BigBuy API Configuration
 const BIGBUY_API_BASE = "https://api.bigbuy.eu";
-const BIGBUY_API_KEY = (_a = functions.config().bigbuy) === null || _a === void 0 ? void 0 : _a.api_key;
+const BIGBUY_API_KEY = process.env.BIGBUY_API_KEY;
 // Helper function to create BigBuy API headers
 const getBigBuyHeaders = () => ({
-    "Authorization": `Bearer ${BIGBUY_API_KEY}`,
+    Authorization: `Bearer ${BIGBUY_API_KEY}`,
     "Content-Type": "application/json",
 });
-// Set CORS headers
-const setCORSHeaders = (res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    res.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    res.set('Access-Control-Max-Age', '3600');
-};
 // Search BigBuy products
-exports.searchBigBuyProducts = functions.https.onRequest(async (req, res) => {
+exports.searchBigBuyProducts = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
     var _a, _b, _c;
-    // Handle CORS
-    setCORSHeaders(res);
-    if (req.method === 'OPTIONS') {
-        res.status(204).send('');
-        return;
+    const { data, auth } = request;
+    // Check admin access
+    if (!auth) {
+        throw new Error("Authentication required");
+    }
+    if (!BIGBUY_API_KEY) {
+        throw new Error("BigBuy API key not configured");
+    }
+    const { query = "", category = "", limit = 50, offset = 0 } = data;
+    // Build search parameters
+    const searchParams = {
+        limit: Math.min(limit, 100), // Max 100 per request
+        offset,
+    };
+    if (query) {
+        searchParams.name = query;
+    }
+    if (category) {
+        searchParams.category = category;
     }
     try {
-        // For HTTP requests, get auth from header instead of context
-        const authHeader = req.headers.authorization;
-        if (!(authHeader === null || authHeader === void 0 ? void 0 : authHeader.startsWith('Bearer '))) {
-            res.status(401).json({ success: false, error: "Authentication required" });
-            return;
-        }
-        const token = authHeader.substring(7);
-        const decodedToken = await admin.auth().verifyIdToken(token);
-        // Check if user has admin role
-        const userRecord = await admin.auth().getUser(decodedToken.uid);
-        const customClaims = userRecord.customClaims;
-        if (!(customClaims === null || customClaims === void 0 ? void 0 : customClaims.admin)) {
-            res.status(403).json({ success: false, error: "Admin access required" });
-            return;
-        }
-        if (!BIGBUY_API_KEY) {
-            res.status(500).json({ success: false, error: "BigBuy API key not configured" });
-            return;
-        }
-        const { query = "", category = "", limit = 50, offset = 0 } = req.body;
-        // Build search parameters
-        const searchParams = {
-            limit: Math.min(limit, 100), // Max 100 per request
-            offset,
-        };
-        if (query) {
-            searchParams.search = query;
-        }
-        if (category) {
-            searchParams.category = category;
-        }
-        // Make request to BigBuy API
         const response = await axios_1.default.get(`${BIGBUY_API_BASE}/rest/catalog/products`, {
             headers: getBigBuyHeaders(),
             params: searchParams,
@@ -109,22 +88,22 @@ exports.searchBigBuyProducts = functions.https.onRequest(async (req, res) => {
         const products = ((_a = response.data) === null || _a === void 0 ? void 0 : _a.data) || [];
         // Transform products to our format
         const transformedProducts = products.map((product) => {
-            var _a, _b, _c, _d, _e, _f, _g, _h;
+            var _a, _b, _c, _d, _e, _f;
             return ({
                 id: product.id,
                 name: product.name || "",
                 description: product.description || "",
                 shortDescription: product.shortDescription || "",
-                price: parseFloat(product.retailPrice || product.price || 0),
-                originalPrice: parseFloat(product.originalPrice || 0),
-                wholesalePrice: parseFloat(product.wholesalePrice || product.price || 0),
+                price: parseFloat(product.retailPrice || 0),
+                originalPrice: parseFloat(product.retailPrice || 0),
+                wholesalePrice: parseFloat(product.wholesalePrice || 0),
                 stock: parseInt(product.stock || 0),
-                sku: product.sku || ((_a = product.id) === null || _a === void 0 ? void 0 : _a.toString()) || "",
-                category: ((_b = product.category) === null || _b === void 0 ? void 0 : _b.name) || "",
-                subcategory: ((_c = product.subcategory) === null || _c === void 0 ? void 0 : _c.name) || "",
-                brand: ((_d = product.brand) === null || _d === void 0 ? void 0 : _d.name) || "",
-                images: ((_e = product.images) === null || _e === void 0 ? void 0 : _e.map((img) => img.url || img)) || [],
-                thumbnail: ((_g = (_f = product.images) === null || _f === void 0 ? void 0 : _f[0]) === null || _g === void 0 ? void 0 : _g.url) || ((_h = product.images) === null || _h === void 0 ? void 0 : _h[0]) || "",
+                sku: product.sku || "",
+                category: ((_a = product.category) === null || _a === void 0 ? void 0 : _a.name) || "",
+                subcategory: ((_b = product.subcategory) === null || _b === void 0 ? void 0 : _b.name) || "",
+                brand: ((_c = product.brand) === null || _c === void 0 ? void 0 : _c.name) || "",
+                images: ((_d = product.images) === null || _d === void 0 ? void 0 : _d.map((img) => img.url)) || [],
+                thumbnail: ((_f = (_e = product.images) === null || _e === void 0 ? void 0 : _e[0]) === null || _f === void 0 ? void 0 : _f.url) || "",
                 attributes: product.attributes || {},
                 variations: product.variations || [],
                 weight: parseFloat(product.weight || 0),
@@ -133,86 +112,64 @@ exports.searchBigBuyProducts = functions.https.onRequest(async (req, res) => {
                 minimumOrderQuantity: parseInt(product.minimumOrderQuantity || 1),
             });
         });
-        functions.logger.info(`BigBuy search completed: ${transformedProducts.length} products found`, {
-            query,
-            category,
-            resultCount: transformedProducts.length,
-        });
-        res.json({
+        console.log(`BigBuy product search completed: ${transformedProducts.length} products found`);
+        return {
             success: true,
-            products: transformedProducts,
-            total: ((_b = response.data) === null || _b === void 0 ? void 0 : _b.total) || transformedProducts.length,
-            hasMore: (offset + transformedProducts.length) < (((_c = response.data) === null || _c === void 0 ? void 0 : _c.total) || 0),
-        });
+            data: transformedProducts,
+            pagination: {
+                total: ((_c = (_b = response.data) === null || _b === void 0 ? void 0 : _b.pagination) === null || _c === void 0 ? void 0 : _c.total) || 0,
+                offset,
+                limit,
+            },
+        };
     }
     catch (error) {
-        functions.logger.error("BigBuy search error:", error);
-        res.status(500).json({
-            success: false,
-            error: error.message || "Failed to search BigBuy products",
-            products: [],
-        });
+        console.error("BigBuy search error:", error.message);
+        throw new Error(`Failed to search BigBuy products: ${error.message}`);
     }
 });
 // Get detailed product information from BigBuy
-exports.getBigBuyProductDetails = functions.https.onRequest(async (req, res) => {
-    var _a, _b, _c, _d, _e, _f, _g, _h;
-    // Handle CORS
-    setCORSHeaders(res);
-    if (req.method === 'OPTIONS') {
-        res.status(204).send('');
-        return;
+exports.getBigBuyProductDetails = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
+    var _a, _b, _c, _d, _e, _f;
+    const { data, auth } = request;
+    // Check admin access
+    if (!auth) {
+        throw new Error("Authentication required");
+    }
+    if (!BIGBUY_API_KEY) {
+        throw new Error("BigBuy API key not configured");
+    }
+    const { productId } = data;
+    if (!productId) {
+        throw new Error("Product ID is required");
     }
     try {
-        // For HTTP requests, get auth from header instead of context
-        const authHeader = req.headers.authorization;
-        if (!(authHeader === null || authHeader === void 0 ? void 0 : authHeader.startsWith('Bearer '))) {
-            res.status(401).json({ success: false, error: "Authentication required" });
-            return;
-        }
-        const token = authHeader.substring(7);
-        const decodedToken = await admin.auth().verifyIdToken(token);
-        // Check if user has admin role
-        const userRecord = await admin.auth().getUser(decodedToken.uid);
-        const customClaims = userRecord.customClaims;
-        if (!(customClaims === null || customClaims === void 0 ? void 0 : customClaims.admin)) {
-            res.status(403).json({ success: false, error: "Admin access required" });
-            return;
-        }
-        if (!BIGBUY_API_KEY) {
-            res.status(500).json({ success: false, error: "BigBuy API key not configured" });
-            return;
-        }
-        const { productId } = req.body;
-        if (!productId) {
-            res.status(400).json({ success: false, error: "Product ID is required" });
-            return;
-        }
-        // Get detailed product info from BigBuy
         const response = await axios_1.default.get(`${BIGBUY_API_BASE}/rest/catalog/products/${productId}`, {
             headers: getBigBuyHeaders(),
-            timeout: 30000,
+            timeout: 15000,
         });
         if (response.status !== 200) {
             throw new Error(`BigBuy API returned status ${response.status}`);
         }
         const product = response.data;
-        // Transform product data
+        if (!product) {
+            throw new Error("Product not found");
+        }
         const transformedProduct = {
             id: product.id,
             name: product.name || "",
             description: product.description || "",
             shortDescription: product.shortDescription || "",
-            price: parseFloat(product.retailPrice || product.price || 0),
-            originalPrice: parseFloat(product.originalPrice || 0),
-            wholesalePrice: parseFloat(product.wholesalePrice || product.price || 0),
+            price: parseFloat(product.retailPrice || 0),
+            originalPrice: parseFloat(product.retailPrice || 0),
+            wholesalePrice: parseFloat(product.wholesalePrice || 0),
             stock: parseInt(product.stock || 0),
-            sku: product.sku || ((_a = product.id) === null || _a === void 0 ? void 0 : _a.toString()) || "",
-            category: ((_b = product.category) === null || _b === void 0 ? void 0 : _b.name) || "",
-            subcategory: ((_c = product.subcategory) === null || _c === void 0 ? void 0 : _c.name) || "",
-            brand: ((_d = product.brand) === null || _d === void 0 ? void 0 : _d.name) || "",
-            images: ((_e = product.images) === null || _e === void 0 ? void 0 : _e.map((img) => img.url || img)) || [],
-            thumbnail: ((_g = (_f = product.images) === null || _f === void 0 ? void 0 : _f[0]) === null || _g === void 0 ? void 0 : _g.url) || ((_h = product.images) === null || _h === void 0 ? void 0 : _h[0]) || "",
+            sku: product.sku || "",
+            category: ((_a = product.category) === null || _a === void 0 ? void 0 : _a.name) || "",
+            subcategory: ((_b = product.subcategory) === null || _b === void 0 ? void 0 : _b.name) || "",
+            brand: ((_c = product.brand) === null || _c === void 0 ? void 0 : _c.name) || "",
+            images: ((_d = product.images) === null || _d === void 0 ? void 0 : _d.map((img) => img.url)) || [],
+            thumbnail: ((_f = (_e = product.images) === null || _e === void 0 ? void 0 : _e[0]) === null || _f === void 0 ? void 0 : _f.url) || "",
             attributes: product.attributes || {},
             variations: product.variations || [],
             weight: parseFloat(product.weight || 0),
@@ -220,172 +177,135 @@ exports.getBigBuyProductDetails = functions.https.onRequest(async (req, res) => 
             warranty: product.warranty || "",
             minimumOrderQuantity: parseInt(product.minimumOrderQuantity || 1),
         };
-        functions.logger.info(`BigBuy product details retrieved: ${productId}`, {
+        console.log(`BigBuy product details retrieved: ${productId}`, {
             productId,
-            productName: transformedProduct.name,
+            name: product.name,
         });
-        res.json({
+        return {
             success: true,
-            product: transformedProduct,
-        });
+            data: transformedProduct,
+        };
     }
     catch (error) {
-        functions.logger.error("BigBuy product details error:", error);
-        res.status(500).json({
-            success: false,
-            error: error.message || "Failed to get product details",
-        });
+        console.error("BigBuy product details error:", error.message);
+        throw new Error(`Failed to get product details: ${error.message}`);
     }
 });
 // Get BigBuy categories
-exports.getBigBuyCategories = functions.https.onRequest(async (req, res) => {
+exports.getBigBuyCategories = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
     var _a;
-    // Handle CORS
-    setCORSHeaders(res);
-    if (req.method === 'OPTIONS') {
-        res.status(204).send('');
-        return;
+    const { auth } = request;
+    // Check admin access
+    if (!auth) {
+        throw new Error("Authentication required");
+    }
+    if (!BIGBUY_API_KEY) {
+        throw new Error("BigBuy API key not configured");
     }
     try {
-        // For HTTP requests, get auth from header instead of context
-        const authHeader = req.headers.authorization;
-        if (!(authHeader === null || authHeader === void 0 ? void 0 : authHeader.startsWith('Bearer '))) {
-            res.status(401).json({ success: false, error: "Authentication required" });
-            return;
-        }
-        const token = authHeader.substring(7);
-        const decodedToken = await admin.auth().verifyIdToken(token);
-        // Check if user has admin role
-        const userRecord = await admin.auth().getUser(decodedToken.uid);
-        const customClaims = userRecord.customClaims;
-        if (!(customClaims === null || customClaims === void 0 ? void 0 : customClaims.admin)) {
-            res.status(403).json({ success: false, error: "Admin access required" });
-            return;
-        }
-        if (!BIGBUY_API_KEY) {
-            res.status(500).json({ success: false, error: "BigBuy API key not configured" });
-            return;
-        }
-        // Get categories from BigBuy
         const response = await axios_1.default.get(`${BIGBUY_API_BASE}/rest/catalog/categories`, {
             headers: getBigBuyHeaders(),
-            timeout: 30000,
+            timeout: 15000,
         });
         if (response.status !== 200) {
             throw new Error(`BigBuy API returned status ${response.status}`);
         }
         const categories = ((_a = response.data) === null || _a === void 0 ? void 0 : _a.data) || [];
-        functions.logger.info(`BigBuy categories retrieved: ${categories.length} categories`);
-        res.json({
+        console.log(`BigBuy categories retrieved: ${categories.length} categories`);
+        return {
             success: true,
-            categories: categories.map((cat) => ({
-                id: cat.id,
-                name: cat.name,
-                parentId: cat.parentId || null,
-                hasChildren: cat.hasChildren || false,
-            })),
-        });
+            data: categories,
+        };
     }
     catch (error) {
-        functions.logger.error("BigBuy categories error:", error);
-        res.status(500).json({
-            success: false,
-            error: error.message || "Failed to get categories",
-            categories: [],
-        });
+        console.error("BigBuy categories error:", error.message);
+        throw new Error(`Failed to get categories: ${error.message}`);
     }
 });
-// Sync stock levels for imported BigBuy products
-exports.syncBigBuyStock = functions.https.onRequest(async (req, res) => {
-    var _a;
-    // Handle CORS
-    setCORSHeaders(res);
-    if (req.method === 'OPTIONS') {
-        res.status(204).send('');
-        return;
+// Sync BigBuy stock for existing products
+exports.syncBigBuyStock = (0, https_1.onCall)({ region: "europe-west1" }, async (request) => {
+    const { auth } = request;
+    // Check admin access
+    if (!auth) {
+        throw new Error("Authentication required");
+    }
+    if (!BIGBUY_API_KEY) {
+        throw new Error("BigBuy API key not configured");
     }
     try {
-        // For HTTP requests, get auth from header instead of context
-        const authHeader = req.headers.authorization;
-        if (!(authHeader === null || authHeader === void 0 ? void 0 : authHeader.startsWith('Bearer '))) {
-            res.status(401).json({ success: false, error: "Authentication required" });
-            return;
-        }
-        const token = authHeader.substring(7);
-        const decodedToken = await admin.auth().verifyIdToken(token);
-        // Check if user has admin role
-        const userRecord = await admin.auth().getUser(decodedToken.uid);
-        const customClaims = userRecord.customClaims;
-        if (!(customClaims === null || customClaims === void 0 ? void 0 : customClaims.admin)) {
-            res.status(403).json({ success: false, error: "Admin access required" });
-            return;
-        }
-        if (!BIGBUY_API_KEY) {
-            res.status(500).json({ success: false, error: "BigBuy API key not configured" });
-            return;
-        }
         const db = admin.firestore();
-        const { productIds } = req.body;
-        // Get BigBuy products from Firestore
-        let query = db.collection("products").where("origin", "==", "BigBuy");
-        if (productIds && productIds.length > 0) {
-            query = query.where("bigBuyId", "in", productIds);
+        // Get all BigBuy products
+        const snapshot = await db
+            .collection("products")
+            .where("origin", "==", "BigBuy")
+            .where("status", "==", "active")
+            .get();
+        if (snapshot.empty) {
+            return {
+                success: true,
+                message: "No BigBuy products found to sync",
+                totalProcessed: 0,
+            };
         }
-        const snapshot = await query.get();
-        const updates = [];
-        for (const doc of snapshot.docs) {
-            const productData = doc.data();
-            const bigBuyId = productData.bigBuyId;
-            if (!bigBuyId)
-                continue;
-            try {
-                // Get current stock from BigBuy
-                const stockResponse = await axios_1.default.get(`${BIGBUY_API_BASE}/rest/catalog/products/${bigBuyId}/stock`, {
-                    headers: getBigBuyHeaders(),
-                    timeout: 15000,
-                });
-                if (stockResponse.status === 200) {
-                    const currentStock = parseInt(((_a = stockResponse.data) === null || _a === void 0 ? void 0 : _a.quantity) || 0);
-                    // Update Firestore if stock has changed
-                    if (currentStock !== productData.stock) {
-                        updates.push(doc.ref.update({
-                            stock: currentStock,
-                            inStock: currentStock > 0,
-                            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-                            lastStockSync: admin.firestore.FieldValue.serverTimestamp(),
-                        }));
+        let updatedCount = 0;
+        // Process in batches to avoid rate limits
+        const batchSize = 10;
+        for (let i = 0; i < snapshot.docs.length; i += batchSize) {
+            const batch = snapshot.docs.slice(i, i + batchSize);
+            await Promise.all(batch.map(async (doc) => {
+                var _a;
+                const productData = doc.data();
+                const bigBuyId = productData.bigBuyId;
+                if (!bigBuyId)
+                    return;
+                try {
+                    const stockResponse = await axios_1.default.get(`${BIGBUY_API_BASE}/rest/catalog/products/${bigBuyId}/stock`, {
+                        headers: getBigBuyHeaders(),
+                        timeout: 15000,
+                    });
+                    if (stockResponse.status === 200) {
+                        const currentStock = parseInt(((_a = stockResponse.data) === null || _a === void 0 ? void 0 : _a.quantity) || 0);
+                        if (currentStock !== productData.stock) {
+                            await doc.ref.update({
+                                stock: currentStock,
+                                inStock: currentStock > 0,
+                                updatedAt: admin.firestore.FieldValue.serverTimestamp(),
+                                lastStockSync: admin.firestore.FieldValue.serverTimestamp(),
+                            });
+                            updatedCount++;
+                        }
                     }
                 }
-            }
-            catch (stockError) {
-                functions.logger.warn(`Failed to sync stock for product ${bigBuyId}:`, stockError);
+                catch (error) {
+                    console.warn(`Failed to sync stock for product ${bigBuyId}:`, error.message);
+                }
+            }));
+            // Add delay between batches to respect rate limits
+            if (i + batchSize < snapshot.docs.length) {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
             }
         }
-        await Promise.all(updates);
-        functions.logger.info(`BigBuy stock sync completed: ${updates.length} products updated`);
-        res.json({
+        console.log(`BigBuy stock sync completed: ${updatedCount} products updated`);
+        return {
             success: true,
-            updatedCount: updates.length,
+            message: `Stock sync completed: ${updatedCount} products updated`,
             totalProcessed: snapshot.docs.length,
-        });
+        };
     }
     catch (error) {
-        functions.logger.error("BigBuy stock sync error:", error);
-        res.status(500).json({
-            success: false,
-            error: error.message || "Failed to sync stock",
-        });
+        console.error("BigBuy stock sync error:", error.message);
+        throw new Error(`Failed to sync stock: ${error.message}`);
     }
 });
 // Scheduled stock sync (runs every hour)
-exports.scheduledBigBuyStockSync = functions.pubsub
-    .schedule("0 * * * *") // Every hour
-    .timeZone("UTC")
-    .onRun(async (context) => {
-    functions.logger.info("Running scheduled BigBuy stock sync...");
+exports.scheduledBigBuyStockSync = (0, scheduler_1.onSchedule)({
+    schedule: "0 * * * *",
+    region: "europe-west1",
+}, async (event) => {
+    console.log("Running scheduled BigBuy stock sync...");
     try {
         if (!BIGBUY_API_KEY) {
-            functions.logger.warn("BigBuy API key not configured, skipping stock sync");
+            console.warn("BigBuy API key not configured, skipping stock sync");
             return;
         }
         const db = admin.firestore();
@@ -425,18 +345,18 @@ exports.scheduledBigBuyStockSync = functions.pubsub
                     }
                 }
                 catch (error) {
-                    functions.logger.warn(`Failed to sync stock for product ${bigBuyId}:`, error);
+                    console.warn(`Failed to sync stock for product ${bigBuyId}:`, error.message);
                 }
             }));
             // Add delay between batches to respect rate limits
             if (i + batchSize < snapshot.docs.length) {
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise((resolve) => setTimeout(resolve, 1000));
             }
         }
-        functions.logger.info(`Scheduled BigBuy stock sync completed: ${updatedCount} products updated`);
+        console.log(`Scheduled BigBuy stock sync completed: ${updatedCount} products updated`);
     }
     catch (error) {
-        functions.logger.error("Scheduled BigBuy stock sync error:", error);
+        console.error("Scheduled BigBuy stock sync error:", error.message);
     }
 });
 //# sourceMappingURL=bigbuyImporter.js.map

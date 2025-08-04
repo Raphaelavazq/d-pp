@@ -54,7 +54,6 @@ const ComingSoon = ({ onPasswordSubmit }) => {
             />
             <p
               className="text-lg sm:text-xl md:text-2xl text-white/80 mb-2 px-4"
-              className="font-chillax"
             >
               Something Beautiful is Coming
             </p>
@@ -64,7 +63,6 @@ const ComingSoon = ({ onPasswordSubmit }) => {
           <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 mx-4 sm:mx-0">
             <h2
               className="text-xl sm:text-2xl font-medium text-white mb-4 sm:mb-6 text-center"
-              className="font-chillax"
             >
               Early Access
             </h2>
@@ -80,7 +78,6 @@ const ComingSoon = ({ onPasswordSubmit }) => {
                   }}
                   placeholder="Enter access password"
                   className="w-full px-3 sm:px-4 py-3 sm:py-4 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent pr-10 sm:pr-12 text-sm sm:text-base"
-                  className="font-chillax"
                 />
                 <button
                   type="button"
@@ -105,7 +102,6 @@ const ComingSoon = ({ onPasswordSubmit }) => {
                 type="submit"
                 disabled={isLoading || !password.trim()}
                 className="w-full py-3 sm:py-4 bg-white text-black rounded-lg font-medium hover:bg-white/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-105 text-sm sm:text-base"
-                className="font-chillax"
               >
                 {isLoading ? "Verifying..." : "Enter"}
               </button>
@@ -114,7 +110,6 @@ const ComingSoon = ({ onPasswordSubmit }) => {
             <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-white/20">
               <p
                 className="text-white/60 text-xs sm:text-sm text-center px-2"
-                className="font-chillax"
               >
                 Don't have access? Contact us for early preview.
               </p>
@@ -125,7 +120,6 @@ const ComingSoon = ({ onPasswordSubmit }) => {
           <div className="text-center mt-8 sm:mt-12 mb-4 sm:mb-8">
             <p
               className="text-white/40 text-xs sm:text-sm px-4"
-              className="font-chillax"
             >
               © 2025 All rights reserved.
             </p>

@@ -1,5 +1,10 @@
-import * as functions from "firebase-functions";
+import { onCall } from "firebase-functions/v2/https";
 import * as admin from "firebase-admin";
+
+// Initialize Firebase Admin if not already initialized
+if (!admin.apps.length) {
+  admin.initializeApp();
+}
 
 const db = admin.firestore();
 
@@ -8,245 +13,248 @@ export interface AliExpressProduct {
   title: string;
   price: number;
   originalPrice: number;
-  images: string[];
-  description: string;
+  discount: number;
+  rating: number;
+  soldCount: number;
+  imageUrl: string;
   category: string;
-  variants: ProductVariant[];
-  supplierId: string;
-  supplierName: string;
-  sku: string;
-  inventory: number;
-}
-
-export interface ProductVariant {
-  id: string;
-  name: string;
-  price: number;
+  supplier: string;
   inventory: number;
   attributes: { [key: string]: string };
 }
 
-export const syncProductsFromAliExpress = functions.https.onCall(
-  async (data, context) => {
+export const syncProductsFromAliExpress = onCall(
+  { region: "europe-west1" },
+  async (request) => {
     // Verify admin authentication
-    if (!context.auth || !context.auth.token.admin) {
-      throw new functions.https.HttpsError(
-        "permission-denied",
-        "Admin access required"
-      );
+    if (!request.auth) {
+      throw new Error("Authentication required");
+    }
+
+    // Check if user is admin
+    const userDoc = await db.collection("users").doc(request.auth.uid).get();
+    const userData = userDoc.data();
+
+    if (!userData || userData.role !== "admin") {
+      throw new Error("Admin access required");
     }
 
     try {
-      const { supplierId, apiKey, category } = data;
+      const { supplierId, apiKey, category } = request.data;
 
-      // Fetch products from AliExpress API (mock implementation)
-      const products = await fetchAliExpressProducts(
-        supplierId,
-        apiKey,
-        category
-      );
-
-      const batch = db.batch();
-      const syncLog = {
-        timestamp: admin.firestore.FieldValue.serverTimestamp(),
-        supplierId,
-        totalProducts: products.length,
-        status: "processing",
-        errors: [],
-      };
-
-      // Create sync log
-      const syncLogRef = db.collection("syncLogs").doc();
-      batch.set(syncLogRef, syncLog);
-
-      let successCount = 0;
-      let errorCount = 0;
-
-      for (const product of products) {
-        try {
-          const productRef = db.collection("products").doc(product.id);
-          const productData = {
-            ...product,
-            updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-            syncedAt: admin.firestore.FieldValue.serverTimestamp(),
-            status: "active",
-          };
-
-          batch.set(productRef, productData, { merge: true });
-
-          // Update inventory
-          const inventoryRef = db.collection("inventory").doc(product.id);
-          batch.set(
-            inventoryRef,
-            {
-              productId: product.id,
-              supplierId: product.supplierId,
-              quantity: product.inventory,
-              lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
-              lowStockThreshold: 10,
-            },
-            { merge: true }
-          );
-
-          successCount++;
-        } catch (error) {
-          console.error(`Error syncing product ${product.id}:`, error);
-          errorCount++;
-        }
+      if (!supplierId || !apiKey) {
+        throw new Error("Supplier ID and API key are required");
       }
 
-      // Update sync log
-      batch.update(syncLogRef, {
-        status: "completed",
-        successCount,
-        errorCount,
-        completedAt: admin.firestore.FieldValue.serverTimestamp(),
-      });
+      // Mock AliExpress API integration (replace with actual API calls)
+      const mockProducts: AliExpressProduct[] = [
+        {
+          id: `aliexpress-${Date.now()}-1`,
+          title: "Premium Wireless Headphones",
+          price: 89.99,
+          originalPrice: 129.99,
+          discount: 30,
+          rating: 4.5,
+          soldCount: 1247,
+          imageUrl: "https://example.com/headphones.jpg",
+          category: category || "Electronics",
+          supplier: supplierId,
+          inventory: 50,
+          attributes: {
+            color: "Black",
+            brand: "TechBrand",
+            weight: "250g",
+          },
+        },
+        // Add more mock products as needed
+      ];
+
+      // Process and save products to Firestore
+      const batch = db.batch();
+      const results = [];
+
+      for (const product of mockProducts) {
+        const productRef = db.collection("products").doc(product.id);
+
+        const productData = {
+          ...product,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          status: "active",
+          tags: [category, "imported", "aliexpress"],
+        };
+
+        batch.set(productRef, productData);
+        results.push({
+          id: product.id,
+          title: product.title,
+          success: true,
+        });
+      }
 
       await batch.commit();
 
       return {
         success: true,
-        totalProducts: products.length,
-        successCount,
-        errorCount,
+        message: `Successfully synced ${results.length} products from AliExpress`,
+        products: results,
       };
     } catch (error) {
-      console.error("Product sync error:", error);
-      throw new functions.https.HttpsError("internal", "Product sync failed");
+      console.error("Error syncing AliExpress products:", error);
+      throw new Error("Failed to sync products from AliExpress");
     }
   }
 );
 
-export const syncSingleProduct = functions.https.onCall(
-  async (data, context) => {
-    if (!context.auth) {
-      throw new functions.https.HttpsError(
-        "unauthenticated",
-        "Authentication required"
-      );
+export const removeProductFromSync = onCall(
+  { region: "europe-west1" },
+  async (request) => {
+    if (!request.auth) {
+      throw new Error("Authentication required");
+    }
+
+    // Check if user is admin
+    const userDoc = await db.collection("users").doc(request.auth.uid).get();
+    const userData = userDoc.data();
+
+    if (!userData || userData.role !== "admin") {
+      throw new Error("Admin access required");
     }
 
     try {
-      const { productId, supplierId } = data;
+      const { productId } = request.data;
 
-      // Fetch single product from AliExpress
-      const product = await fetchSingleAliExpressProduct(productId, supplierId);
-
-      if (!product) {
-        throw new functions.https.HttpsError("not-found", "Product not found");
+      if (!productId) {
+        throw new Error("Product ID is required");
       }
 
-      const productRef = db.collection("products").doc(productId);
-      await productRef.set(
-        {
-          ...product,
-          updatedAt: admin.firestore.FieldValue.serverTimestamp(),
-          syncedAt: admin.firestore.FieldValue.serverTimestamp(),
-        },
-        { merge: true }
-      );
+      // Remove product from Firestore
+      await db.collection("products").doc(productId).delete();
 
-      // Update inventory
-      const inventoryRef = db.collection("inventory").doc(productId);
-      await inventoryRef.set(
-        {
-          productId: product.id,
-          supplierId: product.supplierId,
-          quantity: product.inventory,
-          lastUpdated: admin.firestore.FieldValue.serverTimestamp(),
-          lowStockThreshold: 10,
-        },
-        { merge: true }
-      );
-
-      return { success: true, product };
+      return {
+        success: true,
+        message: `Product ${productId} removed successfully`,
+      };
     } catch (error) {
-      console.error("Single product sync error:", error);
-      throw new functions.https.HttpsError("internal", "Product sync failed");
+      console.error("Error removing product:", error);
+      throw new Error("Failed to remove product");
     }
   }
 );
 
-// Mock function to simulate AliExpress API call
-async function fetchAliExpressProducts(
-  supplierId: string,
-  apiKey: string,
-  category?: string
-): Promise<AliExpressProduct[]> {
-  // In a real implementation, this would call the actual AliExpress API
-  // For now, we'll return mock data
-  const mockProducts: AliExpressProduct[] = [
-    {
-      id: `ali_${Date.now()}_1`,
-      title: "Premium Wireless Headphones",
-      price: 29.99,
-      originalPrice: 59.99,
-      images: [
-        "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
-        "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500",
-      ],
-      description: "High-quality wireless headphones with noise cancellation",
-      category: category || "Electronics",
-      variants: [
-        {
-          id: "var1",
-          name: "Black",
-          price: 29.99,
-          inventory: 100,
-          attributes: { color: "Black" },
-        },
-        {
-          id: "var2",
-          name: "White",
-          price: 29.99,
-          inventory: 75,
-          attributes: { color: "White" },
-        },
-      ],
-      supplierId,
-      supplierName: "TechSupplier Co.",
-      sku: `TECH_${Date.now()}`,
-      inventory: 175,
-    },
-  ];
-
-  // Simulate API delay
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  return mockProducts;
-}
-
-async function fetchSingleAliExpressProduct(
-  productId: string,
-  supplierId: string
-): Promise<AliExpressProduct | null> {
-  // Mock implementation
-  const products = await fetchAliExpressProducts(supplierId, "mock-api-key");
-  return products.find((p) => p.id === productId) || null;
-}
-
-export const productSync = {
-  syncAllProducts: async () => {
-    console.log("Syncing all products from all suppliers...");
-
-    // Get all active suppliers
-    const suppliersSnapshot = await db
-      .collection("suppliers")
-      .where("status", "==", "active")
-      .get();
-
-    for (const supplierDoc of suppliersSnapshot.docs) {
-      const supplier = supplierDoc.data();
-      try {
-        await fetchAliExpressProducts(supplierDoc.id, supplier.apiKey);
-        console.log(`Synced products for supplier: ${supplier.name}`);
-      } catch (error) {
-        console.error(
-          `Failed to sync products for supplier ${supplier.name}:`,
-          error
-        );
-      }
+export const updateProductPricing = onCall(
+  { region: "europe-west1" },
+  async (request) => {
+    if (!request.auth) {
+      throw new Error("Authentication required");
     }
-  },
-};
+
+    // Check if user is admin
+    const userDoc = await db.collection("users").doc(request.auth.uid).get();
+    const userData = userDoc.data();
+
+    if (!userData || userData.role !== "admin") {
+      throw new Error("Admin access required");
+    }
+
+    try {
+      const { productId, newPrice, markup } = request.data;
+
+      if (!productId || !newPrice) {
+        throw new Error("Product ID and new price are required");
+      }
+
+      const productRef = db.collection("products").doc(productId);
+      const productDoc = await productRef.get();
+
+      if (!productDoc.exists) {
+        throw new Error("Product not found");
+      }
+
+      const updateData: any = {
+        price: newPrice,
+        updatedAt: new Date(),
+      };
+
+      if (markup) {
+        updateData.markup = markup;
+      }
+
+      await productRef.update(updateData);
+
+      return {
+        success: true,
+        message: `Product pricing updated successfully`,
+      };
+    } catch (error) {
+      console.error("Error updating product pricing:", error);
+      throw new Error("Failed to update product pricing");
+    }
+  }
+);
+
+export const syncProductInventory = onCall(
+  { region: "europe-west1" },
+  async (request) => {
+    if (!request.auth) {
+      throw new Error("Authentication required");
+    }
+
+    // Check if user is admin
+    const userDoc = await db.collection("users").doc(request.auth.uid).get();
+    const userData = userDoc.data();
+
+    if (!userData || userData.role !== "admin") {
+      throw new Error("Admin access required");
+    }
+
+    try {
+      const { productIds } = request.data;
+
+      if (!productIds || !Array.isArray(productIds)) {
+        throw new Error("Product IDs array is required");
+      }
+
+      const batch = db.batch();
+      const results = [];
+
+      for (const productId of productIds) {
+        try {
+          // Mock inventory sync (replace with actual supplier API calls)
+          const mockInventory = Math.floor(Math.random() * 100) + 10;
+
+          const productRef = db.collection("products").doc(productId);
+          batch.update(productRef, {
+            inventory: mockInventory,
+            lastInventorySync: new Date(),
+          });
+
+          results.push({
+            productId,
+            inventory: mockInventory,
+            success: true,
+          });
+        } catch (error) {
+          results.push({
+            productId,
+            success: false,
+            error: error instanceof Error ? error.message : "Unknown error",
+          });
+        }
+      }
+
+      await batch.commit();
+
+      const successCount = results.filter((r) => r.success).length;
+
+      return {
+        success: true,
+        message: `Inventory synced for ${successCount}/${results.length} products`,
+        results,
+      };
+    } catch (error) {
+      console.error("Error syncing product inventory:", error);
+      throw new Error("Failed to sync product inventory");
+    }
+  }
+);

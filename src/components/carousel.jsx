@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import CarouselCard from "./CarouselCard";
-import ImpactButton from "./ImpactButton";
+import CarouselCard from "./CarouselCard.jsx";
+import ImpactButton from "./ImpactButton.jsx";
 import { carouselProducts } from "../data/productData";
 
 gsap.registerPlugin(ScrollTrigger);

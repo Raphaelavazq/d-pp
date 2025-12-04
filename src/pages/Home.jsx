@@ -21,18 +21,20 @@ export default function Home() {
     // Enable smooth scrolling
     ScrollTrigger.normalizeScroll(true);
 
-    // Set initial states for hero elements
-    gsap.set(
-      [heroTextRef.current, heroSubtitleRef.current, heroButtonsRef.current],
-      {
+    // Set initial states for hero elements - with null checks
+    const heroElements = [heroTextRef.current, heroSubtitleRef.current, heroButtonsRef.current].filter(Boolean);
+    if (heroElements.length > 0) {
+      gsap.set(heroElements, {
         opacity: 0,
         y: 60,
-      }
-    );
-    gsap.set(heroImageRef.current, {
-      opacity: 0,
-      scale: 1.05,
-    });
+      });
+    }
+    if (heroImageRef.current) {
+      gsap.set(heroImageRef.current, {
+        opacity: 0,
+        scale: 1.05,
+      });
+    }
 
     // Get all sections with data-section attribute
     const sections = document.querySelectorAll("[data-section]");
@@ -68,16 +70,18 @@ export default function Home() {
       );
     });
 
-    // Hero entrance animation
+    // Hero entrance animation - with null checks
     const heroTl = gsap.timeline({ delay: 0.2 });
-    heroTl
-      .to(heroTextRef.current, {
+    if (heroTextRef.current) {
+      heroTl.to(heroTextRef.current, {
         opacity: 1,
         y: 0,
         duration: 0.8,
         ease: "power2.out",
-      })
-      .to(
+      });
+    }
+    if (heroSubtitleRef.current) {
+      heroTl.to(
         heroSubtitleRef.current,
         {
           opacity: 1,
@@ -86,8 +90,10 @@ export default function Home() {
           ease: "power2.out",
         },
         "-=0.4"
-      )
-      .to(
+      );
+    }
+    if (heroImageRef.current) {
+      heroTl.to(
         heroImageRef.current,
         {
           opacity: 1,
@@ -96,8 +102,10 @@ export default function Home() {
           ease: "power2.out",
         },
         "-=0.6"
-      )
-      .to(
+      );
+    }
+    if (heroButtonsRef.current) {
+      heroTl.to(
         heroButtonsRef.current,
         {
           opacity: 1,
@@ -107,6 +115,7 @@ export default function Home() {
         },
         "-=0.3"
       );
+    }
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());

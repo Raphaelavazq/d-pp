@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import Carousel from "../components/Carousel";
 import ImpactButton from "../components/ImpactButton";
 import Values from "../components/Values";
 

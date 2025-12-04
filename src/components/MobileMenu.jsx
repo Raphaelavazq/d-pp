@@ -16,6 +16,8 @@ const MobileMenu = ({
   const contentRef = useRef(null);
 
   useEffect(() => {
+    if (!menuRef.current || !overlayRef.current || !contentRef.current) return;
+
     if (isOpen) {
       // Show menu animation
       gsap.set(menuRef.current, { display: "block" });
@@ -41,7 +43,9 @@ const MobileMenu = ({
         duration: 0.4,
         ease: "power2.in",
         onComplete: () => {
-          gsap.set(menuRef.current, { display: "none" });
+          if (menuRef.current) {
+            gsap.set(menuRef.current, { display: "none" });
+          }
         },
       });
     }

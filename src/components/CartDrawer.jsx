@@ -18,6 +18,9 @@ const CartDrawer = () => {
   const overlayRef = useRef(null);
 
   useEffect(() => {
+    // Early return if refs aren't ready
+    if (!drawerRef.current || !overlayRef.current) return;
+
     if (isOpen) {
       gsap.set(".cart-drawer", { x: "100%" });
       gsap.set(".cart-overlay", { opacity: 0 });

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
@@ -11,6 +12,7 @@ import sectionvid1 from "../assets/sectionvid1_compressed.mp4";
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 export default function Home() {
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const heroTextRef = useRef(null);
   const heroImageRef = useRef(null);
@@ -22,7 +24,11 @@ export default function Home() {
     ScrollTrigger.normalizeScroll(true);
 
     // Set initial states for hero elements - with null checks
-    const heroElements = [heroTextRef.current, heroSubtitleRef.current, heroButtonsRef.current].filter(Boolean);
+    const heroElements = [
+      heroTextRef.current,
+      heroSubtitleRef.current,
+      heroButtonsRef.current,
+    ].filter(Boolean);
     if (heroElements.length > 0) {
       gsap.set(heroElements, {
         opacity: 0,
@@ -154,14 +160,14 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-6 lg:gap-8 justify-center">
             <ImpactButton
               variant="filled"
-              onClick={() => (window.location.href = "/shop")}
+              onClick={() => navigate("/shop")}
               className="px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 text-sm sm:text-base md:text-lg font-medium tracking-wide"
             >
               Shop Collection
             </ImpactButton>
             <ImpactButton
               variant="outline"
-              onClick={() => (window.location.href = "/about")}
+              onClick={() => navigate("/about")}
               className="px-6 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5 text-sm sm:text-base md:text-lg font-medium tracking-wide"
             >
               Learn More
@@ -241,14 +247,14 @@ export default function Home() {
               >
                 <ImpactButton
                   variant="filled"
-                  onClick={() => (window.location.href = "/shop")}
+                  onClick={() => navigate("/shop")}
                   className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-medium tracking-wide"
                 >
                   Discover Collection
                 </ImpactButton>
                 <ImpactButton
                   variant="outline"
-                  onClick={() => (window.location.href = "/impact")}
+                  onClick={() => navigate("/impact")}
                   className="px-6 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-medium tracking-wide"
                 >
                   Our Impact
@@ -346,14 +352,14 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4">
                   <ImpactButton
                     variant="filled"
-                    onClick={() => (window.location.href = "/shop")}
+                    onClick={() => navigate("/shop")}
                     className="px-4 py-2 sm:px-6 sm:py-3 text-sm"
                   >
                     Shop Now
                   </ImpactButton>
                   <ImpactButton
                     variant="outline"
-                    onClick={() => (window.location.href = "/about")}
+                    onClick={() => navigate("/about")}
                     className="px-4 py-2 sm:px-6 sm:py-3 text-sm"
                   >
                     Learn More

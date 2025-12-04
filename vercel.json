@@ -1,0 +1,10 @@
+{
+  "git": {
+    "lfs": true
+  },
+  "build": {
+    "env": {
+      "ENABLE_GIT_LFS": "1"
+    }
+  }
+}

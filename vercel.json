@@ -6,5 +6,11 @@
     "env": {
       "ENABLE_GIT_LFS": "1"
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }

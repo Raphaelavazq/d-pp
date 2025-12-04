@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { products } from "../data/productData";
 import { useCart } from "../hooks/useCart";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/Carousel.jsx";
 import StayInTouch from "../components/StayInTouch";
 
 gsap.registerPlugin(ScrollTrigger);

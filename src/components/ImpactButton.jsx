@@ -30,12 +30,12 @@ const ImpactButton = React.forwardRef(
   ) => {
     // Base styles for both variants
     const base =
-      "relative inline-flex items-center justify-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-rhode-text select-none";
+      "relative inline-flex items-center justify-center px-6 py-2.5 rounded-full font-semibold text-sm transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-stone select-none";
     // Variant styles
     const filled =
-      "bg-rhode-text text-rhode-light border border-rhode-text hover:bg-transparent hover:text-rhode-text";
+      "bg-stone text-sand border border-stone hover:bg-transparent hover:text-stone";
     const outline =
-      "bg-transparent text-rhode-text border border-rhode-text hover:bg-rhode-text hover:text-rhode-light";
+      "bg-transparent text-stone border-2 border-stone hover:bg-stone hover:text-sand";
     // Animation: subtle scale on hover
     const animation = "hover:scale-[1.04] active:scale-95";
     // Font

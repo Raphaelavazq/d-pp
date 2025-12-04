@@ -17,7 +17,7 @@ import {
   Globe,
   Image as ImageIcon,
 } from "lucide-react";
-import { db, functions, auth } from "../../config/firebase";
+import { db, functions } from "../../config/firebase";
 import { collection, addDoc, query, where, getDocs } from "firebase/firestore";
 
 const BigBuyImporter = () => {
@@ -79,41 +79,24 @@ const BigBuyImporter = () => {
 
     setLoading(true);
     try {
-      // Get auth token
-      const user = auth.currentUser;
-      if (!user) {
-        throw new Error("User not authenticated");
-      }
+      // Use Firebase callable function (more secure, no CORS issues)
+      const { httpsCallable } = await import("firebase/functions");
+      const searchFunction = httpsCallable(functions, "searchBigBuyProducts");
 
-      const token = await user.getIdToken();
+      const result = await searchFunction({
+        query: searchTerm,
+        category: selectedCategory,
+        limit: 50,
+      });
 
-      // Call HTTP endpoint instead of callable function
-      const response = await fetch(
-        `${functions.app.options.projectId === "dupp-af67a" ? "https://us-central1-dupp-af67a.cloudfunctions.net" : "http://localhost:5001/dupp-af67a/us-central1"}/searchBigBuyProducts`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            query: searchTerm,
-            category: selectedCategory,
-            limit: 50,
-          }),
-        }
-      );
-
-      const result = await response.json();
-
-      if (result.success) {
-        setSearchResults(result.products || []);
+      if (result.data.success) {
+        setSearchResults(result.data.data || []);
         showNotification(
-          `Found ${result.products?.length || 0} products`,
+          `Found ${result.data.data?.length || 0} products`,
           "success"
         );
       } else {
-        showNotification(result.error || "Search failed", "error");
+        showNotification(result.data.error || "Search failed", "error");
         setSearchResults([]);
       }
     } catch (error) {
@@ -136,34 +119,24 @@ const BigBuyImporter = () => {
     setImportingIds((prev) => new Set(prev).add(productId));
 
     try {
-      // Get auth token
-      const user = auth.currentUser;
-      if (!user) {
-        throw new Error("User not authenticated");
-      }
-
-      const token = await user.getIdToken();
-
-      // Get detailed product info from BigBuy via HTTP endpoint
-      const response = await fetch(
-        `${functions.app.options.projectId === "dupp-af67a" ? "https://us-central1-dupp-af67a.cloudfunctions.net" : "http://localhost:5001/dupp-af67a/us-central1"}/getBigBuyProductDetails`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ productId: bigBuyProduct.id }),
-        }
+      // Use Firebase callable function for getting product details
+      const { httpsCallable } = await import("firebase/functions");
+      const getDetailsFunction = httpsCallable(
+        functions,
+        "getBigBuyProductDetails"
       );
 
-      const detailsResult = await response.json();
+      const detailsResult = await getDetailsFunction({
+        productId: bigBuyProduct.id,
+      });
 
-      if (!detailsResult.success) {
-        throw new Error(detailsResult.error || "Failed to get product details");
+      if (!detailsResult.data.success) {
+        throw new Error(
+          detailsResult.data.error || "Failed to get product details"
+        );
       }
 
-      const productDetails = detailsResult.product;
+      const productDetails = detailsResult.data.data;
 
       // Prepare product data for Firestore
       const productData = {

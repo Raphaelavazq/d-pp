@@ -271,7 +271,7 @@ const Navbar = () => {
                 >
                   <ShoppingBag size={20} />
                   {getTotalItems() > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-rhode-text text-rhode-light text-xs rounded-full h-4 w-4 flex items-center justify-center font-medium text-[10px]">
+                    <span className="absolute -top-1 -right-1 bg-rhode-text text-rhode-light rounded-full h-4 w-4 flex items-center justify-center font-medium text-[10px]">
                       {getTotalItems()}
                     </span>
                   )}

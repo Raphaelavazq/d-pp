@@ -10,6 +10,7 @@ if (!admin.apps.length) {
 
 // BigBuy API Configuration
 const BIGBUY_API_BASE = "https://api.bigbuy.eu";
+// Use environment variable for modern Firebase Functions
 const BIGBUY_API_KEY = process.env.BIGBUY_API_KEY;
 
 interface BigBuyProduct {

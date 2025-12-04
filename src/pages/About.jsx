@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import aboutBanner from "../assets/about4.mp4";
 import about from "../assets/about.mp4";
-import about2 from "../assets/about2.mp4";
 import about3 from "../assets/about3.mp4";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -64,7 +62,7 @@ const About = () => {
         {/* Video background */}
         <div className="absolute inset-0 opacity-20 md:opacity-30">
           <video
-            src={aboutBanner}
+            src={about3}
             autoPlay
             muted
             loop
@@ -172,7 +170,7 @@ const About = () => {
             {/* Video - Left side, full width to edge */}
             <div className="relative h-full flex items-center justify-center order-2 lg:order-1 bg-gray-50 min-h-[300px] sm:min-h-[400px] lg:min-h-full">
               <video
-                src={about2}
+                src={about}
                 className="w-full h-full object-cover"
                 autoPlay
                 loop

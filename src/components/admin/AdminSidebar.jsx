@@ -7,13 +7,13 @@ import {
   Users,
   FileText,
   Search,
-  Globe,
   Settings,
   Home,
   Warehouse,
   X,
   Download,
 } from "lucide-react";
+import logoSvg from "../../assets/logo.svg";
 
 const AdminSidebar = ({ open, onClose }) => {
   const location = useLocation();
@@ -87,18 +87,20 @@ const AdminSidebar = ({ open, onClose }) => {
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 lg:z-30">
         <div className="flex flex-col flex-grow bg-white border-r border-gray-200 pt-5 pb-4 overflow-y-auto">
           {/* Logo */}
-          <div className="flex items-center flex-shrink-0 px-6">
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
-              </div>
-              <div className="ml-3">
-                <h1 className="text-xl font-bold text-gray-900">düpp</h1>
-                <p className="text-xs text-gray-500 font-medium">
-                  Admin Dashboard
-                </p>
-              </div>
+          <div className="flex flex-col items-center flex-shrink-0 px-6 py-6 mb-4 border-b border-rhode-cream/30 bg-gradient-to-b from-rhode-cream/20 to-transparent">
+            <div className="w-16 h-16 rounded-full bg-white shadow-lg ring-2 ring-rhode-text/20 flex items-center justify-center p-2 mb-3">
+              <img
+                src={logoSvg}
+                alt="düpp logo"
+                className="w-full h-full object-contain"
+              />
             </div>
+            <h2 className="text-xl font-bold text-rhode-text tracking-tight">
+              düpp
+            </h2>
+            <p className="text-xs text-rhode-text/60 font-medium uppercase tracking-widest mt-1">
+              Admin
+            </p>
           </div>
 
           {/* Navigation */}
@@ -112,10 +114,10 @@ const AdminSidebar = ({ open, onClose }) => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className={`group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-colors duration-200 ${
+                  className={`group flex items-center px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                     isActive(item.href)
-                      ? "bg-purple-50 text-purple-700 border-r-2 border-purple-600"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      ? "bg-rhode-cream text-rhode-text shadow-sm border-l-4 border-rhode-text"
+                      : "text-stone hover:bg-rhode-cream/50 hover:text-rhode-text"
                   }`}
                   aria-current={isActive(item.href) ? "page" : undefined}
                 >
@@ -143,19 +145,25 @@ const AdminSidebar = ({ open, onClose }) => {
       >
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-4 border-b border-gray-200">
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg flex items-center justify-center">
-                <Globe className="w-5 h-5 text-white" />
+          <div className="flex items-center justify-between p-4 border-b border-rhode-cream/30 bg-gradient-to-r from-rhode-cream/20 to-transparent">
+            <div className="flex items-center flex-1">
+              <div className="w-12 h-12 rounded-full bg-white shadow-lg ring-2 ring-rhode-text/20 flex items-center justify-center p-2 flex-shrink-0">
+                <img
+                  src={logoSvg}
+                  alt="düpp logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="ml-3">
-                <h1 className="text-lg font-bold text-gray-900">düpp</h1>
-                <p className="text-xs text-gray-500">Admin</p>
+                <h2 className="text-lg font-bold text-rhode-text">düpp</h2>
+                <p className="text-xs text-rhode-text/60 uppercase tracking-wider">
+                  Admin
+                </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100"
+              className="p-2 rounded-lg text-rhode-text/40 hover:text-rhode-text hover:bg-rhode-cream/50 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>

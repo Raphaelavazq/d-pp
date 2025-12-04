@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import about from "../assets/about.mp4";
-import about3 from "../assets/about3.mp4";
+import about from "../assets/about_compressed.mp4";
+import about3 from "../assets/about3_compressed.mp4";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 

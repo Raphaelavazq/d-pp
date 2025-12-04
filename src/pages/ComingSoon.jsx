@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { usePasswordProtection } from "../hooks/usePasswordProtection";
 import logoSvg from "../assets/logo.svg";
-import heroVideo from "../assets/heroVideo.mp4";
+import heroVideo from "../assets/heroVideo_compressed.mp4";
 
 const ComingSoon = ({ onPasswordSubmit }) => {
   const [password, setPassword] = useState("");

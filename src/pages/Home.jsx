@@ -5,8 +5,8 @@ import { TextPlugin } from "gsap/TextPlugin";
 import ImpactButton from "../components/ImpactButton";
 import Values from "../components/Values";
 
-import heroVideo from "../assets/heroVideo.mp4";
-import sectionvid1 from "../assets/sectionvid1.mp4";
+import heroVideo from "../assets/heroVideo_compressed.mp4";
+import sectionvid1 from "../assets/sectionvid1_compressed.mp4";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 

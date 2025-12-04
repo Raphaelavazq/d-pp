@@ -6,11 +6,11 @@ import { TextPlugin } from "gsap/TextPlugin";
 import ImpactButton from "../components/ImpactButton";
 
 // Import videos
-import impact1 from "../assets/impact1.mp4"; // Breaking Barriers
-import impact2 from "../assets/impact2.mp4"; // 1% For Families
-import impact3 from "../assets/impact3.mp4"; // Mental Health Matters
-import impact4 from "../assets/impact4.mp4"; // Choosing Partners
-import impact5 from "../assets/impact5.mp4"; // Hero background
+import impact1 from "../assets/impact1_compressed.mp4"; // Breaking Barriers
+import impact2 from "../assets/impact2_compressed.mp4"; // 1% For Families
+import impact3 from "../assets/impact3_compressed.mp4"; // Mental Health Matters
+import impact4 from "../assets/impact4_compressed.mp4"; // Choosing Partners
+import impact5 from "../assets/impact5_compressed.mp4"; // Hero background
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 

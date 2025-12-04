@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
 import { products, categories } from "../data/productData";
 import ProductCard from "../components/ProductCard";
-import shop1 from "../assets/shop1.mp4";
+import shop1 from "../assets/shop1_compressed.mp4";
 import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
